@@ -92,7 +92,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="2" value="&lt;span style=&quot;font-size: 12px ; background-color: rgb(248 , 249 , 250)&quot;&gt;Send Assessment&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 12px ; background-color: rgb(248 , 249 , 250)&quot;&gt;Reports&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5zLNZYk9gSGTjGY1iR_E-5">
+                <mxCell id="2" value="&amp;nbsp;Send Assessment&amp;nbsp;Reports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5zLNZYk9gSGTjGY1iR_E-5">
                     <mxGeometry x="0.4545" y="1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
