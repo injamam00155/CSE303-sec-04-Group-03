@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-19T18:17:43.468Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="LK7fGXKTfLERd-5RDAj4" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-19T18:32:08.591Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="65Mag66s8PxjtNlLMTl4" version="20.5.3" type="github">
   <diagram id="jGTitbtS1qTeHCHVZxVC" name="Page-1">
     <mxGraphModel dx="1978" dy="616" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -676,7 +676,7 @@
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-2" source="tVkq6TzJgMgvvPUvZT2g-9" target="tVkq6TzJgMgvvPUvZT2g-10">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-9" value="Inputs time-period, School or Department Name" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-2">
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-9" value="Inputs desired&lt;br&gt;&amp;nbsp;time-period&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-2">
           <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-10" value="View&amp;nbsp; self&amp;nbsp; CGPA&amp;nbsp; progress" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-2">
@@ -748,10 +748,10 @@
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-18" source="tVkq6TzJgMgvvPUvZT2g-25" target="tVkq6TzJgMgvvPUvZT2g-26">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-25" value="Inputs the desired time-period and School, Department of Program" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-18">
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-25" value="Inputs time-period, School or Department Name" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-18">
           <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-26" value="View Statistically analyzed GPA trend of students&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-18">
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-26" value="View Statistically analyzed CGPA of students or any individual student" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-18">
           <mxGeometry x="635" y="30" width="105" height="50" as="geometry" />
         </mxCell>
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-27" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-18">
@@ -820,10 +820,10 @@
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-34" source="tVkq6TzJgMgvvPUvZT2g-41" target="tVkq6TzJgMgvvPUvZT2g-42">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-41" value="Inputs desired &lt;br&gt;time-period and Program" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-34">
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-41" value="Inputs the desired time-period and School, Department of Program" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-34">
           <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-42" value="View Statistically analyzed GPA trend of students who attended the faculty&#39;s section" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-34">
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-42" value="View Statistically analyzed CGPA&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-34">
           <mxGeometry x="635" y="30" width="105" height="50" as="geometry" />
         </mxCell>
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-43" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-34">
@@ -892,11 +892,11 @@
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-50" source="tVkq6TzJgMgvvPUvZT2g-57" target="tVkq6TzJgMgvvPUvZT2g-58">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-57" value="Inputs desired &lt;br&gt;time-period , School and Department" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-50">
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-57" value="Inputs desired&lt;br&gt;time-period and Program" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-50">
           <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-58" value="View Statistically analyzed GPA trend of students&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-50">
-          <mxGeometry x="635" y="30" width="105" height="50" as="geometry" />
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-58" value="View Statistically analyzed CGPA of students or any individual student in the faculty&#39;s secton" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-50">
+          <mxGeometry x="630" y="20" width="110" height="70" as="geometry" />
         </mxCell>
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-59" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-50">
           <mxGeometry x="775" y="30" width="50" height="50" as="geometry" />
@@ -929,13 +929,6 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-64" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-50" source="tVkq6TzJgMgvvPUvZT2g-57">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="590" y="54.66000000000008" as="sourcePoint" />
-            <mxPoint x="635" y="55" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-65" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-50">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="740" y="54.66" as="sourcePoint" />
@@ -964,10 +957,10 @@
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-66" source="tVkq6TzJgMgvvPUvZT2g-73" target="tVkq6TzJgMgvvPUvZT2g-74">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-73" value="Inputs desired&lt;br&gt;time-period and course ID" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-66">
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-73" value="Inputs desired&lt;br&gt;time-period , School and Department" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-66">
           <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="tVkq6TzJgMgvvPUvZT2g-74" value="View Statistically analyzed GPA trend of students&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-66">
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-74" value="View Statistically analyzed CGPA trend of students&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-66">
           <mxGeometry x="635" y="30" width="105" height="50" as="geometry" />
         </mxCell>
         <mxCell id="tVkq6TzJgMgvvPUvZT2g-75" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-66">
@@ -1014,6 +1007,362 @@
             <mxPoint x="775" y="54.66" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-82" value="&lt;b&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;Figure 1.8: Student Performance based on CGPA&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="2045" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-83" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Selective Number of Instructor-wise performance based on the GPA&amp;nbsp;&lt;/font&gt;" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=0;startSize=20;horizontalStack=0;" vertex="1" parent="1">
+          <mxGeometry x="-410" y="2170" width="940" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-84" value="Student" style="swimlane;html=1;startSize=20;horizontal=0;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-83">
+          <mxGeometry x="20" width="920" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-85" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-84">
+          <mxGeometry x="30" y="35" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-86" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-84" source="tVkq6TzJgMgvvPUvZT2g-87" target="tVkq6TzJgMgvvPUvZT2g-88">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-87" value="Logs into the dashboard using UserID and password" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-84">
+          <mxGeometry x="90" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-88" value="Clicks on the dropdown box" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-84">
+          <mxGeometry x="225" y="36" width="95" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-89" value="Select PLO achievement report" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-84">
+          <mxGeometry x="350" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-91" value="View PLO achievement report" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-84">
+          <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-93" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-84">
+          <mxGeometry x="775" y="30" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-94" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-84" source="tVkq6TzJgMgvvPUvZT2g-85" target="tVkq6TzJgMgvvPUvZT2g-87">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="75" y="55" as="sourcePoint" />
+            <mxPoint x="85" y="50" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-95" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-84" target="tVkq6TzJgMgvvPUvZT2g-88">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="190" y="54.709999999999994" as="sourcePoint" />
+            <mxPoint x="210" y="54.709999999999994" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-96" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-84" target="tVkq6TzJgMgvvPUvZT2g-89">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="320" y="54.66000000000004" as="sourcePoint" />
+            <mxPoint x="345" y="55" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-97" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-84" target="tVkq6TzJgMgvvPUvZT2g-91">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="450" y="54.66000000000008" as="sourcePoint" />
+            <mxPoint x="485" y="54.94999999999993" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-99" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-84" source="tVkq6TzJgMgvvPUvZT2g-91">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="740" y="54.66" as="sourcePoint" />
+            <mxPoint x="775" y="54.66" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-100" value="Registrar Office" style="swimlane;html=1;startSize=20;horizontal=0;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-83">
+          <mxGeometry x="20" y="120" width="920" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-101" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-100">
+          <mxGeometry x="30" y="35" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-102" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-100" source="tVkq6TzJgMgvvPUvZT2g-103" target="tVkq6TzJgMgvvPUvZT2g-104">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-103" value="Logs into the dashboard using UserID and password" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-100">
+          <mxGeometry x="90" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-104" value="Clicks on the dropdown box" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-100">
+          <mxGeometry x="225" y="36" width="95" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-105" value="Select GPA Trend&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-100">
+          <mxGeometry x="350" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-106" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-100" source="tVkq6TzJgMgvvPUvZT2g-107" target="tVkq6TzJgMgvvPUvZT2g-108">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-107" value="Inputs the desired time-period and courses" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-100">
+          <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-108" value="View Statistically analyzed GPA trend of students&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-100">
+          <mxGeometry x="635" y="30" width="105" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-109" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-100">
+          <mxGeometry x="775" y="30" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-110" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-100" source="tVkq6TzJgMgvvPUvZT2g-101" target="tVkq6TzJgMgvvPUvZT2g-103">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="75" y="55" as="sourcePoint" />
+            <mxPoint x="85" y="50" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-111" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-100" target="tVkq6TzJgMgvvPUvZT2g-104">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="190" y="54.709999999999994" as="sourcePoint" />
+            <mxPoint x="210" y="54.709999999999994" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-112" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-100" target="tVkq6TzJgMgvvPUvZT2g-105">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="320" y="54.66000000000004" as="sourcePoint" />
+            <mxPoint x="345" y="55" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-113" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-100" target="tVkq6TzJgMgvvPUvZT2g-107">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="450" y="54.66000000000008" as="sourcePoint" />
+            <mxPoint x="485" y="54.94999999999993" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-114" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-100" source="tVkq6TzJgMgvvPUvZT2g-107">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="590" y="54.66000000000008" as="sourcePoint" />
+            <mxPoint x="635" y="55" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-115" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-100">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="740" y="54.66" as="sourcePoint" />
+            <mxPoint x="775" y="54.66" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-116" value="Faculty" style="swimlane;html=1;startSize=20;horizontal=0;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-83">
+          <mxGeometry x="20" y="240" width="920" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-117" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-116">
+          <mxGeometry x="30" y="35" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-118" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-116" source="tVkq6TzJgMgvvPUvZT2g-119" target="tVkq6TzJgMgvvPUvZT2g-120">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-119" value="Logs into the dashboard using UserID and password" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-116">
+          <mxGeometry x="90" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-120" value="Clicks on the dropdown box" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-116">
+          <mxGeometry x="225" y="36" width="95" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-121" value="Select GPA&amp;nbsp; Trend" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-116">
+          <mxGeometry x="350" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-122" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-116" source="tVkq6TzJgMgvvPUvZT2g-123" target="tVkq6TzJgMgvvPUvZT2g-124">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-123" value="Inputs desired &lt;br&gt;time-period and courses under that specific faculty" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-116">
+          <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-124" value="View Statistically analyzed GPA trend of students who attended the faculty&#39;s section" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-116">
+          <mxGeometry x="635" y="30" width="105" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-125" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-116">
+          <mxGeometry x="775" y="30" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-126" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-116" source="tVkq6TzJgMgvvPUvZT2g-117" target="tVkq6TzJgMgvvPUvZT2g-119">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="75" y="55" as="sourcePoint" />
+            <mxPoint x="85" y="50" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-127" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-116" target="tVkq6TzJgMgvvPUvZT2g-120">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="190" y="54.709999999999994" as="sourcePoint" />
+            <mxPoint x="210" y="54.709999999999994" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-128" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-116" target="tVkq6TzJgMgvvPUvZT2g-121">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="320" y="54.66000000000004" as="sourcePoint" />
+            <mxPoint x="345" y="55" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-129" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-116" target="tVkq6TzJgMgvvPUvZT2g-123">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="450" y="54.66000000000008" as="sourcePoint" />
+            <mxPoint x="485" y="54.94999999999993" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-130" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-116" source="tVkq6TzJgMgvvPUvZT2g-123">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="590" y="54.66000000000008" as="sourcePoint" />
+            <mxPoint x="635" y="55" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-131" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-116">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="740" y="54.66" as="sourcePoint" />
+            <mxPoint x="775" y="54.66" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-132" value="Department Head&amp;nbsp;" style="swimlane;html=1;startSize=20;horizontal=0;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-83">
+          <mxGeometry x="20" y="360" width="920" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-133" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-132">
+          <mxGeometry x="30" y="35" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-134" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-132" source="tVkq6TzJgMgvvPUvZT2g-135" target="tVkq6TzJgMgvvPUvZT2g-136">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-135" value="Logs into the dashboard using UserID and password" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-132">
+          <mxGeometry x="90" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-136" value="Clicks on the dropdown box" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-132">
+          <mxGeometry x="225" y="36" width="95" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-137" value="Select GPA Trend&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-132">
+          <mxGeometry x="350" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-138" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-132" source="tVkq6TzJgMgvvPUvZT2g-139" target="tVkq6TzJgMgvvPUvZT2g-140">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-139" value="Inputs desired &lt;br&gt;time-period and course ID" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-132">
+          <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-140" value="View Statistically analyzed GPA trend of students&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-132">
+          <mxGeometry x="635" y="30" width="105" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-141" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-132">
+          <mxGeometry x="775" y="30" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-142" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-132" source="tVkq6TzJgMgvvPUvZT2g-133" target="tVkq6TzJgMgvvPUvZT2g-135">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="75" y="55" as="sourcePoint" />
+            <mxPoint x="85" y="50" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-143" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-132" target="tVkq6TzJgMgvvPUvZT2g-136">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="190" y="54.709999999999994" as="sourcePoint" />
+            <mxPoint x="210" y="54.709999999999994" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-144" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-132" target="tVkq6TzJgMgvvPUvZT2g-137">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="320" y="54.66000000000004" as="sourcePoint" />
+            <mxPoint x="345" y="55" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-145" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-132" target="tVkq6TzJgMgvvPUvZT2g-139">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="450" y="54.66000000000008" as="sourcePoint" />
+            <mxPoint x="485" y="54.94999999999993" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-146" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-132" source="tVkq6TzJgMgvvPUvZT2g-139">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="590" y="54.66000000000008" as="sourcePoint" />
+            <mxPoint x="635" y="55" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-147" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-132">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="740" y="54.66" as="sourcePoint" />
+            <mxPoint x="775" y="54.66" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-148" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;Higher Authority (VC/Dean)&lt;/font&gt;" style="swimlane;html=1;startSize=20;horizontal=0;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-83">
+          <mxGeometry x="20" y="480" width="920" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-149" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-148">
+          <mxGeometry x="30" y="35" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-150" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-148" source="tVkq6TzJgMgvvPUvZT2g-151" target="tVkq6TzJgMgvvPUvZT2g-152">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-151" value="Logs into the dashboard using UserID and password" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-148">
+          <mxGeometry x="90" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-152" value="Clicks on the dropdown box" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-148">
+          <mxGeometry x="225" y="36" width="95" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-153" value="Select GPA Trend&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-148">
+          <mxGeometry x="350" y="32.5" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-154" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-148" source="tVkq6TzJgMgvvPUvZT2g-155" target="tVkq6TzJgMgvvPUvZT2g-156">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-155" value="Inputs desired&lt;br&gt;time-period and course ID" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-148">
+          <mxGeometry x="495" y="32.5" width="105" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-156" value="View Statistically analyzed GPA trend of students&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-148">
+          <mxGeometry x="635" y="30" width="105" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-157" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="tVkq6TzJgMgvvPUvZT2g-148">
+          <mxGeometry x="775" y="30" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-158" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-148" source="tVkq6TzJgMgvvPUvZT2g-149" target="tVkq6TzJgMgvvPUvZT2g-151">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="75" y="55" as="sourcePoint" />
+            <mxPoint x="85" y="50" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-159" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-148" target="tVkq6TzJgMgvvPUvZT2g-152">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="190" y="54.709999999999994" as="sourcePoint" />
+            <mxPoint x="210" y="54.709999999999994" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-160" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-148" target="tVkq6TzJgMgvvPUvZT2g-153">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="320" y="54.66000000000004" as="sourcePoint" />
+            <mxPoint x="345" y="55" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-161" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-148" target="tVkq6TzJgMgvvPUvZT2g-155">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="450" y="54.66000000000008" as="sourcePoint" />
+            <mxPoint x="485" y="54.94999999999993" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-162" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-148" source="tVkq6TzJgMgvvPUvZT2g-155">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="590" y="54.66000000000008" as="sourcePoint" />
+            <mxPoint x="635" y="55" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-163" value="" style="edgeStyle=elbowEdgeStyle;fontSize=12;html=1;endArrow=blockThin;endFill=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="tVkq6TzJgMgvvPUvZT2g-148">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="740" y="54.66" as="sourcePoint" />
+            <mxPoint x="775" y="54.66" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVkq6TzJgMgvvPUvZT2g-164" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Figure 2.1: Course-wise Student Performance based on GPA&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="-350" y="2780" width="540" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
