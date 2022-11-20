@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-20T18:32:48.536Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="i0C4LCyo3_DDU4gALRVI" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-20T18:35:55.443Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="MIaKmHY4kWOhX9pBAKMc" version="20.5.3" type="github">
   <diagram id="jGTitbtS1qTeHCHVZxVC" name="Page-1">
     <mxGraphModel dx="2213" dy="744" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -2973,7 +2973,7 @@
         <mxCell id="LEg9arwi32AiThgLEO_k-325" value="&lt;b&gt;Figure 2.6: Expected PLO Achieved Vs Actual Score (Process)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="-240" y="6935" width="440" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-326" value="&lt;b style=&quot;background-color: rgb(248, 249, 250);&quot;&gt;PLO Achievement&lt;/b&gt;" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=0;startSize=20;horizontalStack=0;" vertex="1" parent="1">
+        <mxCell id="LEg9arwi32AiThgLEO_k-326" value="&lt;span style=&quot;font-size: 14px; background-color: rgb(248, 249, 250);&quot;&gt;CO-PLO Summary (Process)&lt;/span&gt;" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=0;startSize=20;horizontalStack=0;" vertex="1" parent="1">
           <mxGeometry x="-455" y="7020" width="940" height="600" as="geometry" />
         </mxCell>
         <mxCell id="LEg9arwi32AiThgLEO_k-327" value="Student" style="swimlane;html=1;startSize=20;horizontal=0;" vertex="1" parent="LEg9arwi32AiThgLEO_k-326">
@@ -2996,10 +2996,10 @@
             <mxPoint x="460" y="55" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-333" value="Selects PLO achieved" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-327">
+        <mxCell id="LEg9arwi32AiThgLEO_k-333" value="Selects CO-PLO Table" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-327">
           <mxGeometry x="430" y="32.5" width="100" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-334" value="View PLO achieved" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-327">
+        <mxCell id="LEg9arwi32AiThgLEO_k-334" value="View CO-PLO Achievement Summary" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-327">
           <mxGeometry x="600" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
         <mxCell id="LEg9arwi32AiThgLEO_k-335" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-327">
@@ -3060,10 +3060,10 @@
             <mxPoint x="460" y="55" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-347" value="Selects PLO achieved" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-341">
+        <mxCell id="LEg9arwi32AiThgLEO_k-347" value="Selects CO-PLO Achievement Summary" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-341">
           <mxGeometry x="430" y="32.5" width="100" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-348" value="View PLO achieved" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-341">
+        <mxCell id="LEg9arwi32AiThgLEO_k-348" value="View CO-PLO Achievement Summary" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-341">
           <mxGeometry x="600" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
         <mxCell id="LEg9arwi32AiThgLEO_k-349" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-341">
@@ -3124,10 +3124,10 @@
             <mxPoint x="460" y="55" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-361" value="Selects PLO achieved" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-355">
+        <mxCell id="LEg9arwi32AiThgLEO_k-361" value="Selects CO-PLO Achievement Summary" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-355">
           <mxGeometry x="430" y="32.5" width="100" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-362" value="View PLO achieved" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-355">
+        <mxCell id="LEg9arwi32AiThgLEO_k-362" value="View CO-PLO Achievement Summary" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-355">
           <mxGeometry x="600" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
         <mxCell id="LEg9arwi32AiThgLEO_k-363" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-355">
@@ -3188,10 +3188,10 @@
             <mxPoint x="460" y="55" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-375" value="Selects PLO achievements attempted" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-369">
+        <mxCell id="LEg9arwi32AiThgLEO_k-375" value="Selects CO-PLO Achievement Summary" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-369">
           <mxGeometry x="430" y="32.5" width="100" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-376" value="View PLO achieved" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-369">
+        <mxCell id="LEg9arwi32AiThgLEO_k-376" value="View CO-PLO Achievement Summary" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-369">
           <mxGeometry x="600" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
         <mxCell id="LEg9arwi32AiThgLEO_k-377" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-369">
@@ -3252,10 +3252,10 @@
             <mxPoint x="460" y="55" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-389" value="Select PLO achieved vs attempted" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-383">
+        <mxCell id="LEg9arwi32AiThgLEO_k-389" value="Selects CO-PLO Achievement Summary" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-383">
           <mxGeometry x="430" y="32.5" width="100" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="LEg9arwi32AiThgLEO_k-390" value="View PLO achieved" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-383">
+        <mxCell id="LEg9arwi32AiThgLEO_k-390" value="View CO-PLO Achievement Summary" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-383">
           <mxGeometry x="600" y="32.5" width="105" height="45" as="geometry" />
         </mxCell>
         <mxCell id="LEg9arwi32AiThgLEO_k-391" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=end;symbol=terminate2;fontSize=10;" vertex="1" parent="LEg9arwi32AiThgLEO_k-383">
@@ -3295,6 +3295,9 @@
             <mxPoint x="775" y="54.66" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="LEg9arwi32AiThgLEO_k-397" value="&lt;b&gt;Figure 2.7: CO-PLO Summary (Process)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="-145" y="7635" width="290" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
