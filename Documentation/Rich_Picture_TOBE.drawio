@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-22T18:07:39.086Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 OPR/91.0.4516.106" etag="VYOoK_Nh7hKxxzKhJ-b8" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-22T18:08:31.369Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 OPR/91.0.4516.106" etag="ANNndG8amoMK8I_cn36N" version="20.5.3" type="github">
   <diagram id="rjvY4yZX117UJzTJiv40" name="Page-1">
     <mxGraphModel dx="3384" dy="2037" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -219,6 +219,34 @@
         </mxCell>
         <mxCell id="8D1ygwEj7rqPCwbCoPep-80" value="Request Question Difficulty" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="8D1ygwEj7rqPCwbCoPep-78">
           <mxGeometry x="0.0669" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8D1ygwEj7rqPCwbCoPep-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.662;entryY=1.009;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="8D1ygwEj7rqPCwbCoPep-25" target="8D1ygwEj7rqPCwbCoPep-73">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1100" y="-230" />
+              <mxPoint x="-1100" y="-41" />
+              <mxPoint x="-1442" y="-41" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8D1ygwEj7rqPCwbCoPep-89" value="Reques Course&lt;br&gt;Outline PDF" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="8D1ygwEj7rqPCwbCoPep-86">
+          <mxGeometry x="0.2443" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8D1ygwEj7rqPCwbCoPep-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="8D1ygwEj7rqPCwbCoPep-25" target="8D1ygwEj7rqPCwbCoPep-73">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1070" y="-250" />
+              <mxPoint x="-1070" y="-20" />
+              <mxPoint x="-1478" y="-20" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8D1ygwEj7rqPCwbCoPep-88" value="Generate&lt;br&gt;&amp;amp;&lt;br&gt;Send&lt;br&gt;Course&lt;br&gt;Outline&lt;br&gt;PDF" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="8D1ygwEj7rqPCwbCoPep-87">
+          <mxGeometry x="-0.5123" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
