@@ -82,11 +82,14 @@ DATABASES = {
         'PASSWORD': 'inja',  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
-        'OPTIONS': {  
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        'OPTIONS': {
+          'autocommit': True,
+          'use_oure': True,
+          'init_command': "SET foo='bar';"
         }  
     }  
 }  
+
 
 
 # Password validation
