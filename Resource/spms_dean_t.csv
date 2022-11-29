@@ -1,0 +1,7 @@
+firstName,lastName,dateOfBirth,gender,email,phone,address,employeeType,deanID,startDate,endDate,school_id
+Abul,Kashem,1/1/1960,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,2001,Spring 2020,Summer 2020,SETS
+Abul,Fazal,1/1/1960,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,2002,Autumn 2020,Autumn 2020,SETS
+Abu,Bakar,1/1/1960,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,2101,Spring 2020,Spring 2020,SBE
+Abu,Selim,1/1/1960,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,2102,Summer 2020,Autumn 2020,SBE
+Golam,Hasan,1/1/1960,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,2201,Spring 2020,Summer 2020,SLASS
+Golam,Kabir,1/1/1960,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,2202,Autumn 2020,Autumn 2020,SLASS
