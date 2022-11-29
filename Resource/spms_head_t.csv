@@ -1,3 +1,4 @@
+"firstName","lastName","dateOfBirth","gender","email","phone","address","employeeType","headID","startDate","endDate","department_id"
 "Anwar","Hossain","1960-01-01","Male","anwar@iub.edu.bd","01712345677","Bashundhara","H","1001","Spring 2020","Spring 2020","CSE"
 "Mahady","Hasan","1960-01-01","Male","mahady@iub.edu.bd","01712345677","Bashundhara","H","1002","Summer 2020","Summer 2020","CSE"
 "Mahbubul","Hasan","1960-01-01","Male","mahbub@iub.edu.bd","01712345677","Bashundhara","H","1101","Spring 2020","Summer 2020","EEE"

@@ -1,3 +1,4 @@
+"firstName","lastName","dateOfBirth","gender","email","phone","address","employeeType","facultyID","startDate","rank","department_id"
 "Mahady","Hasan","null","null","null","null","null","F","4101","null","null","CSE"
 "Sadita","Ahmed","null","null","null","null","null","F","4102","null","null","CSE"
 "Md. Abu","Sayed","null","null","null","null","null","F","4103","null","null","CSE"
