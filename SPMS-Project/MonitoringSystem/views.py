@@ -7,3 +7,4 @@ def home(request):
 
 def something(request):
     return render(request,"SPMS/login.html")
+
