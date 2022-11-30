@@ -64,7 +64,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        },
+    },
     },
 ]
 
@@ -82,11 +82,7 @@ DATABASES = {
         'PASSWORD': 'inja',  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
-        'OPTIONS': {
-          'autocommit': True,
-          'use_oure': True,
-          'init_command': "SET foo='bar';"
-        }  
+          
     }  
 }  
 
