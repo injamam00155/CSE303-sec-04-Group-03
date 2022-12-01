@@ -18,6 +18,11 @@ mydb=mysql.connector.connect(
 
 
 # GPA Analysis
+def viewDean():
+    with connection.cursor() as cursor:
+        cursor.execute(''' SELECT * FROM spms.spms_dean_t;''')
+        a = cursor.fetchall()
+        return a;
 
 def getStudentCGPA(studentID):
     with connection.cursor() as cursor:
@@ -39,19 +44,19 @@ def getStudentCGPA(studentID):
                         ELSE 0.0
                     END as grade
                 FROM(
-                    SELECT c.courseID as CourseID,a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                    SELECT c.coID as coID,a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                     FROM spms_registration_t r,
                         spms_section_t sc, 
                         spms_course_t c,
                         spms_assessment_t a, 
                         spms_evaluation_t e
                     WHERE r.section_id = sc.sectionID
-                        and sc.course_id = c.courseID 
+                        and sc.course_id = c.coID 
                         and r.registrationID = e.registration_id 
                         and e.assessment_id = a.assessmentID
                         and r.student_id = '{}'
-                    GROUP BY  c.courseID,a.assessmentName) Derived 
-                GROUP BY CourseID) Derived
+                    GROUP BY  c.coID,a.assessmentName) Derived 
+                GROUP BY coID) Derived
                     '''.format(studentID))
 
         row = cursor.fetchall()[0][0]
@@ -79,20 +84,20 @@ def getStudentWiseGPA(studentID, semester):
                         ELSE 0.0
                     END as grade
                 FROM(
-                    SELECT c.courseID as CourseID,a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                    SELECT c.coID as coID,a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                     FROM spms_registration_t r,
                         spms_section_t sc, 
                         spms_course_t c,
                         spms_assessment_t a, 
                         spms_evaluation_t e
                     WHERE r.section_id = sc.sectionID
-                        and sc.course_id = c.courseID 
+                        and sc.course_id = c.coID 
                         and r.registrationID = e.registration_id 
                         and e.assessment_id = a.assessmentID
                         and r.student_id = '{}'
                         and r.semester='{}' 
-                    GROUP BY  c.courseID,a.assessmentName) Derived 
-                GROUP BY CourseID) Derived
+                    GROUP BY  c.coID,a.assessmentName) Derived 
+                GROUP BY coID) Derived
                     '''.format(studentID, semester))
 
         row = cursor.fetchall()[0][0]
@@ -122,8 +127,8 @@ def getSchoolWiseGPA(school, semester):
                                ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                           SELECT st.studentID as StudentID,c.coID as coID,
+                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_department_t d,
                                 spms_school_t s,
@@ -136,13 +141,13 @@ def getSchoolWiseGPA(school, semester):
                                 and st.department_id = d.departmentID
                                 and d.school_id = s.schoolID
                                 and r.section_id = sc.sectionID
-                                and sc.course_id = c.courseID 
+                                and sc.course_id = c.coID 
                                 and r.registrationID = e.registration_id 
                                 and e.assessment_id = a.assessmentID
                                 and s.schoolID = '{}'
                                 and r.semester='{}'
-                           GROUP BY  st.studentID,c.courseID,a.assessmentName) Derived1
-                       GROUP BY StudentID,CourseID) Derived2
+                           GROUP BY  st.studentID,c.coID,a.assessmentName) Derived1
+                       GROUP BY StudentID,coID) Derived2
                    GROUP BY StudentID)
                        '''.format(school, semester))
 
@@ -172,8 +177,8 @@ def getDeptWiseGPA(dept, semester):
                             ELSE 0.0
                         END as gradepoint
                     FROM(
-                        SELECT st.studentID as StudentID,c.courseID as CourseID,
-                            a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                        SELECT st.studentID as StudentID,c.coID as coID,
+                            a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                         FROM spms_student_t st,
                             spms_registration_t r,
                             spms_section_t sc, 
@@ -182,13 +187,13 @@ def getDeptWiseGPA(dept, semester):
                             spms_evaluation_t e
                         WHERE st.studentID = r.student_id
                             and r.section_id = sc.sectionID
-                            and sc.course_id = c.courseID 
+                            and sc.course_id = c.coID 
                             and r.registrationID = e.registration_id 
                             and e.assessment_id = a.assessmentID
                             and st.department_id = '{}'
                             and r.semester='{}'
-                        GROUP BY  st.studentID,c.courseID,a.assessmentName) Derived1
-                    GROUP BY StudentID,CourseID) Derived2
+                        GROUP BY  st.studentID,c.coID,a.assessmentName) Derived1
+                    GROUP BY StudentID,coID) Derived2
                 GROUP BY StudentID)
                     '''.format(dept, semester))
 
@@ -218,8 +223,8 @@ def getProgramWiseGPA(program, semester):
                                ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                           SELECT st.studentID as StudentID,c.coID as coID,
+                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                spms_registration_t r,
                                spms_section_t sc, 
@@ -228,13 +233,13 @@ def getProgramWiseGPA(program, semester):
                                spms_evaluation_t e
                            WHERE st.studentID = r.student_id
                                and r.section_id = sc.sectionID
-                               and sc.course_id = c.courseID 
+                               and sc.course_id = c.coID 
                                and r.registrationID = e.registration_id 
                                and e.assessment_id = a.assessmentID
                                and st.program_id = '{}'
                                and r.semester='{}'
-                           GROUP BY  st.studentID,c.courseID,a.assessmentName) Derived1
-                       GROUP BY StudentID,CourseID) Derived2
+                           GROUP BY  st.studentID,c.coID,a.assessmentName) Derived1
+                       GROUP BY StudentID,coID) Derived2
                    GROUP BY StudentID)
                        '''.format(program, semester))
 
@@ -262,7 +267,7 @@ def getCourseWiseGPA(course, semester):
                                ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
+                           SELECT st.studentID as StudentID,c.coID as coID,
                                a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks
                            FROM spms_student_t st,
                                spms_registration_t r,
@@ -272,10 +277,10 @@ def getCourseWiseGPA(course, semester):
                                spms_evaluation_t e
                            WHERE st.studentID = r.student_id
                                and r.section_id = sc.sectionID
-                               and sc.course_id = c.courseID 
+                               and sc.course_id = c.coID 
                                and r.registrationID = e.registration_id 
                                and e.assessment_id = a.assessmentID
-                               and c.courseID = '{}'
+                               and c.coID = '{}'
                                and r.semester='{}'
                            GROUP BY  st.studentID,a.assessmentName) Derived
                        GROUP BY StudentID) Derived2
@@ -305,7 +310,7 @@ def getInstructorWiseGPA(instructor, semester):
                                ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
+                           SELECT st.studentID as StudentID,c.coID as coID,
                                a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks
                            FROM spms_student_t st,
                                spms_registration_t r,
@@ -347,7 +352,7 @@ def getInstructorWiseGPAForCourse(course, semester):
                                ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT sc.faculty_id as FacultyID, st.studentID as StudentID,c.courseID as CourseID,
+                           SELECT sc.faculty_id as FacultyID, st.studentID as StudentID,c.coID as coID,
                                a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks
                            FROM spms_student_t st,
                                spms_registration_t r,
@@ -413,8 +418,8 @@ def getHeadWiseGPA(head):
                                    ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                           SELECT st.studentID as StudentID,c.coID as coID,
+                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_head_t h,
                                spms_registration_t r,
@@ -425,13 +430,13 @@ def getHeadWiseGPA(head):
                            WHERE st.studentID = r.student_id
                                 and st.department_id = h.department_id
                                 and r.section_id = sc.sectionID
-                                and sc.course_id = c.courseID 
+                                and sc.course_id = c.coID 
                                 and r.registrationID = e.registration_id 
                                 and e.assessment_id = a.assessmentID
                                 and h.headID = '{}'
                                 and r.semester='{}'
-                           GROUP BY  st.studentID,c.courseID,a.assessmentName) Derived1
-                       GROUP BY StudentID,CourseID) Derived2
+                           GROUP BY  st.studentID,c.coID,a.assessmentName) Derived1
+                       GROUP BY StudentID,coID) Derived2
                    GROUP BY StudentID)
                        '''.format(head.headID, semesters[0]))
     else:
@@ -455,8 +460,8 @@ def getHeadWiseGPA(head):
                                    ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                           SELECT st.studentID as StudentID,c.coID as coID,
+                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_head_t h,
                                spms_registration_t r,
@@ -467,13 +472,13 @@ def getHeadWiseGPA(head):
                            WHERE st.studentID = r.student_id
                                 and st.department_id = h.department_id
                                 and r.section_id = sc.sectionID
-                                and sc.course_id = c.courseID 
+                                and sc.course_id = c.coID 
                                 and r.registrationID = e.registration_id 
                                 and e.assessment_id = a.assessmentID
                                 and h.headID = '{}'
                                 and r.semester in {}
-                           GROUP BY  st.studentID,c.courseID,a.assessmentName) Derived1
-                       GROUP BY StudentID,CourseID) Derived2
+                           GROUP BY  st.studentID,c.coID,a.assessmentName) Derived1
+                       GROUP BY StudentID,coID) Derived2
                    GROUP BY StudentID)
                        '''.format(head.headID, str(tuple(semesters))))
     row = cursor.fetchall()[0][0]
@@ -522,8 +527,8 @@ def getDeanWiseGPA(dean):
                                    ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                           SELECT st.studentID as StudentID,c.coID as coID,
+                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_department_t d,
                                 spms_dean_t dn,
@@ -536,13 +541,13 @@ def getDeanWiseGPA(dean):
                                 and st.department_id = d.departmentID
                                 and d.school_id = dn.school_id
                                 and r.section_id = sc.sectionID
-                                and sc.course_id = c.courseID 
+                                and sc.course_id = c.coID 
                                 and r.registrationID = e.registration_id 
                                 and e.assessment_id = a.assessmentID
                                 and dn.deanID= '{}'
                                 and r.semester='{}'
-                           GROUP BY  st.studentID,c.courseID,a.assessmentName) Derived1
-                       GROUP BY StudentID,CourseID) Derived2
+                           GROUP BY  st.studentID,c.coID,a.assessmentName) Derived1
+                       GROUP BY StudentID,coID) Derived2
                    GROUP BY StudentID)
                        '''.format(dean.deanID, semesters[0]))
     else:
@@ -566,8 +571,8 @@ def getDeanWiseGPA(dean):
                                    ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                           SELECT st.studentID as StudentID,c.coID as coID,
+                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_department_t d,
                                 spms_dean_t dn,
@@ -580,13 +585,13 @@ def getDeanWiseGPA(dean):
                                 and st.department_id = d.departmentID
                                 and d.school_id = dn.school_id
                                 and r.section_id = sc.sectionID
-                                and sc.course_id = c.courseID 
+                                and sc.course_id = c.coID 
                                 and r.registrationID = e.registration_id 
                                 and e.assessment_id = a.assessmentID
                                 and dn.deanID= '{}'
                                 and r.semester in {}
-                           GROUP BY  st.studentID,c.courseID,a.assessmentName) Derived1
-                       GROUP BY StudentID,CourseID) Derived2
+                           GROUP BY  st.studentID,c.coID,a.assessmentName) Derived1
+                       GROUP BY StudentID,coID) Derived2
                    GROUP BY StudentID)
                        '''.format(dean.deanID, str(tuple(semesters))))
     row = cursor.fetchall()[0][0]
@@ -635,8 +640,8 @@ def getVCWiseGPA(vc):
                                    ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                           SELECT st.studentID as StudentID,c.coID as coID,
+                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                spms_registration_t r,
                                spms_section_t sc, 
@@ -645,12 +650,12 @@ def getVCWiseGPA(vc):
                                spms_evaluation_t e
                            WHERE st.studentID = r.student_id
                                 and r.section_id = sc.sectionID
-                                and sc.course_id = c.courseID 
+                                and sc.course_id = c.coID 
                                 and r.registrationID = e.registration_id 
                                 and e.assessment_id = a.assessmentID
                                 and r.semester='{}'
-                           GROUP BY  st.studentID,c.courseID,a.assessmentName) Derived1
-                       GROUP BY StudentID,CourseID) Derived2
+                           GROUP BY  st.studentID,c.coID,a.assessmentName) Derived1
+                       GROUP BY StudentID,coID) Derived2
                    GROUP BY StudentID)
                        '''.format(semesters[0]))
     else:
@@ -676,8 +681,8 @@ def getVCWiseGPA(vc):
                                    ELSE 0.0
                            END as gradepoint
                        FROM(
-                           SELECT st.studentID as StudentID,c.courseID as CourseID,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.numOfCredits as Credits
+                           SELECT st.studentID as StudentID,c.coID as coID,
+                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                spms_registration_t r,
                                spms_section_t sc, 
@@ -686,12 +691,12 @@ def getVCWiseGPA(vc):
                                spms_evaluation_t e
                            WHERE st.studentID = r.student_id
                                 and r.section_id = sc.sectionID
-                                and sc.course_id = c.courseID 
+                                and sc.course_id = c.coID 
                                 and r.registrationID = e.registration_id 
                                 and e.assessment_id = a.assessmentID
                                 and r.semester in {}
-                           GROUP BY  st.studentID,c.courseID,a.assessmentName) Derived1
-                       GROUP BY StudentID,CourseID) Derived2
+                           GROUP BY  st.studentID,c.coID,a.assessmentName) Derived1
+                       GROUP BY StudentID,coID) Derived2
                    GROUP BY StudentID)
                        '''.format(str(tuple(semesters))))
     row = cursor.fetchall()[0][0]
@@ -1637,7 +1642,7 @@ def getCourseReport(course):
         cursor.execute('''
                SELECT coNum, ploNum, COUNT(marks)
                FROM(
-                       SELECT r.student_id as StudentID,c.course_id as CourseID,c.coNum as coNum,
+                       SELECT r.student_id as StudentID,c.course_id as coID,c.coNum as coNum,
                        p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
                        FROM spms_registration_t r,
                            spms_evaluation_t e,
@@ -1651,7 +1656,7 @@ def getCourseReport(course):
                             and c.course_id = '{}'
                        GROUP BY r.student_id,c.course_id,c.coID, p.ploID
                        )derived
-                GROUP BY CourseID,coNum,ploNum
+                GROUP BY coID,coNum,ploNum
                '''.format(course))
         total = cursor.fetchone()[2]
 
