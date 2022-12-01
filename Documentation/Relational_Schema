@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-01T21:12:13.034Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="HG9vJnLAZf-x738cvvRr" version="20.6.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-12-01T21:12:46.549Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="5D0U9_Jl3q7si7NkCrBd" version="20.6.0" type="github">
   <diagram id="VL2Gd8K8oz-JtoHg1ira" name="Page-1">
     <mxGraphModel dx="2316" dy="987" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -745,17 +745,6 @@
         </mxCell>
         <mxCell id="0ANXnJM5-Tp-SeLdzWdQ-149" value="&lt;span style=&quot;text-align: left;&quot;&gt;&amp;nbsp;University_Regulation_And_Code_Of_Conduct&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1030" y="1820" width="280" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="0ANXnJM5-Tp-SeLdzWdQ-163" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="0ANXnJM5-Tp-SeLdzWdQ-57">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="50" y="940" as="targetPoint" />
-            <mxPoint x="230" y="1152.5" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="230" y="1173" />
-              <mxPoint x="-20" y="1173" />
-              <mxPoint x="-20" y="860" />
-            </Array>
-          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
