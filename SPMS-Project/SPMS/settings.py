@@ -55,7 +55,7 @@ ROOT_URLCONF = 'SPMS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'SPMS.wsgi.application'
 DATABASES = {  
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'spms',  
+        'NAME': 'new_schema',  
         'USER': 'root',  
-        'PASSWORD': 'inja',  
+        'PASSWORD': 'jjk@2030183@jj',  
         'HOST': '127.0.0.1',  
-        'PORT': '3306',  
-          
+        'PORT': '3306',
+              
     }  
 }  
 

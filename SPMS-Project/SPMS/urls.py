@@ -15,10 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MonitoringSystem import views
+from SPMS import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('home', views.home),
-    path('something', views.something),
+    path('', views.hello)
 ]
