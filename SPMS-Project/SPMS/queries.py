@@ -10,22 +10,61 @@ mydb=mysql.connector.connect(
 )
 
 # print(mydb)
-
-
+# cursor = mydb.cursor()
+# print(cursor)
+# cursor.execute('''        
+#     SELECT *     
+#     FROM spms_users_t
+#     WHERE userID=1416455''')
+# print(cursor.fetchall())
+# group
 # studentlist = Student_T.objects.all()
 
 # programlist = Program_T.objects.all()
 
 
+
+# with mydb.cursor() as cursor:
+#         cursor.execute('''        
+#         SELECT *     
+#         FROM spms_users_t
+#         WHERE userID=1416455;''')
+#         print(cursor.fetchall())
+
+def isValid(username):
+    cursor = mydb.cursor()
+    cursor.execute('''        
+    SELECT *     
+    FROM spms_users_t
+    WHERE userID={}'''.format(username))
+    rows=cursor.fetchall()
+    cursor.close()
+    mydb.close()
+    return bool(cursor.fetchall())
+
+
+def getPassword(username):
+        with mydb.cursor() as cursor:
+            cursor.execute('''        
+            SELECT password     
+            FROM spms_users_t
+            WHERE userID={}'''.format(username))
+        password=cursor.fetchall()[0]
+        return password
+
+def getGroup(username):
+        with mydb.cursor() as cursor:
+            cursor.execute('''        
+            SELECT group    
+            FROM spms_users_t
+            WHERE userID={}'''.format(username))
+        group=cursor.fetchall()[0]
+        return group
+
 # GPA Analysis
-def viewDean():
-    with connection.cursor() as cursor:
-        cursor.execute(''' SELECT * FROM spms.spms_dean_t;''')
-        a = cursor.fetchall()
-        return a;
 
 def getStudentCGPA(studentID):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute(''' 
             SELECT sum(Credits*grade)/sum(Credits)
             FROM(   
@@ -65,7 +104,7 @@ def getStudentCGPA(studentID):
 
 
 def getStudentWiseGPA(studentID, semester):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute(''' 
             SELECT sum(Credits*grade)/sum(Credits)
             FROM(   
@@ -106,7 +145,7 @@ def getStudentWiseGPA(studentID, semester):
 
 
 def getSchoolWiseGPA(school, semester):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
                SELECT AVG(grade) as avgGrade
                FROM(
@@ -156,7 +195,7 @@ def getSchoolWiseGPA(school, semester):
 
 
 def getDeptWiseGPA(dept, semester):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
             SELECT AVG(grade) as avgGrade
             FROM(
@@ -202,7 +241,7 @@ def getDeptWiseGPA(dept, semester):
 
 
 def getProgramWiseGPA(program, semester):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
                SELECT AVG(grade) as avgGrade
                FROM(
@@ -248,7 +287,7 @@ def getProgramWiseGPA(program, semester):
 
 
 def getCourseWiseGPA(course, semester):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
                SELECT AVG(gradepoint) as avgGrade
                FROM(   
@@ -291,7 +330,7 @@ def getCourseWiseGPA(course, semester):
 
 
 def getInstructorWiseGPA(instructor, semester):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
                SELECT AVG(gradepoint) as avgGrade
                FROM(   
@@ -333,7 +372,7 @@ def getInstructorWiseGPA(instructor, semester):
 
 
 def getInstructorWiseGPAForCourse(course, semester):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
                SELECT FacultyID, AVG(gradepoint) as avgGrade
                FROM(   
@@ -395,7 +434,7 @@ def getHeadWiseGPA(head):
     for i in range(b, e + 1):
         semesters.append(semlist[i][0])
 
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     if len(semesters) == 1:
         cursor.execute('''
@@ -504,7 +543,7 @@ def getDeanWiseGPA(dean):
     for i in range(b, e + 1):
         semesters.append(semlist[i][0])
 
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     if len(semesters) == 1:
         cursor.execute('''
@@ -617,7 +656,7 @@ def getVCWiseGPA(vc):
     for i in range(b, e + 1):
         semesters.append(semlist[i][0])
 
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     if len(semesters) == 1:
         cursor.execute('''
@@ -706,7 +745,7 @@ def getVCWiseGPA(vc):
 
 # PLO Analysis
 def getStudentWisePLO(studentID):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute(''' 
                 SELECT p.ploNum as plonum,100*(sum( e.obtainedMarks)/sum( a.totalMarks)) as plopercent
                 FROM spms_registration_t r,
@@ -727,7 +766,7 @@ def getStudentWisePLO(studentID):
 
 
 def getCourseWiseStudentPLO(studentID, cat):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute(''' 
                SELECT p.ploNum as ploNum,co.course_id,sum(e.obtainedMarks),sum(a.totalMarks), derived.Total
                FROM spms_registration_t r,
@@ -793,7 +832,7 @@ def getCourseWiseStudentPLO(studentID, cat):
 
 
 def getCOWiseStudentPLO(studentID, cat):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute(''' 
                SELECT p.ploNum as ploNum,co.coNum, sum(e.obtainedMarks),sum(a.totalMarks),derived.Total 
                FROM spms_registration_t r,
@@ -859,7 +898,7 @@ def getCOWiseStudentPLO(studentID, cat):
 
 
 def getSchoolWisePLO(school):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
              SELECT derived.plonum, avg(per)
              FROM(
@@ -888,7 +927,7 @@ def getSchoolWisePLO(school):
 
 
 def getDeptWisePLO(dept):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
              SELECT derived.plonum, avg(per)
              FROM(
@@ -916,7 +955,7 @@ def getDeptWisePLO(dept):
 
 
 def getProgramWisePLO(program):
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
              SELECT derived.plonum, avg(per)
              FROM(
@@ -945,7 +984,7 @@ def getProgramWisePLO(program):
 
 # Enrollment
 def getSchoolWiseEnrolledStudents(school, semesters):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     if len(semesters) == 1:
         cursor.execute('''
@@ -980,7 +1019,7 @@ def getSchoolWiseEnrolledStudents(school, semesters):
 
 
 def getDeptWiseEnrolledStudents(dept, semesters):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
     if (len(semesters) == 1):
         cursor.execute('''
             SELECT count(distinct st.studentID)
@@ -1008,7 +1047,7 @@ def getDeptWiseEnrolledStudents(dept, semesters):
 
 
 def getProgramWiseEnrolledStudents(program, semesters):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     if len(semesters) == 1:
         cursor.execute('''
@@ -1041,7 +1080,7 @@ def getProgramWiseEnrolledStudents(program, semesters):
 
 # Semesters Information
 def getAllSemesters():
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
             SELECT DISTINCT semester
             FROM spms_registration_t r    
@@ -1058,7 +1097,7 @@ def getProgramWisePLOStats(program):
     attempted = []
 
     for p in plo:
-        with connection.cursor() as cursor:
+        with mydb.cursor() as cursor:
             cursor.execute('''SELECT COUNT(*)
                 FROM(SELECT AVG(percourse) as actual
                     FROM (SELECT r.student_id as StudentID, 100*sum(e.obtainedMarks)/sum(a.totalMarks) as percourse
@@ -1086,7 +1125,7 @@ def getProgramWisePLOStats(program):
                 attempted.append(0)
 
     for p in plo:
-        with connection.cursor() as cursor:
+        with mydb.cursor() as cursor:
             cursor.execute('''SELECT COUNT(*)
                FROM(
                 SELECT StudentID, AVG(percourse) as actual
@@ -1120,7 +1159,7 @@ def getProgramWisePLOStats(program):
 
 
 def getDeptWisePLOStats(dept):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     cursor.execute('''
               SELECT ploNum,COUNT(Marks)
@@ -1199,7 +1238,7 @@ def getDeptWisePLOStats(dept):
 
 
 def getSchoolWisePLOStats(school):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     cursor.execute('''
               SELECT ploNum,COUNT(Marks)
@@ -1282,7 +1321,7 @@ def getSchoolWisePLOStats(school):
 
 # PLO Comparison
 def getSchoolWisePLOComp(school, semester):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
     cursor.execute('''
         SELECT ploNum,COUNT(*)
         FROM(
@@ -1356,7 +1395,7 @@ def getSchoolWisePLOComp(school, semester):
 
 
 def getDeptWisePLOComp(dept, semester):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
     cursor.execute('''
         SELECT ploNum,COUNT(*)
         FROM(
@@ -1427,7 +1466,7 @@ def getDeptWisePLOComp(dept, semester):
 
 
 def getProgramWisePLOComp(program, semester):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
     cursor.execute('''
         SELECT ploNum,COUNT(*)
         FROM(
@@ -1498,7 +1537,7 @@ def getProgramWisePLOComp(program, semester):
 
 
 def getCourseWisePLOComp(course, semester):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     cursor.execute('''
         SELECT ploNum, COUNT(marks)
@@ -1559,7 +1598,7 @@ def getCourseWisePLOComp(course, semester):
 
 
 def getStudentWisePLOComp(student, semester):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     cursor.execute('''
         SELECT  COUNT(marks)
@@ -1612,7 +1651,7 @@ def getStudentWisePLOComp(student, semester):
 def getCourseReport(course):
     row = []
     total = 0
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
                SELECT coNum, ploNum, COUNT(marks)
                FROM(
@@ -1638,7 +1677,7 @@ def getCourseReport(course):
         if row is None:
             row = []
 
-    with connection.cursor() as cursor:
+    with mydb.cursor() as cursor:
         cursor.execute('''
                SELECT coNum, ploNum, COUNT(marks)
                FROM(
@@ -1683,7 +1722,7 @@ def getCourseReport(course):
 
 
 def getProgramReport(program):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     cursor.execute('''
         SELECT coNum, COUNT(marks)
@@ -1809,7 +1848,7 @@ def getProgramReport(program):
 
 
 def getDeptReport(dept):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     cursor.execute('''
         SELECT coNum, COUNT(marks)
@@ -1935,7 +1974,7 @@ def getDeptReport(dept):
 
 
 def getSchoolReport(school):
-    cursor = connection.cursor()
+    cursor = mydb.cursor()
 
     cursor.execute('''
         SELECT coNum, COUNT(marks)
