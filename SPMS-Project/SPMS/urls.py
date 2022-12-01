@@ -18,5 +18,5 @@ from django.urls import path
 from SPMS import views
 
 urlpatterns = [
-    path('', views.hello)
+    path('', views.home),
 ]
