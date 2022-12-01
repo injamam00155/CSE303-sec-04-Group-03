@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-01T21:07:01.633Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" version="20.6.0" etag="Ns7SFLJK-njZL0_dUz1h" type="github">
+<mxfile host="app.diagrams.net" modified="2022-12-01T21:11:08.129Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" version="20.6.0" etag="VtFWGlUsBCelz1NfPr10" type="github">
   <diagram id="VL2Gd8K8oz-JtoHg1ira" name="Page-1">
     <mxGraphModel dx="2097" dy="699" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -360,8 +360,8 @@
         <mxCell id="MzFh0RV7udEvBE_QbjUs-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="0ANXnJM5-Tp-SeLdzWdQ-73" target="0ANXnJM5-Tp-SeLdzWdQ-10">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="350" y="980" />
-              <mxPoint x="30" y="980" />
+              <mxPoint x="350" y="990" />
+              <mxPoint x="30" y="990" />
               <mxPoint x="30" y="223" />
             </Array>
           </mxGeometry>
@@ -532,16 +532,6 @@
         </mxCell>
         <mxCell id="0ANXnJM5-Tp-SeLdzWdQ-108" value="&lt;span style=&quot;text-align: left;&quot;&gt;AssessmentID&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="50" y="1420" width="120" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="MzFh0RV7udEvBE_QbjUs-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="0ANXnJM5-Tp-SeLdzWdQ-109" target="0ANXnJM5-Tp-SeLdzWdQ-66">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="30" y="1090" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="230" y="1400" />
-              <mxPoint x="40" y="1400" />
-              <mxPoint x="40" y="953" />
-            </Array>
-          </mxGeometry>
         </mxCell>
         <mxCell id="0ANXnJM5-Tp-SeLdzWdQ-109" value="&lt;span style=&quot;text-align: left;&quot;&gt;SectionID&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="170" y="1420" width="120" height="30" as="geometry" />
@@ -745,9 +735,6 @@
         </mxCell>
         <mxCell id="0ANXnJM5-Tp-SeLdzWdQ-149" value="&lt;span style=&quot;text-align: left;&quot;&gt;&amp;nbsp;University_Regulation_And_Code_Of_Conduct&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1030" y="1820" width="280" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="0ANXnJM5-Tp-SeLdzWdQ-167" value="Text" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="855" y="1615" width="50" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
