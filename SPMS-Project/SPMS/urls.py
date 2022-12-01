@@ -18,7 +18,5 @@ from django.urls import path
 from MonitoringSystem import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('home', views.home),
-    path('something', views.something),
+    path('', views.login),
 ]

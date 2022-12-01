@@ -5,6 +5,6 @@ from django.http import HttpResponse
 def home(request):
     return HttpResponse("Whatever")
 
-def something(request):
+def login(request):
     return render(request,"SPMS/login.html")
 
