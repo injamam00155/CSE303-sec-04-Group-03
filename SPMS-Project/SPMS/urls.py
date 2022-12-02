@@ -26,4 +26,9 @@ urlpatterns = [
     path('coursePloAnal', views.coursePloAnal,name="coursePloAnal"),
     path('PloAchievement', views.PloAchievement,name="PloAchievement"),
     path('QuestionBank', views.QuestionBank,name="QuestionBank"),
+    path('StuPloAnal',views.StuPloAnal,name="StuPloAnal"),
+    path('StuPloTbl',views.StuPloTbl,name="StuPloTbl"),
+    path('coursereport',views.coursereport,name="coursereport"),
+    path('quesentry',views.quesentry,name="quesentry"),
+    path('coentry',views.coentry,name="coentry"),
 ]
