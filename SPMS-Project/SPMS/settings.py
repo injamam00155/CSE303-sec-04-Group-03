@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'MonitoringSystem',
 ]
 
 MIDDLEWARE = [
@@ -77,9 +76,9 @@ WSGI_APPLICATION = 'SPMS.wsgi.application'
 DATABASES = {  
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'spms',  
+        'NAME': 'new_schema',  
         'USER': 'root',  
-        'PASSWORD': 'inja',  
+        'PASSWORD': 'jjk@2030183@jj',  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
           

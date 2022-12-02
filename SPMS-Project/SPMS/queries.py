@@ -5,8 +5,8 @@ import numpy as np
 mydb=mysql.connector.connect(
         host= '127.0.0.1',
         user= 'root',  
-        password= 'inja',  
-        database= 'spms'  
+        password= 'jjk@2030183@jj',  
+        database= 'new_schema'  
 )
 
 # print(mydb)
