@@ -5,7 +5,7 @@ import numpy as np
 mydb=mysql.connector.connect(
         host= '127.0.0.1',
         user= 'root',  
-        password= 'inja',  
+        password= 'jjk@2030183@jj',  
         database= 'spms'  
 )
 
