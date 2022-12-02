@@ -55,6 +55,20 @@ def PloAchievement(request):
 def QuestionBank(request):
     return render(request,"QuestionBank.html",{"page":"ques"})
 
+def StuPloAnal(request):
+    return render(request,"StuPloAnal.html",{"page":"stuplo-anal"})
+
+def StuPloTbl(request):
+    return render(request,"StuPloTbl.html",{"page":"stuplo-tbl"})
+
+def CourseReport(request):
+    return render(request,"CourseReport.html",{"page":"coursereport"})
+
+def QuestionBankEntry(request):
+    return render(request,"QuestionBankEntry.html",{"page":"quesentry"})
+
+def COentry(request):
+    return render(request,"COentry.html",{"page":"coentry"})
 
 ## Creating Graphs
 
