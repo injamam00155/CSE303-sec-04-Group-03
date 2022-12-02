@@ -19,7 +19,7 @@ from SPMS import views
 
 urlpatterns = [
     path('', views.login),
-    path('authenticate', views.authenticate),
+    path('shome', views.authenticate, name='authenticationHome'),
     path('home', views.home,name="home"),
     path('logout', views.logout,name="logout"),
     path('CoPloAnal', views.CoPloAnal,name="CoPloAnal"),

@@ -20,19 +20,42 @@
           <div class="collapse navbar-collapse d-lg-flex justify-content-evenly" id="navbarNavDropdown" >
             <ul class="navbar-nav">
               <li class="nav-item"> 
-                <a class="nav-link" href="home" >Dashboard</a>
+                {% if page == "dashboard" %}
+                  <a class="nav-link active" href="home" >Dashboard </a>
+                {% else %}
+                  <a class="nav-link" href="home" >Dashboard </a>
+                {% endif %}
               </li>
               <li class="nav-item">
+                {% if page == "coplo" %}
+                <a class="nav-link active" href="CoPloAnal">CO WISE PLO ANALYSIS</a>
+                {% else %}
                 <a class="nav-link" href="CoPloAnal">CO WISE PLO ANALYSIS</a>
+                {% endif %}
               </li>
               <li class="nav-item">
+                {% if page == "course" %}
+                <a class="nav-link active" href="coursePloAnal">COURSE WISE PLO ANALYSIS</a>
+                {% else %}
                 <a class="nav-link" href="coursePloAnal">COURSE WISE PLO ANALYSIS</a>
+                {% endif %}
+                
               </li>
               <li class="nav-item">
+                {% if page == "plo" %}
+                <a class="nav-link active" href="PloAchievement">PLO ACHIEVEMENT TABLE</a>
+                {% else %}
                 <a class="nav-link" href="PloAchievement">PLO ACHIEVEMENT TABLE</a>
+                {% endif %}
+                
               </li>
               <li class="nav-item">
+                {% if page == "ques" %}
+                <a class="nav-link active" href="QuestionBank">QUESTION BANK ACCESS</a>
+                {% else %}
                 <a class="nav-link" href="QuestionBank">QUESTION BANK ACCESS</a>
+                {% endif %}
+                
               </li>
             </ul>
             <a class="nav-link" href="logout">Logout</a>

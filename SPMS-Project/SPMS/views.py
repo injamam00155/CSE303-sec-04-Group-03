@@ -7,13 +7,8 @@ import plotly.graph_objects as go
 from plotly.offline import plot
 # Create your views here.
 def home(request):
-    fig = go.Figure(data=go.Scatterpolar(
-        r = [1,2,3,4,5,6],
-        theta = ["banna","inja","jaima","niaz","akib","faiza"],
-        fill='toself'
-    ))
-    plot_div = plot(fig, output_type='div',include_plotlyjs=True)
-    return render(request,"base.html", context={"plot1":plot_div})
+    plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
+    return render(request,"SPMS.html", context={"plot1":plot_div,"page":"dashboard"})
 
 def authenticate(request):
     username=request.POST.get("userid")
@@ -37,13 +32,26 @@ def dashboard(request):
     return render(request,"SPMS.html")
 
 def CoPloAnal(request):
-    return render(request,"co-plo-analysis.html")
+    return render(request,"co-plo-analysis.html",{"page":"coplo"})
 
 def coursePloAnal(request):
-    return render(request,"course-plo-analysis.html")
+    return render(request,"course-plo-analysis.html",{"page":"course"})
 
 def PloAchievement(request):
-    return render(request,"PloAchievement.html")
+    return render(request,"PloAchievement.html",{"page":"plo"})
 
 def QuestionBank(request):
-    return render(request,"QuestionBank.html")
+    return render(request,"QuestionBank.html",{"page":"ques"})
+
+
+## Creating Graphs
+
+def OneTraceSpider(rl,tl):
+    fig = go.Figure(data=go.Scatterpolar(
+        r = rl,
+        theta = tl,
+        fill='toself'
+    ))
+    return plot(fig, output_type='div',include_plotlyjs=True)
+
+
