@@ -9,30 +9,72 @@ mydb=mysql.connector.connect(
         database= 'spms'  
 )
 
+
 # print(mydb)
 # cursor = mydb.cursor()
 # print(cursor)
-# cursor.execute('''        
-#     SELECT *     
-#     FROM spms_users_t
-#     WHERE userID=1416455''')
-# print(cursor.fetchall())
-# group
-# studentlist = Student_T.objects.all()
-
-# programlist = Program_T.objects.all()
 
 
 
-# with mydb.cursor() as cursor:
-#         cursor.execute('''        
-#         SELECT *     
-#         FROM spms_users_t
-#         WHERE userID=1416455;''')
-#         print(cursor.fetchall())
+##user info based queries
+def getGroup(username):
+        with mydb.cursor() as cursor:
+            cursor.execute('''        
+            SELECT grp    
+            FROM spms_users_t
+            WHERE userID={}'''.format(username))
+            group=cursor.fetchall()[0][0]
+            return group
+
+def getName(username):
+    with mydb.cursor() as cursor:
+            if getGroup(username)=="student":
+                str="student"
+            elif getGroup(username)=="faculty":
+                str="faculty"
+            cursor.execute('''        
+            SELECT firstName,lastName   
+            FROM spms_{}_t
+            WHERE {}ID={}'''.format(str,str,username))
+            if cursor.fetchall():
+                name=cursor.fetchall()
+                name=name[0]+" "+name[1]
+            return name
+
+# print(getName(1111111))
+
+def setCurrUser(username):
+    try:
+        cursor = mydb.cursor()
+        group=getGroup(username)
+        cursor.execute('''        
+        INSERT INTO spms_currsess_t
+        VALUES ({}, '{}')
+        '''.format(username,group))
+        rows=cursor.fetchall()
+        cursor.close()
+    except:
+        print("an exception occurred")
+    return
 
 
-#user info based queries
+def deleteCurrUser():
+    if getCurrUser():
+        cursor = mydb.cursor()
+        cursor.execute('''TRUNCATE TABLE spms.spms_currsess_t''')
+        rows=cursor.fetchall()
+        cursor.close()
+    return
+
+
+
+def getCurrUser():
+    cursor = mydb.cursor()
+    cursor.execute('''SELECT userID,grp FROM spms_currsess_t''')
+    rows=cursor.fetchall()
+    cursor.close()
+    return rows[0]
+
 
 def isValid(username):
     cursor = mydb.cursor()
@@ -44,6 +86,7 @@ def isValid(username):
     cursor.close()
     return bool(rows)
 
+
 def getPassword(username):
         cursor = mydb.cursor()
         cursor.execute('''        
@@ -54,14 +97,8 @@ def getPassword(username):
         cursor.close()
         return password
 
-def getGroup(username):
-        with mydb.cursor() as cursor:
-            cursor.execute('''        
-            SELECT group    
-            FROM spms_users_t
-            WHERE userID={}'''.format(username))
-        group=cursor.fetchall()[0][0]
-        return group
+
+
 
 # GPA Analysis
 

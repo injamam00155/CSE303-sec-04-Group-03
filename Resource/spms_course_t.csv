@@ -1,4 +1,4 @@
-coID,coNum,thresold,course_id,plo_id
+courseID,courseName,coID,threshold,ploID
 CSE101,Introduction to Computer Programming,4,Foundation,1
 CSE104,Electrical Circuit Analysis,4,Foundation,1
 CSE201,Discrete Mathematics,3,Core,1
