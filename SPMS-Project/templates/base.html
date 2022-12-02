@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{% static 'assets/css/base.css' %}" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
     <title>Student dashboard</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #bccfbc;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="home">Student Performance Monitoring System</a>
+          <a class="navbar-brand" href="home">Student Performance <br>Monitoring System</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -58,12 +59,13 @@
                 
               </li>
             </ul>
-            <button class="btn btn-danger" href="logout">Logout</button>
+            <a class="btn btn-danger" href="{%url 'logout'%}">Logout</a>
           </div>
         </div>
     </nav>
-    
-    <div>
+
+{%include "sidebar.html"%}
+    <div class="mx-10">
       {% block graph1%}
       {% autoescape off%}
       {{plot1 | safe}}

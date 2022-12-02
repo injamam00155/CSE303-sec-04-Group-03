@@ -11,6 +11,15 @@ body {
   .profile-sidebar {
     padding: 20px 0 10px 0;
     background: #fff;
+    background: rgb(0, 0, 0);
+    position: fixed;
+    top: 20;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+    z-index: 10;
   }
   
   .profile-userpic img {
@@ -99,9 +108,4 @@ body {
     margin-left: -2px;
   }
   
-  /* Profile Content */
-  .profile-content {
-    padding: 20px;
-    background: #fff;
-    min-height: 460px;
-  }
+
