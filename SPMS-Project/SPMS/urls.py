@@ -18,7 +18,5 @@ from django.urls import path
 from SPMS import views
 
 urlpatterns = [
-    path('', views.login),
-    path('spms', views.home),
-    path('authenticate', views.authenticate)
+    path('', views.home),
 ]
