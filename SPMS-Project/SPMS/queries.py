@@ -5,7 +5,7 @@ import numpy as np
 mydb=mysql.connector.connect(
         host= '127.0.0.1',
         user= 'root',  
-        password= 'jjk@2030183@jj',  
+        password= 'inja',  
         database= 'spms'  
 )
 
@@ -31,6 +31,9 @@ mydb=mysql.connector.connect(
 #         WHERE userID=1416455;''')
 #         print(cursor.fetchall())
 
+
+#user info based queries
+
 def isValid(username):
     cursor = mydb.cursor()
     cursor.execute('''        
@@ -40,7 +43,6 @@ def isValid(username):
     rows=cursor.fetchall()
     cursor.close()
     return bool(rows)
-
 
 def getPassword(username):
         cursor = mydb.cursor()
@@ -58,7 +60,7 @@ def getGroup(username):
             SELECT group    
             FROM spms_users_t
             WHERE userID={}'''.format(username))
-        group=cursor.fetchall()[0]
+        group=cursor.fetchall()[0][0]
         return group
 
 # GPA Analysis

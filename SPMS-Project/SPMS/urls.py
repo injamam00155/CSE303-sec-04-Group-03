@@ -20,5 +20,10 @@ from SPMS import views
 urlpatterns = [
     path('', views.login),
     path('authenticate', views.authenticate),
-    path('home', views.home),
+    path('home', views.home,name="home"),
+    path('logout', views.logout,name="logout"),
+    path('CoPloAnal', views.CoPloAnal,name="CoPloAnal"),
+    path('coursePloAnal', views.coursePloAnal,name="coursePloAnal"),
+    path('PloAchievement', views.PloAchievement,name="PloAchievement"),
+    path('QuestionBank', views.QuestionBank,name="QuestionBank"),
 ]
