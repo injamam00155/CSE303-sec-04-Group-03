@@ -6,7 +6,7 @@ mydb=mysql.connector.connect(
         host= '127.0.0.1',
         user= 'root',  
         password= 'jjk@2030183@jj',  
-        database= 'new_schema'  
+        database= 'spms'  
 )
 
 # print(mydb)
@@ -39,17 +39,17 @@ def isValid(username):
     WHERE userID={}'''.format(username))
     rows=cursor.fetchall()
     cursor.close()
-    mydb.close()
-    return bool(cursor.fetchall())
+    return bool(rows)
 
 
 def getPassword(username):
-        with mydb.cursor() as cursor:
-            cursor.execute('''        
+        cursor = mydb.cursor()
+        cursor.execute('''        
             SELECT password     
             FROM spms_users_t
             WHERE userID={}'''.format(username))
-        password=cursor.fetchall()[0]
+        password=cursor.fetchall()[0][0]
+        cursor.close()
         return password
 
 def getGroup(username):

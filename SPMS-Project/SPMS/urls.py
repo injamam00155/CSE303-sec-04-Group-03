@@ -19,5 +19,6 @@ from SPMS import views
 
 urlpatterns = [
     path('', views.login),
+    path('authenticate', views.authenticate),
     path('home', views.home),
 ]
