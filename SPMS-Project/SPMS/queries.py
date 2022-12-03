@@ -5,7 +5,7 @@ import numpy as np
 mydb=mysql.connector.connect(
         host= '127.0.0.1',
         user= 'root',  
-        password= 'jjk@2030183@jj',  
+        password= 'inja',  
         database= 'spms'  
 )
 
@@ -28,6 +28,7 @@ def getGroup(username):
 
 def getName(username):
     with mydb.cursor() as cursor:
+            name=""
             if getGroup(username)=="student":
                 str="student"
             elif getGroup(username)=="faculty":
@@ -36,12 +37,14 @@ def getName(username):
             SELECT firstName,lastName   
             FROM spms_{}_t
             WHERE {}ID={}'''.format(str,str,username))
-            if cursor.fetchall():
+            if cursor.fetchall()[0]:
                 name=cursor.fetchall()
-                name=name[0]+" "+name[1]
+                try:
+                    name=name[0]+" "+name[1]
+                except:
+                    name=""
             return name
 
-# print(getName(1111111))
 
 def setCurrUser(username):
     try:
@@ -71,8 +74,11 @@ def deleteCurrUser():
 def getCurrUser():
     cursor = mydb.cursor()
     cursor.execute('''SELECT userID,grp FROM spms_currsess_t''')
-    rows=cursor.fetchall()
-    cursor.close()
+    try:
+        rows=cursor.fetchall()
+        cursor.close()
+    except:
+        cursor.close()
     return rows[0]
 
 
@@ -98,6 +104,26 @@ def getPassword(username):
         return password
 
 
+## Analysis
+def getStudentCourseWiseCO(username,courseid):
+    cursor = mydb.cursor()
+    cursor.execute('''
+SELECT coNum, (100*(sum( e.obtainedMarks)/sum( a.totalMarks))) as copercent
+                FROM spms_registration_t r,
+                    spms_assessment_t a, 
+                    spms_evaluation_t e,
+					spms_clo_t clo,
+                    spms_plo_t p
+                WHERE  r.registrationID = e.registration_id 
+                    and e.assessment_id = a.assessmentID
+                    and a.co_id=clo.coID 
+                    and clo.plo_id = p.ploID
+                    and  r.student_id = {}
+		    and clo.course_id="{}"
+                GROUP BY  clo.coID'''.format(username,courseid))
+    rows=cursor.fetchall()
+    cursor.close()
+    return bool(rows)
 
 
 # GPA Analysis
