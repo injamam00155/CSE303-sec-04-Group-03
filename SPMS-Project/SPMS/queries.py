@@ -1,13 +1,9 @@
+from SPMS import dbConnection
 import mysql.connector
 from django.db import connection
 import numpy as np
 
-mydb=mysql.connector.connect(
-        host= '127.0.0.1',
-        user= 'root',  
-        password= 'inja',  
-        database= 'spms'  
-)
+mydb=dbConnection.queriesDB()
 
 
 # print(mydb)
