@@ -19,7 +19,7 @@ def queriesDB():
     mydb=mysql.connector.connect(
         host= '127.0.0.1',
         user= 'root',  
-        password= 'ganja',  
+        password= 'inja',  
         database= 'spms'  
     )
     return mydb
