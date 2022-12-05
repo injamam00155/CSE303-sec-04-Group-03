@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{%block title%}
+<title>Student</title>
+{%endblock%}
+
+{% block navbar %}
+<div class="collapse navbar-collapse d-lg-flex justify-content-evenly" id="navbarNavDropdown" >
+    <ul class="navbar-nav">
+      <center><li class="nav-item"> 
+        {% if page == "dashboard" %}
+          <a class="nav-link active" href="home" >Dashboard </a>
+        {% else %}
+          <a class="nav-link" href="home" >Dashboard </a>
+        {% endif %}
+      </li></center>
+      <center><li class="nav-item">
+        {% if page == "coplo" %}
+        <a class="nav-link active" href="CoPloAnal">CO WISE <br>PLO ANALYSIS</a>
+        {% else %}
+        <a class="nav-link" href="CoPloAnal">CO WISE <br>PLO ANALYSIS</a>
+        {% endif %}
+      </li></center>
+      <center><li class="nav-item">
+        {% if page == "course" %}
+        <a class="nav-link active" href="coursePloAnal">COURSE WISE <br>PLO ANALYSIS</a>
+        {% else %}
+        <a class="nav-link" href="coursePloAnal">COURSE WISE <br>PLO ANALYSIS</a>
+        {% endif %}
+        
+      </li></center>
+      <center><li class="nav-item">
+        {% if page == "plo" %}
+        <a class="nav-link active" href="PloAchievement">PLO ACHIEVEMENT<br> TABLE</a>
+        {% else %}
+        <a class="nav-link" href="PloAchievement">PLO ACHIEVEMENT<br> TABLE</a>
+        {% endif %}
+        
+      </li></center>
+      <center><li class="nav-item">
+        {% if page == "ques" %}
+        <a class="nav-link active" href="QuestionBank">QUESTION BANK<br> ACCESS</a>
+        {% else %}
+        <a class="nav-link" href="QuestionBank">QUESTION BANK<br> ACCESS</a>
+        {% endif %}
+        
+      </li></center>
+    </ul>
+    <a class="btn btn-danger" href="{% url 'logout'%}">Logout</a>
+  </div>
+  {%endblock%}
+
+  {%block sidebar%}
+  <div class="profile-sidebar container-fluid" style="  background: rgb(61, 57, 72);position: fixed;top: 100;left: 0;width: 300px;height: 100%;
+  padding: 20px 0;transition: all 0.5s ease;z-index: 10; color:white;">
+  <center>
+  <img src="static\assets\images\nobita.png" alt="Not Available " width="250px" >
+    <br><br>
+  <table style="text-align: left;">
+    <tr>
+      <th>Name:</th>
+      <td>{{name}}
+    </tr>
+    <tr>
+      <th>ID:</th>
+      <td>{{id}}</td>
+    </tr>
+    <tr>
+      <th>Department:</th>
+      <td>{{department}}</td>
+    </tr>
+    <tr>
+      <th>User:</th>
+      <td>{{group}}</td>
+    </tr>
+  </table>
+  <center/>
+  </div>
+  
+  {%endblock%}
+
+  
+  

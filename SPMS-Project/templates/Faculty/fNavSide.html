@@ -1,0 +1,97 @@
+          {% extends "base.html" %}
+           {%block title%}
+          <title>Faculty</title>
+          {%endblock%}
+          
+          
+          {% block navbar %}
+          <div class="collapse navbar-collapse d-lg-flex justify-content-evenly" id="navbarNavDropdown" >
+            <ul class="navbar-nav">
+              <li class="nav-item"> 
+                {% if page == "dashboard" %}
+                  <a class="nav-link active" href="home" >Dashboard </a>
+                {% else %}
+                  <a class="nav-link" href="home" >Dashboard </a>
+                {% endif %}
+              </li>
+              <li class="nav-item">
+                {% if page == "stuplo-anal" %}
+                <a class="nav-link active" href="StuPloAnal">Student Wise PLO Analysis</a>
+                {% else %}
+                <a class="nav-link" href="StuPloAnal">Student Wise PLO Analysis</a>
+                {% endif %}
+              </li>
+              <li class="nav-item">
+                {% if page == "stuplo-tbl" %}
+                <a class="nav-link active" href="StuPloTbl">Student Wise PLO Table</a>
+                {% else %}
+                <a class="nav-link" href="StuPloTbl">Student Wise PLO Table</a>
+                {% endif %}
+                
+              </li>
+              <li class="nav-item">
+                {% if page == "plo" %}
+                <a class="nav-link active" href="PloAchievement">PLO Achievement Table</a>
+                {% else %}
+                <a class="nav-link" href="PloAchievement">PLO Achievement Table</a>
+                {% endif %}
+                
+              </li>
+              <li class="nav-item">
+                {% if page == "coursereport" %}
+                <a class="nav-link active" href="CourseReport">Course Report</a>
+                {% else %}
+                <a class="nav-link" href="CourseReport">Course Report</a>
+                {% endif %}
+                
+              </li>
+              <li class="nav-item">
+                {% if page == "quesentry" %}
+                <a class="nav-link active" href={% url "QuestionBankEntry"%}>Question Bank Entry</a>
+                {% else %}
+                <a class="nav-link" href="QuestionBankEntry">Question Bank Entry</a>
+                {% endif %}
+                
+              </li>
+              <li class="nav-item">
+                {% if page == "coentry" %}
+                <a class="nav-link active" href="COentry">CO Entry</a>
+                {% else %}
+                <a class="nav-link" href="COentry">CO Entry</a>
+                {% endif %}
+                
+              </li>
+            </ul>
+            <a class="btn btn-danger" href="{%url 'logout'%}">Logout</a>
+          </div>
+          {%endblock%}
+            {%block sidebar%}
+            <div class="profile-sidebar container-fluid" style="  background: rgb(61, 57, 72);position: fixed;top: 100;left: 0;width: 300px;height: 100%;
+            padding: 20px 0;transition: all 0.5s ease;z-index: 10; color:white;">
+            <center>
+            <img src="static\assets\images\sensei.png" alt="Not Available " width="250px" >
+            <table style="text-align: left;">
+              <tr>
+                <th>Name:</th>
+                <td>{{name}}
+              </tr>
+              <tr>
+                <th>ID:</th>
+                <td>{{id}}</td>
+              </tr>
+              <tr>
+                <th>Department:</th>
+                <td>{{department}}</td>
+              </tr>
+              <tr>
+                <th>User:</th>
+                <td>{{group}}</td>
+              </tr>
+            </table>
+            <center/>
+          </div>
+            
+            {%endblock%}
+          
+            
+            

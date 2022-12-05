@@ -1,7 +1,0 @@
-{% extends "base.html" %}
-
-<form action="{% url 'authenticationHome'%}" method="post">
-    {% csrf_token %}
-    <input type="text" placeholder="CourseID" name="userid">
-    <center><button type="submit" class="btn btn-primary center">Log In</button>,</center>
-</form>

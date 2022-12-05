@@ -25,11 +25,10 @@ urlpatterns = [
     path('CoPloAnal', views.CoPloAnal,name="CoPloAnal"),
     path('coursePloAnal', views.coursePloAnal,name="coursePloAnal"),
     path('PloAchievement', views.PloAchievement,name="PloAchievement"),
-    path('QuestionBankEntry', views.QuestionBank,name="QuestionBank"),
-    path('QuestionBank', views.QuestionBankEntry,name="QuestionBankEntry"),
+    path('QuestionBank', views.QuestionBank,name="QuestionBank"),
+    path('QuestionBankEntry',views.QuestionBankEntry,name="quesentry"),
     path('StuPloAnal',views.StuPloAnal,name="StuPloAnal"),
     path('StuPloTbl',views.StuPloTbl,name="StuPloTbl"),
     path('CourseReport',views.CourseReport,name="CourseReport"),
-    path('quesentry',views.QuestionBankEntry,name="quesentry"),
     path('coentry',views.COentry,name="coentry"),
 ]
