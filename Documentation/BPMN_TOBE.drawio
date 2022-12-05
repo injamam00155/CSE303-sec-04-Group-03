@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-12-03T05:07:28.873Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="GUYvhoPLeD2sZX_zpVIQ" version="20.6.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-12-05T20:17:11.564Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="_GydjD98Zpn1OOKqyCOo" version="20.6.0" type="github">
   <diagram id="HCd6-VphHqVveQsY4TpI" name="Page-1">
-    <mxGraphModel dx="2513" dy="2032" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2097" dy="1799" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -484,7 +484,7 @@
           <mxGeometry x="-95" y="175" width="130" height="30" as="geometry" />
         </mxCell>
         <mxCell id="WbGJOPhgXqe3ITZe2U8J-92" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Fig 1.9:Course-Student performance based on CGPA&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;" parent="1" vertex="1">
-          <mxGeometry x="-190" y="1200" width="430" height="30" as="geometry" />
+          <mxGeometry x="-190" y="1173" width="430" height="30" as="geometry" />
         </mxCell>
         <mxCell id="WbGJOPhgXqe3ITZe2U8J-93" value="&lt;b style=&quot;font-size: 9px; background-color: rgb(248, 249, 250);&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Course-Student performance based on CGPA&lt;/font&gt;&lt;/b&gt;" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=0;startSize=20;horizontalStack=0;" parent="1" vertex="1">
           <mxGeometry x="-495" y="560" width="1130" height="590" as="geometry" />
@@ -1354,7 +1354,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="WbGJOPhgXqe3ITZe2U8J-253" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Figure 2.1: Course-wise Student Performance based on GPA&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=17;" parent="1" vertex="1">
-          <mxGeometry x="-195" y="2610" width="540" height="40" as="geometry" />
+          <mxGeometry x="-195" y="2576" width="540" height="40" as="geometry" />
         </mxCell>
         <mxCell id="WbGJOPhgXqe3ITZe2U8J-254" value="&lt;b style=&quot;font-size: 9px; background-color: rgb(248, 249, 250);&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Course-Student performance based on CGPA&lt;/font&gt;&lt;/b&gt;" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=0;startSize=20;horizontalStack=0;" parent="1" vertex="1">
           <mxGeometry x="-480" y="1970" width="1130" height="590" as="geometry" />
@@ -1819,8 +1819,8 @@
             <mxPoint x="185" y="380" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="WbGJOPhgXqe3ITZe2U8J-342" value="Figure 2.2: Instructor-wise Student Performance based on the GPA of the Students" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;" parent="1" vertex="1">
-          <mxGeometry x="-200" y="3240" width="680" height="40" as="geometry" />
+        <mxCell id="WbGJOPhgXqe3ITZe2U8J-342" value="&lt;b&gt;Figure 2.2: Instructor-wise Student Performance based on the GPA of the Students&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;" parent="1" vertex="1">
+          <mxGeometry x="-222" y="3243" width="724" height="34" as="geometry" />
         </mxCell>
         <mxCell id="WbGJOPhgXqe3ITZe2U8J-343" value="&lt;span style=&quot;background-color: rgb(248, 249, 250);&quot;&gt;Instructor-wise Student Performance based on the GPA of the Stude&lt;/span&gt;&lt;span style=&quot;background-color: rgb(248, 249, 250);&quot;&gt;nt&lt;/span&gt;&lt;span style=&quot;background-color: rgb(248, 249, 250);&quot;&gt;s&lt;/span&gt;" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=0;startSize=20;horizontalStack=0;" parent="1" vertex="1">
           <mxGeometry x="-470" y="2720" width="1130" height="500" as="geometry" />
@@ -2703,8 +2703,8 @@
             <mxPoint x="300.2199999999998" y="93.50600000000009" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="WbGJOPhgXqe3ITZe2U8J-588" value="&lt;b&gt;Figure 2.4: PLO Achievement (Process) and Spider Chart&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="-222" y="4685" width="350" height="30" as="geometry" />
+        <mxCell id="WbGJOPhgXqe3ITZe2U8J-588" value="&lt;b&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;Figure 2.4: PLO Achievement (Process) and Spider Chart&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="-246" y="4664" width="477" height="32" as="geometry" />
         </mxCell>
         <mxCell id="WbGJOPhgXqe3ITZe2U8J-589" value="&lt;b style=&quot;background-color: rgb(248, 249, 250);&quot;&gt;PLO Achievement (Process) and Spider Chart&lt;/b&gt;" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=0;startSize=20;horizontalStack=0;" parent="1" vertex="1">
           <mxGeometry x="-457" y="4075" width="1170" height="580" as="geometry" />
@@ -3156,8 +3156,8 @@
         <mxCell id="WbGJOPhgXqe3ITZe2U8J-671" value="" style="group" parent="1" connectable="0" vertex="1">
           <mxGeometry x="-457" y="4085" width="1110" height="590" as="geometry" />
         </mxCell>
-        <mxCell id="WbGJOPhgXqe3ITZe2U8J-672" value="&lt;b&gt;Figure 2.5: Comparison of PLO Achieved vs Attempted (Process)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" parent="1" vertex="1">
-          <mxGeometry x="-205" y="5380" width="460" height="30" as="geometry" />
+        <mxCell id="WbGJOPhgXqe3ITZe2U8J-672" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Figure 2.5: Comparison of PLO Achieved vs Attempted (Process)&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="-230" y="5380" width="511" height="31" as="geometry" />
         </mxCell>
         <mxCell id="WbGJOPhgXqe3ITZe2U8J-673" value="&lt;span style=&quot;background-color: rgb(248, 249, 250);&quot;&gt;Total PLO Percentage achieved and attempted by the student along with the departmental average&lt;/span&gt;" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=0;startSize=20;horizontalStack=0;" parent="1" vertex="1">
           <mxGeometry x="-425" y="4770" width="1170" height="610" as="geometry">
@@ -4159,8 +4159,8 @@
             <mxPoint x="300.2199999999998" y="93.50600000000009" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="WbGJOPhgXqe3ITZe2U8J-853" value="&lt;b&gt;Figure 2.6: Expected PLO Achieved Vs Actual Score (Process)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" parent="1" vertex="1">
-          <mxGeometry x="-125" y="6090" width="440" height="30" as="geometry" />
+        <mxCell id="WbGJOPhgXqe3ITZe2U8J-853" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;Figure 2.6: Expected PLO Achieved Vs Actual Score (Process)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="-156" y="6067" width="490" height="31" as="geometry" />
         </mxCell>
         <mxCell id="WbGJOPhgXqe3ITZe2U8J-854" value="&lt;b&gt;Figure 2.7: CO-PLO Summary (Process)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="-85" y="6740" width="290" height="30" as="geometry" />
