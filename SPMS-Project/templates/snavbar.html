@@ -3,7 +3,7 @@
 <title>Student dashboard</title>
 {%endblock%}
 
-{%block navbar%}
+{% block navbar %}
 <div class="collapse navbar-collapse d-lg-flex justify-content-evenly" id="navbarNavDropdown" >
     <ul class="navbar-nav">
       <center><li class="nav-item"> 
@@ -45,6 +45,13 @@
         
       </li></center>
     </ul>
-    <a class="btn btn-danger" href="{%url 'logout'%}">Logout</a>
+    <a class="btn btn-danger" href="{% url 'logout'%}">Logout</a>
   </div>
   {%endblock%}
+
+{%block sidebar%}
+  {%endblock%} 
+
+
+  
+  
