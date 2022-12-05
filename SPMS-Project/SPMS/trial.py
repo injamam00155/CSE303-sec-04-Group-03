@@ -4,11 +4,11 @@ import dbConnection
 mydb=dbConnection.queriesDB()
 
 cursor = mydb.cursor()
-cursor.execute('''        
-SELECT *     
-FROM spms_users_t
-WHERE userID={}'''.format(1695838))
-rows=cursor.fetchall()
-cursor.close()
+cursor.execute('''SELECT userID,grp FROM spms_currsess_t''')
+try:
+    rows=cursor.fetchall()
+    cursor.close()
+except:
+    cursor.close()
 
-print(type(rows[0][2][0]))
+print(rows)
