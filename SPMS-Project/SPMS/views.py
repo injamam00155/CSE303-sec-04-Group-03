@@ -111,7 +111,7 @@ def CourseReport(request):
 
 def QuestionBank(request):
     context={
-        "page":"quesentry",
+        "page":"ques",
         "id":queries.getCurrUser()[0],
         "group":queries.getCurrUser()[1],
         "name":queries.getName(str(queries.getCurrUser()[0])),
@@ -122,6 +122,7 @@ def QuestionBankEntry(request):
             "page":"quesentry",
             "id":queries.getCurrUser()[0],
             "group":queries.getCurrUser()[1],
+            "department":queries.getCurrDept(),
             "name":queries.getName(str(queries.getCurrUser()[0])),
             }
     return render(request,"Faculty\QuestionBankEntry.html",context)
