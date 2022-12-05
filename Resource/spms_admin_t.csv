@@ -1,0 +1,21 @@
+﻿adminID,firstName,lastName,dateOfBirth,gender,email,phone,address,employeeType,startDate,endDate
+1001,Anwar,Hossain,01-01-60,Male,anwar@iub.edu.bd,1712345677,Bashundhara,H,Spring 2020,Spring 2020
+1002,Mahady,Hasan,01-01-60,Male,mahady@iub.edu.bd,1712345677,Bashundhara,H,Summer 2020,Summer 2020
+1003,Mahbubul,Hasan,01-01-60,Male,mahbub@iub.edu.bd,1712345677,Bashundhara,H,Spring 2020,Summer 2020
+1004,Khasru,Rahman,01-01-60,Male,khasru@iub.edu.bd,1712345677,Bashundhara,H,Autumn 2020,Autumn 2020
+1005,Taufique,Ahmed,01-01-60,Male,taufique@iub.edu.bd,1712345677,Bashundhara,H,Spring 2020,Spring 2020
+1006,Md.,Saifuddin,01-01-60,Male,saifuddin@iub.edu.bd,1712345677,Bashundhara,H,Summer 2020,Autumn 2020
+1007,Fazlul,Haque,01-01-60,Male,fazlul@iub.edu.bd,1712345677,Bashundhara,H,Spring 2020,Spring 2020
+1008,Saiful,Islam,01-01-60,Male,saiful@iub.edu.bd,1712345677,Bashundhara,H,Summer 2020,Autumn 2020
+1009,Naheem,Mahtab,01-01-60,Male,Mahtab@iub.edu.bd,1712345677,Bashundhara,H,Spring 2020,Summer 2020
+1010,Mostafa,Chowdhury,01-01-60,Male,mostafa@iub.edu.bd,1712345677,Bashundhara,H,Autumn 2020,Autumn 2020
+1011,Faruk,Hossain,01-01-60,Male,faruk@iub.edu.bd,1712345677,Bashundhara,H,Spring 2020,Spring 2020
+1012,Taksim,Khan,01-01-60,Male,taksim@iub.edu.bd,1712345677,Bashundhara,H,Summer 2020,Autumn 2020
+1013,M. Omar,Rahman,01-01-60,Male,omar@iub.edu.bd,1712345677,Bashundhara,V,Spring 2020,Summer 2020
+1014,Tanweer,Hasan,01-01-60,Male,tanweer@iub.edu.bd,1712345677,Bashundhara,V,Autumn 2020,Autumn 2020
+1015,Abul,Kashem,01-01-60,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,Spring 2020,Summer 2020
+1016,Abul,Fazal,01-01-60,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,Autumn 2020,Autumn 2020
+1017,Abu,Bakar,01-01-60,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,Spring 2020,Spring 2020
+1018,Abu,Selim,01-01-60,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,Summer 2020,Autumn 2020
+1019,Golam,Hasan,01-01-60,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,Spring 2020,Summer 2020
+1020,Golam,Kabir,01-01-60,Male,khasru@iub.edu.bd,1712345677,Bashundhara,D,Autumn 2020,Autumn 2020
