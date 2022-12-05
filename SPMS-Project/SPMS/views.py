@@ -13,7 +13,7 @@ from plotly.offline import plot
 def home(request):
     plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
 
-    return render(request,"SPMS.html", context={"plot1":plot_div,
+    return render(request,"sHome.html", context={"plot1":plot_div,
                                                 "page":"dashboard",
                                                 "id":queries.getCurrUser()[0],
                                                 "group":queries.getCurrUser()[1],
@@ -40,7 +40,7 @@ def logout(request):
     return render(request,"login.html")
 
 def dashboard(request):
-    return render(request,"SPMS.html")
+    return render(request,"sHome.html")
 
 def CoPloAnal(request):
     # queries.getStudentCourseWiseCO(queries.getCurrUser()[0],)

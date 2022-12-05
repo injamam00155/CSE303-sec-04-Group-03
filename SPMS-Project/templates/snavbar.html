@@ -1,3 +1,9 @@
+{% extends "base.html" %}
+{%block title%}
+<title>Student dashboard</title>
+{%endblock%}
+
+{%block navbar%}
 <div class="collapse navbar-collapse d-lg-flex justify-content-evenly" id="navbarNavDropdown" >
     <ul class="navbar-nav">
       <center><li class="nav-item"> 
@@ -41,3 +47,4 @@
     </ul>
     <a class="btn btn-danger" href="{%url 'logout'%}">Logout</a>
   </div>
+  {%endblock%}
