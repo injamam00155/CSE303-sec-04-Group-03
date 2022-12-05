@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-05T21:22:43.014Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="oDlmmpCsh6ygRBX3qa3C" version="20.6.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-12-05T21:23:19.783Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="uxKZKW-P1bGybiPY7ofa" version="20.6.0" type="github">
   <diagram id="2zHvBWxBgFCYUnNaGsA4" name="Page-1">
     <mxGraphModel dx="2347" dy="699" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -439,7 +439,7 @@
         <mxCell id="8piM8ojpYTOPc1nWlogf-104" value="Assessment_Name" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="8piM8ojpYTOPc1nWlogf-101" vertex="1">
           <mxGeometry y="52" width="160" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="8piM8ojpYTOPc1nWlogf-105" value="Total_Name" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="8piM8ojpYTOPc1nWlogf-101" vertex="1">
+        <mxCell id="8piM8ojpYTOPc1nWlogf-105" value="Total_Marks" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="8piM8ojpYTOPc1nWlogf-101" vertex="1">
           <mxGeometry y="78" width="160" height="26" as="geometry" />
         </mxCell>
         <mxCell id="8piM8ojpYTOPc1nWlogf-111" value="Weight" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="8piM8ojpYTOPc1nWlogf-101" vertex="1">
