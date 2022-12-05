@@ -19,17 +19,18 @@ def getGroup(username):
             SELECT grp    
             FROM spms_users_t
             WHERE userID={}'''.format(username))
-            group=cursor.fetchall()[0][0]
+            group=cursor.fetchall()
             cursor.close()
             return group
+            #output faculty/student
 
 def getName(username):
-            cursor = mydb.cursor()
             name=""
             if getGroup(username)=="student":
                 str="student"
             elif getGroup(username)=="faculty":
                 str="faculty"
+            cursor = mydb.cursor()
             cursor.execute('''        
             SELECT firstName,lastName   
             FROM spms_{}_t
@@ -44,7 +45,7 @@ def getName(username):
                     cursor.close()
             cursor.close()
             return name
-
+            #output fname+lname(null for now)
 
 def setCurrUser(username):
     try:
@@ -71,8 +72,6 @@ def deleteCurrUser():
         cursor.close()
     return
 
-
-
 def getCurrUser():
     cursor = mydb.cursor()
     cursor.execute('''SELECT userID,grp FROM spms_currsess_t''')
@@ -93,7 +92,7 @@ def isValid(username):
     rows=cursor.fetchall()
     cursor.close()
     return bool(rows)
-
+    #output True
 
 def getPassword(username):
         cursor = mydb.cursor()
@@ -104,6 +103,7 @@ def getPassword(username):
         password=cursor.fetchall()[0][0]
         cursor.close()
         return password
+        #output password(faculty)
 
 
 ## Analysis
@@ -125,9 +125,14 @@ def getStudentCourseWiseCO(username,courseid):
                 GROUP BY  clo.coID'''.format(username,courseid))
     rows=cursor.fetchall()
     cursor.close()
-    return bool(rows)
+    CO=[[]for i in range(2)]
+    for i in range(len(rows)):
+        CO[0].append(rows[i][0])
+        CO[1].append(rows[i][1])
 
-
+    return CO
+    #outputs [['CO1', 'CO2', 'CO3', 'CO4'], [Decimal('52.1212'), Decimal('77.1429'), Decimal('70.0000'), Decimal('50.0000')]]
+    
 # GPA Analysis
 
 def getStudentCGPA(studentID):
