@@ -12,12 +12,14 @@ from plotly.offline import plot
 # Create your views here.
 def home(request):
     plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
-
-    return render(request,"Student/sHome.html", context={"plot1":plot_div,
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+        "plot1":plot_div,
+        "page":"dashboard",
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
+        }
+    return render(request,"Student/sHome.html", context)
 
 def authenticate(request):
     username=request.POST.get("userid")
@@ -44,66 +46,85 @@ def dashboard(request):
 
 def CoPloAnal(request):
     # queries.getStudentCourseWiseCO(queries.getCurrUser()[0],)
-    return render(request,"Student/co-plo-analysis.html",{"page":"coplo",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+            "page":"coplo",
+            "id":queries.getCurrUser()[0],
+            "group":queries.getCurrUser()[1],
+            "name":queries.getName(str(queries.getCurrUser()[0])),
+            }
+    return render(request,"Student/co-plo-analysis.html",context)
 
 def coursePloAnal(request):
-    return render(request,"Student\course-plo-analysis.html",{"page":"course",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+            "page":"dashboard",
+            "id":queries.getCurrUser()[0],
+            "group":queries.getCurrUser()[1],
+            "name":queries.getName(str(queries.getCurrUser()[0])),
+            }
+    return render(request,"Student\course-plo-analysis.html",context)
 
 def PloAchievement(request):
-    return render(request,"Student\PloAchievement.html",{"page":"plo",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+        "page":"plo",
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
+        }
+    return render(request,"Student\PloAchievement.html",context)
 
 def QuestionBank(request):
-    return render(request,"Student\QuestionBank.html",{"page":"ques",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+        "page":"ques",
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
+        }
+    return render(request,"Student\QuestionBank.html",context)
 
 def StuPloAnal(request):
-    return render(request,"Faculty\StuPloAnal.html",{"page":"stuplo-anal",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+        "page":"stuplo-anal",
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
+        }
+    return render(request,"Faculty\StuPloAnal.html",context)
 
 def StuPloTbl(request):
-    return render(request,"Faculty\StuPloTbl.html",{"page":"stuplo-tbl",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+        {"page":"stuplo-tbl",
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
+        }
+    }
+    return render(request,"Faculty\StuPloTbl.html",)
 
 def CourseReport(request):
-    return render(request,"Faculty\CourseReport.html",{"page":"coursereport",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+        "page":"coursereport",                                                
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
+        }
+    return render(request,"Faculty\CourseReport.html",context)
 
 def QuestionBank(request):
-    return render(request,"Student\QuestionBank.html",{"page":"quesentry",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+        "page":"ques",
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
+        }
+    return render(request,"Student\QuestionBank.html",context)
 def QuestionBankEntry(request):
     context={
             "page":"quesentry",
             "id":queries.getCurrUser()[0],
             "group":queries.getCurrUser()[1],
-            "name":queries.getName(str(queries.getCurrUser()[0]))}
+            "department":queries.getCurrDept(),
+            "name":queries.getName(str(queries.getCurrUser()[0])),
+            }
     return render(request,"Faculty\QuestionBankEntry.html",context)
 
 def COentry(request):
@@ -111,7 +132,8 @@ def COentry(request):
             "page":"dashboard",
             "id":queries.getCurrUser()[0],
             "group":queries.getCurrUser()[1],
-            "name":queries.getName(str(queries.getCurrUser()[0]))}
+            "name":queries.getName(str(queries.getCurrUser()[0])),
+            }
     return render(request,"Faculty\COentry.html",context)
 
 ## Creating Graphs
