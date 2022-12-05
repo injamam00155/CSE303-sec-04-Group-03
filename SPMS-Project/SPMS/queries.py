@@ -1,4 +1,4 @@
-from SPMS import dbConnection
+import dbConnection
 import mysql.connector
 from django.db import connection
 import numpy as np
@@ -13,6 +13,27 @@ mydb=dbConnection.queriesDB()
 
 
 ##user info based queries
+def isValid(username):
+    cursor = mydb.cursor()
+    cursor.execute('''        
+    SELECT *     
+    FROM spms_users_t
+    WHERE userID={}'''.format(username))
+    rows=cursor.fetchall()
+    cursor.close()
+    return bool(rows)
+
+
+def getPassword(username):
+        cursor = mydb.cursor()
+        cursor.execute('''        
+            SELECT password     
+            FROM spms_users_t
+            WHERE userID={}'''.format(username))
+        password=cursor.fetchall()[0][0]
+        cursor.close()
+        return password
+
 def getGroup(username):
             cursor = mydb.cursor()
             cursor.execute('''        
@@ -47,6 +68,7 @@ def getName(username):
             return name
             #output fname+lname(null for now)
 
+
 def setCurrUser(username):
     try:
         cursor = mydb.cursor()
@@ -65,12 +87,14 @@ def setCurrUser(username):
 
 
 def deleteCurrUser():
-    if getCurrUser():
+    if getCurrUserID():
         cursor = mydb.cursor()
         cursor.execute('''TRUNCATE TABLE spms.spms_currsess_t''')
         rows=cursor.fetchall()
         cursor.close()
     return
+
+
 
 def getCurrUser():
     cursor = mydb.cursor()
@@ -80,10 +104,9 @@ def getCurrUser():
         cursor.close()
     except:
         cursor.close()
-    return rows[0]
+    return rows
 
-
-def isValid(username):
+def getCurrUserID():
     cursor = mydb.cursor()
     cursor.execute('''        
     SELECT *     
@@ -92,7 +115,7 @@ def isValid(username):
     rows=cursor.fetchall()
     cursor.close()
     return bool(rows)
-    #output True
+
 
 def getPassword(username):
         cursor = mydb.cursor()
@@ -103,7 +126,7 @@ def getPassword(username):
         password=cursor.fetchall()[0][0]
         cursor.close()
         return password
-        #output password(faculty)
+
 
 
 ## Analysis

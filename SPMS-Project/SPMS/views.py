@@ -130,8 +130,8 @@ def QuestionBankEntry(request):
 def COentry(request):
     context={
             "page":"dashboard",
-            "id":queries.getCurrUser()[0],
-            "group":queries.getCurrUser()[1],
+            "id":queries.getCurrUser(),
+            "group":queries.getCurrUser(),
             "name":queries.getName(str(queries.getCurrUser()[0])),
             }
     return render(request,"Faculty\COentry.html",context)
