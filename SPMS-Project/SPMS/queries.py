@@ -1,4 +1,4 @@
-from SPMS import dbConnection
+import dbConnection
 import mysql.connector
 from django.db import connection
 import numpy as np
@@ -13,6 +13,27 @@ mydb=dbConnection.queriesDB()
 
 
 ##user info based queries
+def isValid(username):
+    cursor = mydb.cursor()
+    cursor.execute('''        
+    SELECT *     
+    FROM spms_users_t
+    WHERE userID={}'''.format(username))
+    rows=cursor.fetchall()
+    cursor.close()
+    return bool(rows)
+
+
+def getPassword(username):
+        cursor = mydb.cursor()
+        cursor.execute('''        
+            SELECT password     
+            FROM spms_users_t
+            WHERE userID={}'''.format(username))
+        password=cursor.fetchall()[0][0]
+        cursor.close()
+        return password
+
 def getGroup(username):
             cursor = mydb.cursor()
             cursor.execute('''        
@@ -45,7 +66,7 @@ def getName(username):
             cursor.close()
             return name
 
-
+##current user queries
 def setCurrUser(username):
     try:
         cursor = mydb.cursor()
@@ -64,14 +85,12 @@ def setCurrUser(username):
 
 
 def deleteCurrUser():
-    if getCurrUser():
+    if getCurrUserID():
         cursor = mydb.cursor()
         cursor.execute('''TRUNCATE TABLE spms.spms_currsess_t''')
         rows=cursor.fetchall()
         cursor.close()
     return
-
-
 
 def getCurrUser():
     cursor = mydb.cursor()
@@ -81,29 +100,28 @@ def getCurrUser():
         cursor.close()
     except:
         cursor.close()
+    return rows
+
+def getCurrUserID():
+    cursor = mydb.cursor()
+    cursor.execute('''SELECT userID,grp FROM spms_currsess_t''')
+    try:
+        rows=cursor.fetchall()
+        cursor.close()
+    except:
+        cursor.close()
     return rows[0]
 
-
-def isValid(username):
+def getCurrUserGroup():
     cursor = mydb.cursor()
-    cursor.execute('''        
-    SELECT *     
-    FROM spms_users_t
-    WHERE userID={}'''.format(username))
-    rows=cursor.fetchall()
-    cursor.close()
-    return bool(rows)
-
-
-def getPassword(username):
-        cursor = mydb.cursor()
-        cursor.execute('''        
-            SELECT password     
-            FROM spms_users_t
-            WHERE userID={}'''.format(username))
-        password=cursor.fetchall()[0][0]
+    cursor.execute('''SELECT userID,grp FROM spms_currsess_t''')
+    try:
+        rows=cursor.fetchall()
         cursor.close()
-        return password
+    except:
+        cursor.close()
+    return rows[1]
+
 
 
 ## Analysis
