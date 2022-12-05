@@ -91,18 +91,23 @@ def StuPloAnal(request):
     return render(request,"Faculty\StuPloAnal.html",context)
 
 def StuPloTbl(request):
-    return render(request,"Faculty\StuPloTbl.html",{"page":"stuplo-tbl",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+        {"page":"stuplo-tbl",
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
+        }
+    }
+    return render(request,"Faculty\StuPloTbl.html",)
 
 def CourseReport(request):
-    return render(request,"Faculty\CourseReport.html",{"page":"coursereport",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+        "page":"coursereport",                                                
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
+        }
+    return render(request,"Faculty\CourseReport.html",context)
 
 def QuestionBank(request):
     context={
