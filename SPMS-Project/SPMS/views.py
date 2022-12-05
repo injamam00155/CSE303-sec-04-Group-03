@@ -99,18 +99,20 @@ def QuestionBank(request):
                                                 "group":queries.getCurrUser()[1],
                                                 "name":queries.getName(str(queries.getCurrUser()[0]))})
 def QuestionBankEntry(request):
-    return render(request,"Faculty\QuestionBankEntry.html",{"page":"quesentry",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+            "page":"quesentry",
+            "id":queries.getCurrUser()[0],
+            "group":queries.getCurrUser()[1],
+            "name":queries.getName(str(queries.getCurrUser()[0]))}
+    return render(request,"Faculty\QuestionBankEntry.html",context)
 
 def COentry(request):
-    return render(request,"Faculty\COentry.html",{"page":"coentry",
-                                                "page":"dashboard",
-                                                "id":queries.getCurrUser()[0],
-                                                "group":queries.getCurrUser()[1],
-                                                "name":queries.getName(str(queries.getCurrUser()[0]))})
+    context={
+            "page":"dashboard",
+            "id":queries.getCurrUser()[0],
+            "group":queries.getCurrUser()[1],
+            "name":queries.getName(str(queries.getCurrUser()[0]))}
+    return render(request,"Faculty\COentry.html",context)
 
 ## Creating Graphs
 
