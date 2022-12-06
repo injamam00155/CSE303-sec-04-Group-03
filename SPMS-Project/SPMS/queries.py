@@ -42,7 +42,7 @@ def getGroup(userID):
             WHERE userID={}'''.format(userID))
             group=cursor.fetchall()
             cursor.close()
-            return group
+            return group[0][0]
             #output faculty/student
 
 def getName(userID):
@@ -144,7 +144,7 @@ def getStudentCourseWiseCO(userID,courseid):
                     and a.co_id=clo.coID 
                     and clo.plo_id = p.ploID
                     and  r.student_id = {}
-		    and clo.course_id="{}"
+		            and clo.course_id="{}"
                 GROUP BY  clo.coID'''.format(userID,courseid))
     rows=cursor.fetchall()
     cursor.close()
