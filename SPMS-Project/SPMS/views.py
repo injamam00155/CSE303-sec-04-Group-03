@@ -21,7 +21,6 @@ def PloAchieve(user_id):
     PloAchievement=fig.to_html()
     return PloAchievement
 
-
 def home(request):
     # plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
     student_id=queries.getCurrUser()[0][0]
@@ -31,6 +30,8 @@ def home(request):
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
         "PloAchievement":PloAchieve(student_id),
+        "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(student_id)[1],queries.getStudentWiseCLO(student_id)[0]),
+        "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(student_id)[1],queries.getStudentWisePLO(student_id)[0])
         }
         
     return render(request,"Student/sHome.html", context)
@@ -175,6 +176,22 @@ def OneTraceSpider(rl,tl):
         r = rl,
         theta = tl,
         fill='toself'
+    ))
+    return plot(fig, output_type='div',include_plotlyjs=True)
+
+def TwoTraceSpider(t,r1,r2):
+    fig=go.figure()
+    fig.add_trace(data=go.Scatterpolar(
+        r = r1,
+        theta = t,
+        fill='toself'
+        name="You"
+    ))
+    fig.add_trace(data=go.Scatterpolar(
+        r = r2,
+        theta = t,
+        fill='toself'
+        name="Department Average"
     ))
     return plot(fig, output_type='div',include_plotlyjs=True)
 
