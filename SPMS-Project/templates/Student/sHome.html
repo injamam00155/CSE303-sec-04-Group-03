@@ -14,7 +14,7 @@
         </div>
         <div class="card-body" style="height:450px;" >
           <div class="chart-area">
-              <canvas id="ploperformance" height="100%"></canvas>
+                {{PloAchievement|safe}}
           </div>
         </div>
       </div>
@@ -33,6 +33,7 @@
         </div>
       </div>
     </div>
+
     <div class="col-lg-6">
       <div class="card card-chart">
         <div class="card-header">
@@ -40,7 +41,9 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="right" height="100%"></canvas>
+            <canvas id="right" height="100%">
+
+            </canvas>
           </div>
         </div>
       </div>
@@ -75,10 +78,11 @@
       </div>
     </div>
 
+  </div>
 {%endblock%}
-</div>
 
 {%block javascript%}
+{% comment %} <script>
 var ctx = document.getElementById("ploperformance").getContext("2d");
 colors =  ['#5CC8D7FF','#00539CFF','#EEA47FFF','#2C5F2D','#97BC62FF','#CE4A7EFF','#FC766AFF','#603F83FF','#006D77'
     ,'#E29578','#264653','#81b29a','#8d99ae']
@@ -131,5 +135,6 @@ var myChart = new Chart(ctx, {
       responsive: true,
   }
 });
-</div>
+</script> {% endcomment %}
+
 {%endblock%}

@@ -10,29 +10,29 @@ from plotly.offline import plot
 
 
 # Create your views here.
+
+def PloAchieve(user_id):
+    # fig = px.bar(x=queries.getStudentWisePLO(user_id)[0], y=queries.getStudentWisePLO(user_id)[1])
+    # fig = px.bar(queries.getStudentWisePLO(user_id))
+    fig = px.bar(
+        x=queries.getStudentWisePLO(user_id)[0], 
+        y=queries.getStudentWisePLO(user_id)[1],
+        labels={'x':'PLO ID','y':'Percentage Achieved'})
+    PloAchievement=fig.to_html()
+    return PloAchievement
+
+
 def home(request):
     # plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
     student_id=queries.getCurrUser()[0][0]
-    row = queries.getStudentWisePLO(student_id)
-    chart1 = 'PLO Achievement'
-    plolabel1 = []
-    plodata1 = []
-
-    for i in row:
-        plolabel1.append(i[0])
-        plodata1.append(i[1])
-
-
     context={
         "page":"dashboard",
-        "id":queries.getCurrUser()[0][0],
+        "id":student_id,
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
-
-        'chart1': chart1,
-        'plolabel1': plolabel1,
-        'plodata1': plodata1,
+        "PloAchievement":PloAchieve(student_id),
         }
+        
     return render(request,"Student/sHome.html", context)
 
 def authenticate(request):

@@ -872,7 +872,12 @@ def getStudentWisePLO(student_id):
                 '''.format(student_id))
     row = cursor.fetchall()
     cursor.close()
-    return row
+    
+    PLO=[[]for i in range(2)]
+    for i in range(len(row)):
+        PLO[0].append(row[i][0])
+        PLO[1].append(row[i][1])
+    return PLO
 
 
 def getCourseWiseStudentPLO(student_id, cat):
@@ -1076,7 +1081,7 @@ def getProgramWisePLO(program):
                     spms_clo_t c,
                     spms_plo_t p
                 WHERE r.student_id = st.student_id
-                    and st.program_id = p.programID
+                    and st.program_id = p.program_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
                     and a.clo_id = c.clo_id
@@ -1164,7 +1169,7 @@ def getProgramWiseEnrolledStudents(program, semesters):
                 spms_student_t st,
                 spms_registration_t r
             WHERE r.student_id = st.student_id
-                and st.program_id = p.programID
+                and st.program_id = p.program_id
                 and st.program_id = '{}'
                 and r.semester = '{}'
             '''.format(program, semesters[0]))
@@ -1177,7 +1182,7 @@ def getProgramWiseEnrolledStudents(program, semesters):
                        spms_student_t st,
                        spms_registration_t r
                    WHERE r.student_id = st.student_id
-                       and st.program_id = p.programID
+                       and st.program_id = p.program_id
                        and st.program_id = '{}'
                        and r.semester in {}
                    '''.format(program, str(tuple(semesters))))
@@ -1220,8 +1225,8 @@ def getProgramWisePLOStats(program):
                             and e.question_id = a.question_id
                             and a.clo_id = c.clo_id
                             and c.plo_id = p.plo_id
-                            and p.program_id = pr.programID
-                            and pr.programID='{}'
+                            and p.program_id = pr.program_id
+                            and pr.program_id='{}'
                             and p.plo_num = '{}'
                         GROUP BY r.student_id,c.clo_id) per
                     GROUP BY per.student_id) avgTable
@@ -1250,8 +1255,8 @@ def getProgramWisePLOStats(program):
                                    and e.question_id = a.question_id
                                    and a.clo_id = c.clo_id
                                    and c.plo_id = p.plo_id
-                                   and p.program_id = pr.programID
-                                   and pr.programID='{}'
+                                   and p.program_id = pr.program_id
+                                   and pr.program_id='{}'
                                    and p.plo_num ='{}'
                                GROUP BY r.student_id,r.registration_id) d1
                            GROUP BY student_id)d2
@@ -1585,8 +1590,8 @@ def getProgramWisePLOComp(program, semester):
                 and a.question_id = e.question_id
                 and a.clo_id = c.clo_id
                 and c.plo_id = p.plo_id
-                and st.program_id = pr.programID
-                and pr.programID = '{}'
+                and st.program_id = pr.program_id
+                and pr.program_id = '{}'
                 and r.semester = '{}'
             GROUP BY p.plo_num, c.course_id, r.student_id) derived
         GROUP BY  derived.plo_num
@@ -1611,8 +1616,8 @@ def getProgramWisePLOComp(program, semester):
                     and a.question_id = e.question_id
                     and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
-                    and st.program_id = pr.programID
-                    and pr.programID = '{}'
+                    and st.program_id = pr.program_id
+                    and pr.program_id = '{}'
                     and r.semester = '{}'
                 GROUP BY p.plo_id, c.course_id, r.student_id
                 HAVING  100*(sum(e.obtained_marks)/sum(a.total_marks))>=40) derived
