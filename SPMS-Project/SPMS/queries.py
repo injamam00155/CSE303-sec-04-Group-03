@@ -140,6 +140,8 @@ def getPassword(user_id):
 
 
 ## Analysis
+
+
 def getStudentCourseWiseCO(user_id,courseid):
     cursor = mydb.cursor()
     cursor.execute('''
@@ -852,6 +854,29 @@ def getVCWiseGPA(vc):
     cursor.close()
     return row
 
+#CLO Analysis
+def getStudentWiseCLO(student_id):
+    cursor = mydb.cursor()
+    cursor.execute(''' 
+                SELECT co.clo_num as clo_num,100*(sum( e.obtained_marks)/sum( a.total_marks)) as clopercent
+                FROM spms_registration_t r,
+                    spms_question_t a, 
+                    spms_evaluation_t e,
+                    spms_clo_t co
+                WHERE  r.registration_id = e.registration_id 
+                    and e.question_id = a.question_id
+                    and a.clo_id=co.clo_id
+                    and  r.student_id = '{}'
+                GROUP BY  co.clo_num
+                '''.format(student_id))
+    row = cursor.fetchall()
+    cursor.close()
+    
+    CLO=[[]for i in range(2)]
+    for i in range(len(row)):
+        CLO[0].append(row[i][0])
+        CLO[1].append(row[i][1])
+    return CLO
 
 # PLO Analysis
 def getStudentWisePLO(student_id):
@@ -1034,6 +1059,8 @@ def getSchoolWisePLO(school):
              GROUP BY derived.plo_num
                    '''.format(school))
     row = cursor.fetchall()
+    Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+
     cursor.close()
     return row
 
