@@ -15,52 +15,27 @@
                 {% endif %}
               </li>
               <li class="nav-item">
-                {% if page == "stuplo-anal" %}
-                <a class="nav-link active" href="StuPloAnal">Student Wise PLO Analysis</a>
+                {% if page == "Department wise PLO Analysis" %}
+                <a class="nav-link active" href="StuPloAnal">Department wise PLO Analysis</a>
                 {% else %}
-                <a class="nav-link" href="StuPloAnal">Student Wise PLO Analysis</a>
+                <a class="nav-link" href="StuPloAnal">Department wise PLO Analysis</a>
                 {% endif %}
               </li>
               <li class="nav-item">
-                {% if page == "stuplo-tbl" %}
-                <a class="nav-link active" href="StuPloTbl">Student Wise PLO Table</a>
+                {% if page == "School wise PLO Analysis" %}
+                <a class="nav-link active" href="StuPloAnal">School wise PLO Analysis</a>
                 {% else %}
-                <a class="nav-link" href="StuPloTbl">Student Wise PLO Table</a>
+                <a class="nav-link" href="StuPloAnal">School wise PLO Analysis</a>
                 {% endif %}
-                
               </li>
               <li class="nav-item">
-                {% if page == "plo" %}
-                <a class="nav-link active" href="PloAchievement">PLO Achievement Table</a>
+                {% if page == "Dean wise PLO Analysis" %}
+                <a class="nav-link active" href="StuPloAnal">Dean wise PLO Analysis</a>
                 {% else %}
-                <a class="nav-link" href="PloAchievement">PLO Achievement Table</a>
+                <a class="nav-link" href="StuPloAnal">School wise PLO Analysis</a>
                 {% endif %}
-                
               </li>
-              <li class="nav-item">
-                {% if page == "coursereport" %}
-                <a class="nav-link active" href="CourseReport">Course Report</a>
-                {% else %}
-                <a class="nav-link" href="CourseReport">Course Report</a>
-                {% endif %}
-                
-              </li>
-              <li class="nav-item">
-                {% if page == "quesentry" %}
-                <a class="nav-link active" href={% url "QuestionBankEntry"%}>Question Bank Entry</a>
-                {% else %}
-                <a class="nav-link" href="QuestionBankEntry">Question Bank Entry</a>
-                {% endif %}
-                
-              </li>
-              <li class="nav-item">
-                {% if page == "coentry" %}
-                <a class="nav-link active" href="COentry">CO Entry</a>
-                {% else %}
-                <a class="nav-link" href="COentry">CO Entry</a>
-                {% endif %}
-                
-              </li>
+             
             </ul>
             <a class="btn btn-danger" href="{%url 'logout'%}">Logout</a>
           </div>
