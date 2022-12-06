@@ -15,9 +15,9 @@ def home(request):
     context={
         "plot1":plot_div,
         "page":"dashboard",
-        "id":queries.getCurrUser()[0],
-        "group":queries.getCurrUser()[1],
-        "name":queries.getName(str(queries.getCurrUser()[0])),
+        # "id":queries.getCurrUser()[0],
+        # "group":queries.getCurrUser()[1],
+        # "name":queries.getName(str(queries.getCurrUser()[0])),
         }
     return render(request,"Student/sHome.html", context)
 
@@ -45,7 +45,7 @@ def dashboard(request):
     return render(request,"Student/sHome.html")
 
 def CoPloAnal(request):
-    # queries.getStudentCourseWiseCO(queries.getCurrUser()[0],)
+    queries.getStudentCourseWiseCO(queries.getCurrUser()[0],)
     context={
             "page":"coplo",
             "id":queries.getCurrUser()[0],
@@ -98,7 +98,7 @@ def StuPloTbl(request):
         "name":queries.getName(str(queries.getCurrUser()[0])),
         }
     }
-    return render(request,"Faculty\StuPloTbl.html",)
+    return render(request,"Faculty\StuPloTbl.html",context)
 
 def CourseReport(request):
     context={

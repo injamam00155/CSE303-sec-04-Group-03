@@ -1,4 +1,4 @@
-import dbConnection
+from SPMS import dbConnection
 import mysql.connector
 from django.db import connection
 import numpy as np
