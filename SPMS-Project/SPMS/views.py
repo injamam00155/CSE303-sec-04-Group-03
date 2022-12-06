@@ -45,12 +45,12 @@ def dashboard(request):
     return render(request,"Student/sHome.html")
 
 def CoPloAnal(request):
-    queries.getStudentCourseWiseCO(queries.getCurrUser()[0][0],"CSE101")
+    # queries.getStudentCourseWiseCO(queries.getCurrUser()[0][0],"CSE101")
     context={
             "page":"coplo",
             "id":queries.getCurrUser()[0][0],
-            "group":queries.getCurrUser()[0][1],
-            "name":queries.getName(str(queries.getCurrUser()[0][0])),
+            "group":queries.getGroup(queries.getCurruser_id()),
+            "name":queries.getName(str(queries.getCurruser_id)),
             }
     return render(request,"Student/co-plo-analysis.html",context)
 
@@ -58,8 +58,8 @@ def coursePloAnal(request):
     context={
             "page":"course",
             "id":queries.getCurrUser()[0][0],
-            "group":queries.getCurrUser()[0][1],
-            "name":queries.getName(str(queries.getCurrUser()[0][0])),
+            "group":queries.getGroup(queries.getCurruser_id()),
+            "name":queries.getName(str(queries.getCurruser_id)),
             }
     return render(request,"Student\course-plo-analysis.html",context)
 

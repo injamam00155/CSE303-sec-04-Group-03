@@ -114,7 +114,17 @@ def getCurruser_id():
         cursor.close()
     except:
         cursor.close()
-    return rows
+    return rows[0]
+
+def getCurruser_grp():
+    cursor = mydb.cursor()
+    cursor.execute('''SELECT user_id,grp FROM spms_currsess_t''')
+    try:
+        rows=cursor.fetchall()
+        cursor.close()
+    except:
+        cursor.close()
+    return rows[1]
 
 
 def getPassword(user_id):
