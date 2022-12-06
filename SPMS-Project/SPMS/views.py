@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from SPMS import queries
 import pandas as pd
@@ -39,7 +39,7 @@ def login(request):
 
 def logout(request):
     queries.deleteCurrUser()
-    return render(request,"login.html")
+    return redirect("/")
 
 def dashboard(request):
     return render(request,"Student/sHome.html")
