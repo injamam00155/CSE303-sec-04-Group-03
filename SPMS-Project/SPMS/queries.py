@@ -108,13 +108,13 @@ def getCurrUser():
 
 def getCurrUserID():
     cursor = mydb.cursor()
-    cursor.execute('''        
-    SELECT *     
-    FROM spms_users_t
-    WHERE userID={}'''.format(username))
-    rows=cursor.fetchall()
-    cursor.close()
-    return bool(rows)
+    cursor.execute('''SELECT userID,grp FROM spms_currsess_t''')
+    try:
+        rows=cursor.fetchall()
+        cursor.close()
+    except:
+        cursor.close()
+    return rows[0]
 
 
 def getPassword(username):
