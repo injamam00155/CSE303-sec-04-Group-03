@@ -56,7 +56,7 @@ def CoPloAnal(request):
 
 def coursePloAnal(request):
     context={
-            "page":"dashboard",
+            "page":"course",
             "id":queries.getCurrUser()[0][0],
             "group":queries.getCurrUser()[0][1],
             "name":queries.getName(str(queries.getCurrUser()[0][0])),
