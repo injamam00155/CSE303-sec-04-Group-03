@@ -15,19 +15,19 @@ def home(request):
     context={
         "plot1":plot_div,
         "page":"dashboard",
-        # "id":queries.getCurrUser()[0],
-        # "group":queries.getCurrUser()[1],
-        # "name":queries.getName(str(queries.getCurrUser()[0])),
+        "id":queries.getCurrUser()[0],
+        "group":queries.getCurrUser()[1],
+        "name":queries.getName(str(queries.getCurrUser()[0])),
         }
     return render(request,"Student/sHome.html", context)
 
 def authenticate(request):
-    username=request.POST.get("userid")
+    userID=request.POST.get("userid")
     password=request.POST.get("password")
-    if queries.isValid(username)==True:
-        passwords = queries.getPassword(username)
+    if queries.isValid(userID)==True:
+        passwords = queries.getPassword(userID)
         if passwords==password:
-            queries.setCurrUser(username)
+            queries.setCurrUser(userID)
             return home(request)
         else:
             return HttpResponse("error")

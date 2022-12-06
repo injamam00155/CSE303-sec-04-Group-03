@@ -13,49 +13,49 @@ mydb=dbConnection.queriesDB()
 
 
 ##user info based queries
-def isValid(username):
+def isValid(userID):
     cursor = mydb.cursor()
     cursor.execute('''        
     SELECT *     
     FROM spms_users_t
-    WHERE userID={}'''.format(username))
+    WHERE userID={}'''.format(userID))
     rows=cursor.fetchall()
     cursor.close()
     return bool(rows)
 
 
-def getPassword(username):
+def getPassword(userID):
         cursor = mydb.cursor()
         cursor.execute('''        
             SELECT password     
             FROM spms_users_t
-            WHERE userID={}'''.format(username))
+            WHERE userID={}'''.format(userID))
         password=cursor.fetchall()[0][0]
         cursor.close()
         return password
 
-def getGroup(username):
+def getGroup(userID):
             cursor = mydb.cursor()
             cursor.execute('''        
             SELECT grp    
             FROM spms_users_t
-            WHERE userID={}'''.format(username))
+            WHERE userID={}'''.format(userID))
             group=cursor.fetchall()
             cursor.close()
             return group
             #output faculty/student
 
-def getName(username):
+def getName(userID):
             name=""
-            if getGroup(username)=="student":
+            if getGroup(userID)=="student":
                 str="student"
-            elif getGroup(username)=="faculty":
+            elif getGroup(userID)=="faculty":
                 str="faculty"
             cursor = mydb.cursor()
             cursor.execute('''        
             SELECT firstName,lastName   
             FROM spms_{}_t
-            WHERE {}ID={}'''.format(str,str,username))
+            WHERE {}ID={}'''.format(str,str,userID))
             if cursor.fetchall()[0]:
                 name=cursor.fetchall()
                 try:
@@ -69,15 +69,15 @@ def getName(username):
             #output fname+lname(null for now)
 
 
-def setCurrUser(username):
+def setCurrUser(userID):
     try:
         cursor = mydb.cursor()
-        group=getGroup(username)
+        group=getGroup(userID)
         #injamam
         cursor.execute('''        
         INSERT INTO spms.spms_currsess_t 
         VALUES ({}, '{}')
-        '''.format(username,group))
+        '''.format(userID,group))
         rows=cursor.fetchall()
         cursor.close()
     except:
@@ -117,12 +117,12 @@ def getCurrUserID():
     return rows[0]
 
 
-def getPassword(username):
+def getPassword(userID):
         cursor = mydb.cursor()
         cursor.execute('''        
             SELECT password     
             FROM spms_users_t
-            WHERE userID={}'''.format(username))
+            WHERE userID={}'''.format(userID))
         password=cursor.fetchall()[0][0]
         cursor.close()
         return password
@@ -130,7 +130,7 @@ def getPassword(username):
 
 
 ## Analysis
-def getStudentCourseWiseCO(username,courseid):
+def getStudentCourseWiseCO(userID,courseid):
     cursor = mydb.cursor()
     cursor.execute('''
     SELECT coNum, (100*(sum( e.obtainedMarks)/sum( a.totalMarks))) as copercent
@@ -145,7 +145,7 @@ def getStudentCourseWiseCO(username,courseid):
                     and clo.plo_id = p.ploID
                     and  r.student_id = {}
 		    and clo.course_id="{}"
-                GROUP BY  clo.coID'''.format(username,courseid))
+                GROUP BY  clo.coID'''.format(userID,courseid))
     rows=cursor.fetchall()
     cursor.close()
     CO=[[]for i in range(2)]
