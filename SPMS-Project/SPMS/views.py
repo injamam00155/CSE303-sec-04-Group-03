@@ -136,6 +136,24 @@ def COentry(request):
             }
     return render(request,"Faculty\COentry.html",context)
 
+def ProgramW(request):
+    context={
+            "page":"ProgramW",
+            "id":queries.getCurrUser()[0],
+            "group":queries.getCurrUser()[1],
+            "name":queries.getName(str(queries.getCurrUser()[0])),
+            }
+    return render(request,"Faculty\ProgramW.html",context)
+
+def departmentWise(request):
+    context={
+            "page":"departmentWise",
+            "id":queries.getCurrUser()[0],
+            "group":queries.getCurrUser()[1],
+            "name":queries.getName(str(queries.getCurrUser()[0])),
+            }
+    return render(request,"Faculty\departmentWise.html",context)
+
 ## Creating Graphs
 
 def OneTraceSpider(rl,tl):
