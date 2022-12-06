@@ -1,7 +1,9 @@
 {%extends "student/sNavSide.html"%}
 {%block content%}
-<p>sdjibfsdiubh</p>
-<p>sdjibfsdiubh</p>
-<p>sdjibfsdiubh</p>
-<p>sdjibfsdiubh</p>
+<from action="{% url 'questions'%}" method="post">
+    {% csrf_token %}
+    Course ID: <input type="text">
+    Semester: <input type="text">
+    Section: <input type="text">
+    QUESTIONS (Quizzes, Mid, Final): <input type="text">
 {%endblock%}
