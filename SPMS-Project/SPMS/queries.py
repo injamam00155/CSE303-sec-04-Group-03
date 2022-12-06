@@ -114,7 +114,7 @@ def getCurrUserID():
         cursor.close()
     except:
         cursor.close()
-    return rows[0]
+    return rows
 
 
 def getPassword(userID):

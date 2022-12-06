@@ -5,11 +5,11 @@ mydb=dbConnection.queriesDB()
 
 userID=1616161
 cursor = mydb.cursor()
-cursor.execute('''        
-SELECT grp    
-FROM spms_users_t
-WHERE userID={}'''.format(userID))
-group=cursor.fetchall()
-cursor.close()
+cursor.execute('''SELECT userID,grp FROM spms_currsess_t''')
+try:
+    rows=cursor.fetchall()
+    cursor.close()
+except:
+    cursor.close()
 
-print(group[0][0])
+print(rows)
