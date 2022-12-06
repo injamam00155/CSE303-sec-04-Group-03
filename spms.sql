@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `spms` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `spms`;
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
--- Host: localhost    Database: spms
+-- Host: 127.0.0.1    Database: spms
 -- ------------------------------------------------------
--- Server version	8.0.31
+-- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -295,6 +295,39 @@ CREATE TABLE `django_session` (
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `spms_admin_t`
+--
+
+DROP TABLE IF EXISTS `spms_admin_t`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `spms_admin_t` (
+  `adminID` int NOT NULL,
+  `firstName` varchar(8) DEFAULT NULL,
+  `lastName` varchar(9) DEFAULT NULL,
+  `dateOfBirth` date DEFAULT NULL,
+  `gender` varchar(4) DEFAULT NULL,
+  `email` varchar(20) DEFAULT NULL,
+  `phone` int DEFAULT NULL,
+  `address` varchar(20) DEFAULT NULL,
+  `employeeType` varchar(5) DEFAULT NULL,
+  `startDate` varchar(11) DEFAULT NULL,
+  `endDate` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`adminID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `spms_admin_t`
+--
+
+LOCK TABLES `spms_admin_t` WRITE;
+/*!40000 ALTER TABLE `spms_admin_t` DISABLE KEYS */;
+INSERT INTO `spms_admin_t` VALUES (1001,'Anwar','Hossain','1960-01-01','Male','anwar@iub.edu.bd',1712345677,'Bashundhara','H','Spring 2020','Spring 2020'),(1002,'Mahady','Hasan','1960-01-01','Male','mahady@iub.edu.bd',1712345677,'Bashundhara','H','Summer 2020','Summer 2020'),(1003,'Mahbubul','Hasan','1960-01-01','Male','mahbub@iub.edu.bd',1712345677,'Bashundhara','H','Spring 2020','Summer 2020'),(1004,'Khasru','Rahman','1960-01-01','Male','khasru@iub.edu.bd',1712345677,'Bashundhara','H','Autumn 2020','Autumn 2020'),(1005,'Taufique','Ahmed','1960-01-01','Male','taufique@iub.edu.bd',1712345677,'Bashundhara','H','Spring 2020','Spring 2020'),(1006,'Md.','Saifuddin','1960-01-01','Male','saifuddin@iub.edu.bd',1712345677,'Bashundhara','H','Summer 2020','Autumn 2020'),(1007,'Fazlul','Haque','1960-01-01','Male','fazlul@iub.edu.bd',1712345677,'Bashundhara','H','Spring 2020','Spring 2020'),(1008,'Saiful','Islam','1960-01-01','Male','saiful@iub.edu.bd',1712345677,'Bashundhara','H','Summer 2020','Autumn 2020'),(1009,'Naheem','Mahtab','1960-01-01','Male','Mahtab@iub.edu.bd',1712345677,'Bashundhara','H','Spring 2020','Summer 2020'),(1010,'Mostafa','Chowdhury','1960-01-01','Male','mostafa@iub.edu.bd',1712345677,'Bashundhara','H','Autumn 2020','Autumn 2020'),(1011,'Faruk','Hossain','1960-01-01','Male','faruk@iub.edu.bd',1712345677,'Bashundhara','H','Spring 2020','Spring 2020'),(1012,'Taksim','Khan','1960-01-01','Male','taksim@iub.edu.bd',1712345677,'Bashundhara','H','Summer 2020','Autumn 2020'),(1013,'M. Omar','Rahman','1960-01-01','Male','omar@iub.edu.bd',1712345677,'Bashundhara','V','Spring 2020','Summer 2020'),(1014,'Tanweer','Hasan','1960-01-01','Male','tanweer@iub.edu.bd',1712345677,'Bashundhara','V','Autumn 2020','Autumn 2020'),(1015,'Abul','Kashem','1960-01-01','Male','khasru@iub.edu.bd',1712345677,'Bashundhara','D','Spring 2020','Summer 2020'),(1016,'Abul','Fazal','1960-01-01','Male','khasru@iub.edu.bd',1712345677,'Bashundhara','D','Autumn 2020','Autumn 2020'),(1017,'Abu','Bakar','1960-01-01','Male','khasru@iub.edu.bd',1712345677,'Bashundhara','D','Spring 2020','Spring 2020'),(1018,'Abu','Selim','1960-01-01','Male','khasru@iub.edu.bd',1712345677,'Bashundhara','D','Summer 2020','Autumn 2020'),(1019,'Golam','Hasan','1960-01-01','Male','khasru@iub.edu.bd',1712345677,'Bashundhara','D','Spring 2020','Summer 2020'),(1020,'Golam','Kabir','1960-01-01','Male','khasru@iub.edu.bd',1712345677,'Bashundhara','D','Autumn 2020','Autumn 2020');
+/*!40000 ALTER TABLE `spms_admin_t` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -712,4 +745,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-03  2:35:31
+-- Dump completed on 2022-12-06  2:42:31

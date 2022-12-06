@@ -75,8 +75,19 @@ WSGI_APPLICATION = 'SPMS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = dbConnection.settingsDB()
+# DATABASES = dbConnection.settingsDB()
 
+DATABASES = {  
+    'default': {  
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'spms',  
+        'USER': 'root',  
+        'PASSWORD': 'inja',  
+        'HOST': '127.0.0.1',  
+        'PORT': '3306',  
+          
+    }  
+    }
 
 
 # Password validation

@@ -18,18 +18,15 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          {% comment %} {% if group == "student"%}
-          {% include "snavbar.html"%}
-          {% elif group == "faculty"%} 
-          {% include "fnavbar.html"%}
-          {% endif %} {% endcomment %}
+
           {%block navbar%}{%endblock%}
+          
         </div>
     </nav>
 <div>
    {%block sidebar %}{%endblock%}
 </div>
-<div style="margin-left:350px">
+<div style="margin-left:325px; margin-top: 25px;margin-bottom:25px; margin-right:25px">
     {%block content%}{%endblock%}
 </div>
 
