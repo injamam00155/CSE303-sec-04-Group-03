@@ -77,5 +77,59 @@
 
 {%endblock%}
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+
+{%block javascript%}
+var ctx = document.getElementById("ploperformance").getContext("2d");
+colors =  ['#5CC8D7FF','#00539CFF','#EEA47FFF','#2C5F2D','#97BC62FF','#CE4A7EFF','#FC766AFF','#603F83FF','#006D77'
+    ,'#E29578','#264653','#81b29a','#8d99ae']
+
+var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
+gradientStroke.addColorStop(0, 'rgba(29,140,248,0)');
+
+
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  responsive: true,
+  legend: {
+    display: false
+  },
+  data: {
+    labels: {{plolabel1|safe}},
+    datasets: [{
+      label: 'PLO Percentage',
+      fill: true,
+      backgroundColor: gradientStroke,
+      hoverBackgroundColor: gradientStroke,
+      borderColor: '#5CC8D7FF',
+      borderWidth: 2,
+      borderDash: [],
+      borderDashOffset: 0.0,
+      data: {{plodata1|safe}},
+    }]
+  },
+   options: {
+      scales: {
+          xAxes: [{
+              stacked: true,
+              gridLines: {
+                  display: false,
+              }
+          }],
+          yAxes: [{
+              stacked: true,
+              ticks: {
+                  beginAtZero: true,
+                  max:100,
+              },
+              type: 'linear',
+          }]
+      },
+
+      responsive: true,
+  }
+});
+</div>
+{%endblock%}

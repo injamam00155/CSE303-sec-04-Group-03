@@ -11,13 +11,27 @@ from plotly.offline import plot
 
 # Create your views here.
 def home(request):
-    plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
+    # plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
+    student_id=queries.getCurrUser()[0][0]
+    row = queries.getStudentWisePLO(student_id)
+    chart1 = 'PLO Achievement'
+    plolabel1 = []
+    plodata1 = []
+
+    for i in row:
+        plolabel1.append(i[0])
+        plodata1.append(i[1])
+
+
     context={
-        "plot1":plot_div,
         "page":"dashboard",
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+
+        'chart1': chart1,
+        'plolabel1': plolabel1,
+        'plodata1': plodata1,
         }
     return render(request,"Student/sHome.html", context)
 
