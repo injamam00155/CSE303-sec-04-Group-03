@@ -9,3 +9,10 @@ mydb=mysql.connector.connect(
         database= 'spms'  
     )
 
+
+question=queries.fetchQuestions("CSE101",1,"Mid","Spring 2020")
+# print(question)
+
+# print(queries.getStudentWisePLO(1616161)[0])
+# print(queries.getStudentWisePLO(1616161)[1])
+# print(queries.getDeptWisePLO("CSE")[1])
