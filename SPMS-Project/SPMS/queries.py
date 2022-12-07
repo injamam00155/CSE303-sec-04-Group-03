@@ -1206,7 +1206,7 @@ def getDeptWisePLO(dept):
                     spms_clo_t c,
                     spms_plo_t p
                 WHERE r.student_id = st.student_id
-                    and st.department_id = d.departmentID
+                    and st.department_id = d.department_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
                     and a.clo_id = c.clo_id
@@ -1217,8 +1217,11 @@ def getDeptWisePLO(dept):
                    '''.format(dept))
     row = cursor.fetchall()
     cursor.close()
-    row.sort(key=len)
-    return row
+    PLO=[[]for i in range(2)]
+    for i in range(len(row)):
+        PLO[0].append(row[i][0])
+        PLO[1].append(row[i][1])
+    return PLO
 
 
 def getProgramWisePLO(program):

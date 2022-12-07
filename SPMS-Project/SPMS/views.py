@@ -21,6 +21,18 @@ def PloAchieve(user_id):
     PloAchievement=fig.to_html()
     return PloAchievement
 
+def PloCompare(user_id):
+    # fig = px.bar(x=queries.getStudentWisePLO(user_id)[0], y=queries.getStudentWisePLO(user_id)[1])
+    # fig = px.bar(queries.getStudentWisePLO(user_id))
+    df=pd.DataFrame({
+        'PLONumber':queries.getStudentWisePLO(user_id)[0],
+        'YourPLO':queries.getStudentWisePLO(user_id)[1],
+        'DepartmentAverage':queries.getDeptWisePLO(queries.getDept(user_id)[0][0])[1]
+    })
+    fig = px.histogram(df,barmode='group')
+    Plo=fig.to_html()
+    return Plo
+
 def home(request):
     # plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
     user_id=queries.getCurrUser()[0][0]
@@ -30,11 +42,11 @@ def home(request):
         "id":user_id,
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
-        "PloAchievement":PloAchieve(user_id),
+        "PLOAchievement":PloAchieve(user_id),
         "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(user_id)[1],queries.getStudentWiseCLO(user_id)[0]),
         "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(user_id)[1],queries.getStudentWisePLO(user_id)[0]),
-        "GPAAnalysis":TwoTraceLineChart(queries.getStudentSemesterWiseGPA(user_id)[0],queries.getStudentSemesterWiseGPA(user_id)[1],queries.getDeptSemesterWiseGPA(user_dept)[1])
-        # "PLOAnalysis":TwoTraceSpider(queries.getStudentWisePLO(student_id)[0],queries.getStudentWisePLO(student_id)[1],queries.getDeptWisePLO(queries.getDept(student_id))[1])
+        "GPAAnalysis":TwoTraceLineChart(queries.getStudentSemesterWiseGPA(user_id)[0],queries.getStudentSemesterWiseGPA(user_id)[1],queries.getDeptSemesterWiseGPA(user_dept)[1]),
+        "PLOCompare":PloCompare(user_id)
         }
         
     return render(request,"Student/sHome.html", context)
