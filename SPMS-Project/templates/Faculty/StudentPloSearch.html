@@ -1,0 +1,11 @@
+{% extends "Faculty/fNavSide.html" %}
+{%block content%}
+<form action="{% url 'authenticationHome'%}" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Student ID" name="studentid">
+    <br>
+    <input type="text" placeholder="Course ID" name="courseid">
+    <br><br>
+    <center><button type="submit" class="btn btn-primary center">Submit</button>,</center>
+</form>
+{%endblock%}
