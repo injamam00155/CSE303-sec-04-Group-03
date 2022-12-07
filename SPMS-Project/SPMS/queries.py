@@ -1101,33 +1101,33 @@ def getCourseWiseStudentPLO(student_id, cat):
 #     return plo, cos, table
 
 
-# def getSchoolWisePLO(school):
-#     cursor = mydb.cursor()
-#     cursor.execute('''
-#              SELECT derived.plo_num, avg(per)
-#              FROM(
-#                 SELECT p.plo_id as plo_id,p.plo_num as plo_num, 100*sum(e.obtained_marks)/sum(a.total_marks) as per
-#                 FROM spms_registration_t r,
-#                     spms_evaluation_t e,
-#                     spms_student_t st,
-#                     spms_department_t d,
-#                     spms_school_t s,
-#                     spms_question_t a,
-#                     spms_clo_t c,
-#                     spms_plo_t p
-#                 WHERE r.student_id = st.student_id
-#                     and st.department_id = d.department_id
-#                     and d.school_id = s.school_id
-#                     and e.registration_id = r.registration_id
-#                     and a.question_id = e.question_id
-#                     and a.clo_id = c.clo_id
-#                     and c.plo_id = p.plo_id
-#                     and d.school_id = '{}'
-#                     GROUP BY p.plo_num,r.student_id) derived
-#              GROUP BY derived.plo_num
-#                    '''.format(school))
-#     row = cursor.fetchall()
-#     Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+def getSchoolWisePLO(school):
+    cursor = mydb.cursor()
+    cursor.execute('''
+             SELECT derived.plo_num, avg(per)
+             FROM(
+                SELECT p.plo_id as plo_id,p.plo_num as plo_num, 100*sum(e.obtained_marks)/sum(a.total_marks) as per
+                FROM spms_registration_t r,
+                    spms_evaluation_t e,
+                    spms_student_t st,
+                    spms_department_t d,
+                    spms_school_t s,
+                    spms_question_t a,
+                    spms_clo_t c,
+                    spms_plo_t p
+                WHERE r.student_id = st.student_id
+                    and st.department_id = d.department_id
+                    and d.school_id = s.school_id
+                    and e.registration_id = r.registration_id
+                    and a.question_id = e.question_id
+                    and a.clo_id = c.clo_id
+                    and c.plo_id = p.plo_id
+                    and d.school_id = '{}'
+                    GROUP BY p.plo_num,r.student_id) derived
+             GROUP BY derived.plo_num
+                   '''.format(school))
+    row = cursor.fetchall()
+    Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
 
 #     cursor.close()
 #     return row
