@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'assets/css/login.css' %}" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="login">
+    <center><div class="logo">
+            {% csrf_token %}
+            <img src="{%  static 'assets/images/logo.png' %}" width="150px">
+        </div>
+    </center>
+        <br>
+        <form action="{% url 'authenticationHome'%}" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="User ID" name="userid">
+            <br>
+            <input type="password" placeholder="Password" name="password">
+            <br><br>
+            <center><button type="submit" class="btn btn-primary center">Log In</button>,</center>
+        </form>
+
+    </div>
+
+</body>
+</html>
