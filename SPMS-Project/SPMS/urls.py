@@ -30,6 +30,7 @@ urlpatterns = [
     path('StuPloAnal',views.StuPloAnal,name="StuPloAnal"),
     path('StuPloTbl',views.StuPloTbl,name="StuPloTbl"),
     path('CourseReport',views.CourseReport,name="CourseReport"),
+    path('CourseOutline',views.CourseOutline,name="CourseOutline"),
     path('coentry',views.COentry,name="coentry"),
     # path('pdf',views.pdf,name="pdf_convert"),
 

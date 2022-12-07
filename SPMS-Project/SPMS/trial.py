@@ -8,10 +8,12 @@ mydb=mysql.connector.connect(
         password= 'inja',  
         database= 'spms'  
     )
-def getCourseWiseStudentPLO(student_id):
+
+
+def getCOWiseStudentPLO(student_id):
     cursor = mydb.cursor()
-    cursor.execute('''
-        SELECT p.plo_num as plo_num,co.course_id,cast(100*sum(e.obtained_marks)/sum(a.total_marks) as decimal(10,2))
+    cursor.execute(''' 
+               SELECT p.plo_num as plo_num,co.clo_num, cast(100*sum(e.obtained_marks)/sum(a.total_marks) as decimal(10,2)) 
                FROM spms_registration_t r,
                    spms_question_t a, 
                    spms_evaluation_t e,
@@ -36,21 +38,21 @@ def getCourseWiseStudentPLO(student_id):
                     and a.clo_id=co.clo_id 
                     and co.plo_id = p.plo_id
                     and p.plo_num = derived.plo_num
-               GROUP BY  p.plo_id,co.course_id'''.format(student_id))
+               GROUP BY  p.plo_id,co.clo_num
+               '''.format(student_id))
     row = cursor.fetchall()
     cursor.close()
     table = []
-    courses = []
+    cos = []
 
     for entry in row:
-        if entry[1] not in courses:
-            courses.append(entry[1])
-    courses.sort()
+        if entry[1] not in cos:
+            cos.append(entry[1])
+    cos.sort()
     plo = ["PLO1", "PLO2", "PLO3", "PLO4", "PLO5", "PLO6", "PLO7", "PLO8", "PLO9", "PLO10", "PLO11", "PLO12"]
 
-    for i in courses:
-        temptable = [i]
-
+    for i in cos:
+        temptable = []
         for j in plo:
             found = False
             for k in row:
@@ -58,6 +60,12 @@ def getCourseWiseStudentPLO(student_id):
                     temptable.append(k[2])
                     found = True
             if not found:
-                temptable.append('N/A')
+                temptable.append(0)
         table.append(temptable)
-    return plo, courses, table
+    return plo, cos, table
+
+
+print(getCOWiseStudentPLO(1612985)[0])
+print(getCOWiseStudentPLO(1612985)[1])
+print(getCOWiseStudentPLO(1612985)[2][0])
+print(getCOWiseStudentPLO(1612985)[2][1])

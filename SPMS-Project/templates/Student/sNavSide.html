@@ -44,6 +44,14 @@
         {% endif %}
         
       </li></center>
+      <center><li class="nav-item">
+        {% if page == "cout" %}
+        <a class="nav-link active" href="CourseOutline">COURSE<br> OUTLINE</a>
+        {% else %}
+        <a class="nav-link" href="CourseOutline">COURSE<br> OUTLINE</a>
+        {% endif %}
+        
+      </li></center>
     </ul>
     <a class="btn btn-danger" href="{% url 'logout'%}">Logout</a>
   </div>
