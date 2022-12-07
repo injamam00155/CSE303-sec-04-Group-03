@@ -125,7 +125,14 @@ def CourseReport(request):
     return render(request,"Faculty\CourseReport.html",context)
 
 def QuestionBank(request):
+    question=0
+    course_id=request.GET.get('courseid')
+    section_id=request.GET.get('section')
+    assessment=request.GET.get('assessment')
+    semester=request.GET.get('semester')
+    question=queries.fetchQuestions(course_id,section_id,assessment,semester)
     context={
+        "question":question,
         "page":"ques",
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
@@ -186,14 +193,14 @@ def TwoTraceSpider(t,r1,r2):
     fig.add_trace(data=go.Scatterpolar(
         r = r1,
         theta = t,
-        fill='toself'
-        name="You"
+        fill='toself',
+        name="You",
     ))
     fig.add_trace(data=go.Scatterpolar(
         r = r2,
         theta = t,
-        fill='toself'
-        name="Department Average"
+        fill='toself',
+        name="Department Average",
     ))
     return plot(fig, output_type='div',include_plotlyjs=True)
 

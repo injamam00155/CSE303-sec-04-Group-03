@@ -5,6 +5,21 @@ import numpy as np
 
 mydb=dbConnection.queriesDB()
 
+def fetchQuestions(course_id,section_id,assessment,semester):
+    cursor = mydb.cursor()
+    cursor.execute('''        
+    use spms;
+    SELECT question_id,total_marks, weight, clo_id
+    FROM spms.spms_section_t as s,spms.spms_question_t as q
+    WHERE s.section_id=q.section_id
+    AND   s.section_num = {}
+    AND course_id='{}'
+    and assessment_name='{}}'
+    and semester="{}";'''.format(section_id,course_id,assessment,semester))
+    rows=cursor.fetchall()
+    cursor.close()
+    return [[][][][]]
+
 
 # print(mydb)
 # cursor = mydb.cursor()
@@ -284,13 +299,13 @@ def getSchoolWiseGPA(school, semester):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                                and st.department_id = d.departmentID
-                                and d.school_id = s.schoolID
+                                and st.department_id = d.department_id
+                                and d.school_id = s.school_id
                                 and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
                                 and r.registration_id = e.registration_id 
                                 and e.question_id = a.question_id
-                                and s.schoolID = '{}'
+                                and s.school_id = '{}'
                                 and r.semester='{}'
                            GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                        GROUP BY student_id,clo_id) Derived2
@@ -689,7 +704,7 @@ def getDeanWiseGPA(dean):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                                and st.department_id = d.departmentID
+                                and st.department_id = d.department_id
                                 and d.school_id = dn.school_id
                                 and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
@@ -733,7 +748,7 @@ def getDeanWiseGPA(dean):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                                and st.department_id = d.departmentID
+                                and st.department_id = d.department_id
                                 and d.school_id = dn.school_id
                                 and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
@@ -968,7 +983,6 @@ def getCourseWiseStudentPLO(student_id, cat):
         table.append(temptable)
     return plo, courses, table
 
-
 def getCOWiseStudentPLO(student_id, cat):
     cursor = mydb.cursor()
     cursor.execute(''' 
@@ -1048,8 +1062,8 @@ def getSchoolWisePLO(school):
                     spms_clo_t c,
                     spms_plo_t p
                 WHERE r.student_id = st.student_id
-                    and st.department_id = d.departmentID
-                    and d.school_id = s.schoolID
+                    and st.department_id = d.department_id
+                    and d.school_id = s.school_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
                     and a.clo_id = c.clo_id
@@ -1059,7 +1073,7 @@ def getSchoolWisePLO(school):
              GROUP BY derived.plo_num
                    '''.format(school))
     row = cursor.fetchall()
-    Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+   # Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
 
     cursor.close()
     return row
@@ -1079,7 +1093,7 @@ def getDeptWisePLO(dept):
                     spms_clo_t c,
                     spms_plo_t p
                 WHERE r.student_id = st.student_id
-                    and st.department_id = d.departmentID
+                    and st.department_id = d.department_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
                     and a.clo_id = c.clo_id
@@ -1134,9 +1148,9 @@ def getSchoolWiseEnrolledStudents(school, semesters):
                 spms_student_t st,
                 spms_registration_t r
             WHERE r.student_id = st.student_id
-                and st.department_id = d.departmentID
-                and d.school_id = s.schoolID
-                 and s.schoolID = '{}'
+                and st.department_id = d.department_id
+                and d.school_id = s.school_id
+                 and s.school_id = '{}'
                 and r.semester = '{}'
             '''.format(school, semesters[0]))
         row = cursor.fetchall()
@@ -1148,9 +1162,9 @@ def getSchoolWiseEnrolledStudents(school, semesters):
                        spms_student_t st,
                        spms_registration_t r
                    WHERE r.student_id = st.student_id
-                       and st.department_id = d.departmentID
-                       and d.school_id = s.schoolID
-                        and s.schoolID = '{}'
+                       and st.department_id = d.department_id
+                       and d.school_id = s.school_id
+                        and s.school_id = '{}'
                        and r.semester in {}
                    '''.format(school, str(tuple(semesters))))
         row = cursor.fetchall()
@@ -1321,8 +1335,8 @@ def getDeptWisePLOStats(dept):
                               and a.question_id = e.question_id
                               and a.clo_id = c.clo_id
                               and c.plo_id = p.plo_id
-                              and st.department_id = d.departmentID
-                              and d.departmentID = '{}'
+                              and st.department_id = d.department_id
+                              and d.department_id = '{}'
                           GROUP BY p.plo_num, r.student_id,c.course_id) derived1
                       GROUP BY  plo_num,student_id) derived2
                     GROUP BY plo_num
@@ -1351,8 +1365,8 @@ def getDeptWisePLOStats(dept):
                                   and a.question_id = e.question_id
                                   and a.clo_id = c.clo_id
                                   and c.plo_id = p.plo_id
-                                  and st.department_id = d.departmentID
-                                  and d.departmentID = '{}'
+                                  and st.department_id = d.department_id
+                                  and d.department_id = '{}'
                               GROUP BY p.plo_num, r.student_id,c.course_id) derived1
                           GROUP BY  plo_num,student_id
                           HAVING avg(coursemarks)>=40) derived2
@@ -1399,9 +1413,9 @@ def getSchoolWisePLOStats(school):
                               and a.question_id = e.question_id
                               and a.clo_id = c.clo_id
                               and c.plo_id = p.plo_id
-                              and st.department_id = d.departmentID
-                              and d.school_id = s.schoolID
-                              and s.schoolID = '{}'
+                              and st.department_id = d.department_id
+                              and d.school_id = s.school_id
+                              and s.school_id = '{}'
                           GROUP BY p.plo_num, r.student_id,c.course_id) derived1
                       GROUP BY  plo_num,student_id) derived2
                     GROUP BY plo_num
@@ -1430,9 +1444,9 @@ def getSchoolWisePLOStats(school):
                                   and a.question_id = e.question_id
                                   and a.clo_id = c.clo_id
                                   and c.plo_id = p.plo_id
-                                  and st.department_id = d.departmentID
-                                  and d.school_id = s.schoolID
-                                  and s.schoolID = '{}'
+                                  and st.department_id = d.department_id
+                                  and d.school_id = s.school_id
+                                  and s.school_id = '{}'
                               GROUP BY p.plo_num, r.student_id,c.course_id) derived1
                           GROUP BY  plo_num,student_id
                           HAVING avg(coursemarks)>=40) derived2
@@ -1476,9 +1490,9 @@ def getSchoolWisePLOComp(school, semester):
                 and a.question_id = e.question_id
                 and a.clo_id = c.clo_id
                 and c.plo_id = p.plo_id
-                and st.department_id = d.departmentID
-                and d.school_id = s.schoolID
-                and s.schoolID = '{}'
+                and st.department_id = d.department_id
+                and d.school_id = s.school_id
+                and s.school_id = '{}'
                 and r.semester = '{}'
             GROUP BY p.plo_num, c.course_id, r.student_id) derived
         GROUP BY  derived.plo_num
@@ -1504,9 +1518,9 @@ def getSchoolWisePLOComp(school, semester):
                     and a.question_id = e.question_id
                     and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
-                    and st.department_id = d.departmentID
-                    and d.school_id = s.schoolID
-                    and s.schoolID = '{}'
+                    and st.department_id = d.department_id
+                    and d.school_id = s.school_id
+                    and s.school_id = '{}'
                     and r.semester = '{}'
                 GROUP BY p.plo_num, c.course_id, r.student_id
                 HAVING  100*(sum(e.obtained_marks)/sum(a.total_marks))>=40) derived
@@ -1548,8 +1562,8 @@ def getDeptWisePLOComp(dept, semester):
                 and a.question_id = e.question_id
                 and a.clo_id = c.clo_id
                 and c.plo_id = p.plo_id
-                and st.department_id = d.departmentID
-                and d.departmentID = '{}'
+                and st.department_id = d.department_id
+                and d.department_id = '{}'
                 and r.semester = '{}'
             GROUP BY p.plo_num, c.course_id, r.student_id) derived
         GROUP BY  derived.plo_num
@@ -1574,8 +1588,8 @@ def getDeptWisePLOComp(dept, semester):
                     and a.question_id = e.question_id
                     and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
-                    and st.department_id = d.departmentID
-                    and d.departmentID = '{}'
+                    and st.department_id = d.department_id
+                    and d.department_id = '{}'
                     and r.semester = '{}'
                 GROUP BY p.plo_num, c.course_id, r.student_id
                 HAVING  100*(sum(e.obtained_marks)/sum(a.total_marks))>=40) derived
@@ -2115,12 +2129,12 @@ def getSchoolReport(school):
                 spms_question_t a, 
                 spms_clo_t c
             WHERE st.student_id = r.student_id
-                and st.department_id = d.departmentID
-                and d.school_id = s.schoolID
+                and st.department_id = d.department_id
+                and d.school_id = s.school_id
                 and r.registration_id = e.registration_id
                 and e.question_id = a.question_id
                 and a.clo_id = c.clo_id
-                and s.schoolID = '{}'
+                and s.school_id = '{}'
             GROUP BY c.coNum,r.student_id) derived
         GROUP BY coNum
     '''.format(school))
@@ -2139,12 +2153,12 @@ def getSchoolReport(school):
                     spms_question_t a, 
                     spms_clo_t c
                 WHERE st.student_id = r.student_id
-                    and st.department_id = d.departmentID
-                    and d.school_id = s.schoolID
+                    and st.department_id = d.department_id
+                    and d.school_id = s.school_id
                     and r.registration_id = e.registration_id
                     and e.question_id = a.question_id
                     and a.clo_id = c.clo_id
-                    and s.schoolID = '{}'
+                    and s.school_id = '{}'
                     GROUP BY c.coNum,r.student_id) derived
             WHERE marks>=40
             GROUP BY coNum
@@ -2165,13 +2179,13 @@ def getSchoolReport(school):
                     spms_clo_t c,
                     spms_plo_t p
                 WHERE st.student_id = r.student_id
-                    and st.department_id = d.departmentID
-                    and d.school_id = s.schoolID
+                    and st.department_id = d.department_id
+                    and d.school_id = s.school_id
                     and r.registration_id = e.registration_id
                     and e.question_id = a.question_id
                     and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
-                    and s.schoolID = '{}'
+                    and s.school_id = '{}'
                     GROUP BY p.plo_num,r.student_id) derived
             GROUP BY plo_num
         '''.format(school))
@@ -2193,13 +2207,13 @@ def getSchoolReport(school):
                         spms_clo_t c,
                         spms_plo_t p
                     WHERE st.student_id = r.student_id
-                        and st.department_id = d.departmentID
-                        and d.school_id = s.schoolID
+                        and st.department_id = d.department_id
+                        and d.school_id = s.school_id
                         and r.registration_id = e.registration_id
                         and e.question_id = a.question_id
                         and a.clo_id = c.clo_id
                         and c.plo_id = p.plo_id
-                        and s.schoolID = '{}'
+                        and s.school_id = '{}'
                     GROUP BY p.plo_num,r.student_id) derived
                 WHERE marks>=40
                 GROUP BY plo_num
