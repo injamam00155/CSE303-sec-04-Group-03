@@ -18,22 +18,30 @@ def PloAchieve(user_id):
         x=queries.getStudentWisePLO(user_id)[0], 
         y=queries.getStudentWisePLO(user_id)[1],
         labels={'x':'PLO ID','y':'Percentage Achieved'})
-    PloAchievement=fig.to_html()
-    return PloAchievement
+    return plot(fig, output_type='div',include_plotlyjs=True)
 
-def home(request):
-    # plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
-    student_id=queries.getCurrUser()[0][0]
+def PloCompare(user_id):
+    df=pd.DataFrame({
+        'PLONumber':queries.getStudentWisePLO(user_id)[0],
+        'YourPLO':queries.getStudentWisePLO(user_id)[1],
+        'DeptAverage':queries.getDeptWisePLO(queries.getDept(user_id))[1]
+    })
+    fig = px.histogram(df,x="PLONumber",y=["YourPLO","DeptAverage"],barmode='group')
+    return plot(fig, output_type='div',include_plotlyjs=True)
+
+def home(request):  
+    user_id=queries.getCurrUser()[0][0]
+    user_dept=queries.getDept(user_id)
     context={
         "page":"dashboard",
-        "id":student_id,
+        "id":user_id,
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
-        "PloAchievement":PloAchieve(student_id),
-        "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(student_id)[1],queries.getStudentWiseCLO(student_id)[0]),
-        "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(student_id)[1],queries.getStudentWisePLO(student_id)[0]),
-        # "GPAAnalysis":TwoTraceLineChart(queries.)
-        # "PLOAnalysis":TwoTraceSpider(queries.getStudentWisePLO(student_id)[0],queries.getStudentWisePLO(student_id)[1],queries.getDeptWisePLO(queries.getDept(student_id))[1])
+        "PLOAchievement":PloAchieve(user_id),
+        "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(user_id)[1],queries.getStudentWiseCLO(user_id)[0]),
+        "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(user_id)[1],queries.getStudentWisePLO(user_id)[0]),
+        "GPAAnalysis":TwoTraceLineChart(queries.getStudentSemesterWiseGPA(user_id)[0],queries.getStudentSemesterWiseGPA(user_id)[1],queries.getDeptSemesterWiseGPA(user_dept)[1]),
+        "PLOComparison":PloCompare(user_id)
         }
         
     return render(request,"Student/sHome.html", context)
@@ -89,14 +97,6 @@ def PloAchievement(request):
         }
     return render(request,"Student\PloAchievement.html",context)
 
-def QuestionBank(request):
-    context={
-        "page":"ques",
-        "id":queries.getCurrUser()[0][0],
-        "group":queries.getCurrUser()[0][1],
-        "name":queries.getName(str(queries.getCurrUser()[0][0])),
-        }
-    return render(request,"Student\QuestionBank.html",context)
 
 def StuPloAnal(request):
     context={
@@ -126,15 +126,15 @@ def CourseReport(request):
         }
     return render(request,"Faculty\CourseReport.html",context)
 
+
 def QuestionBank(request):
-    question=0
     course_id=request.GET.get('courseid')
     section_id=request.GET.get('section')
     assessment=request.GET.get('assessment')
     semester=request.GET.get('semester')
-    question=queries.fetchQuestions(course_id,section_id,assessment,semester)
+    # question=queries.fetchQuestions(course_id,section_id,assessment,semester)
     context={
-        "question":question,
+        # "question":question,
         "page":"ques",
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
@@ -191,7 +191,7 @@ def OneTraceSpider(rl,tl):
     return fig
 
 def TwoTraceSpider(t,r1,r2):
-    fig=go.figure()
+    fig=go.Figure()
     fig.add_trace(data=go.Scatterpolar(
         r = r1,
         theta = t,
@@ -209,13 +209,13 @@ def TwoTraceSpider(t,r1,r2):
 def TwoTraceLineChart(a,b,c):
     trace0 = go.Scatter(
         x=a,
-        y1=b
+        y=b
     )
     trace1 = go.Scatter(
         x=a,
-        y2=c
+        y=c
     )
-    data=[trace0,trace1]
-    fig=go.figure(data=data)
+    graph=[trace0,trace1]
+    fig=go.Figure(data=graph)
     return plot(fig, output_type='div',include_plotlyjs=True)
 

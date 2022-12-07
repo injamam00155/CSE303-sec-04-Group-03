@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'pdf_convert.app.PdfConvertConfig'
     #'chartjs',
+=======
+    # 'SPMS'
+>>>>>>> 9d2fd3bd0369a86f50eefe3faee3a09022b57dad
 ]
 
 MIDDLEWARE = [
