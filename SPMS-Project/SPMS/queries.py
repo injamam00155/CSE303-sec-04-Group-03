@@ -18,7 +18,8 @@ def fetchQuestions(course_id,section_id,assessment,semester):
     and semester="{}";'''.format(section_id,course_id,assessment,semester))
     rows=cursor.fetchall()
     cursor.close()
-    return [[][][][]]
+    # return [[][][][]]
+    
 
 
 # print(mydb)
