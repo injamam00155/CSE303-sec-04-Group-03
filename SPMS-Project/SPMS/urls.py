@@ -31,4 +31,5 @@ urlpatterns = [
     path('StuPloTbl',views.StuPloTbl,name="StuPloTbl"),
     path('CourseReport',views.CourseReport,name="CourseReport"),
     path('coentry',views.COentry,name="coentry"),
+
 ]

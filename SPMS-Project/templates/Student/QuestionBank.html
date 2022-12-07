@@ -1,6 +1,6 @@
 {%extends "student/sNavSide.html"%}
 {%block content%}
-<from action="{% url 'questions'%}" method="post">
+<from action="{% url 'QuestionBank'%}" method="post">
     {% csrf_token %}
     Course ID: <input type="text">
     Semester: <input type="text">

@@ -10,15 +10,32 @@ from plotly.offline import plot
 
 
 # Create your views here.
+
+def PloAchieve(user_id):
+    # fig = px.bar(x=queries.getStudentWisePLO(user_id)[0], y=queries.getStudentWisePLO(user_id)[1])
+    # fig = px.bar(queries.getStudentWisePLO(user_id))
+    fig = px.bar(
+        x=queries.getStudentWisePLO(user_id)[0], 
+        y=queries.getStudentWisePLO(user_id)[1],
+        labels={'x':'PLO ID','y':'Percentage Achieved'})
+    PloAchievement=fig.to_html()
+    return PloAchievement
+
 def home(request):
-    plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
+    # plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
+    student_id=queries.getCurrUser()[0][0]
     context={
-        "plot1":plot_div,
         "page":"dashboard",
-        "id":queries.getCurrUser()[0][0],
+        "id":student_id,
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "PloAchievement":PloAchieve(student_id),
+        "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(student_id)[1],queries.getStudentWiseCLO(student_id)[0]),
+        "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(student_id)[1],queries.getStudentWisePLO(student_id)[0]),
+        # "GPAAnalysis":TwoTraceLineChart(queries.)
+        "PLOAnalysis":TwoTraceSpider(queries.getStudentWisePLO(student_id)[0],queries.getStudentWisePLO(student_id)[1],queries.getDeptWisePLO(queries.getDept(student_id))[1])
         }
+        
     return render(request,"Student/sHome.html", context)
 
 def authenticate(request):
@@ -110,13 +127,21 @@ def CourseReport(request):
     return render(request,"Faculty\CourseReport.html",context)
 
 def QuestionBank(request):
+    question=0
+    course_id=request.GET.get('courseid')
+    section_id=request.GET.get('section')
+    assessment=request.GET.get('assessment')
+    semester=request.GET.get('semester')
+    question=queries.fetchQuestions(course_id,section_id,assessment,semester)
     context={
+        "question":question,
         "page":"ques",
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
         }
     return render(request,"Student\QuestionBank.html",context)
+    
 def QuestionBankEntry(request):
     context={
             "page":"quesentry",
@@ -162,6 +187,35 @@ def OneTraceSpider(rl,tl):
         theta = tl,
         fill='toself'
     ))
+    fig=fig.to_html()
+    return fig
+
+def TwoTraceSpider(t,r1,r2):
+    fig=go.figure()
+    fig.add_trace(data=go.Scatterpolar(
+        r = r1,
+        theta = t,
+        fill='toself',
+        name="You",
+    ))
+    fig.add_trace(data=go.Scatterpolar(
+        r = r2,
+        theta = t,
+        fill='toself',
+        name="Department Average"
+    ))
     return plot(fig, output_type='div',include_plotlyjs=True)
 
+def TwoTraceLineChart(a,b,c):
+    trace0 = go.Scatter(
+        x=a,
+        y1=b
+    )
+    trace1 = go.Scatter(
+        x=a,
+        y2=c
+    )
+    data=[trace0,trace1]
+    fig=go.figure(data=data)
+    return plot(fig, output_type='div',include_plotlyjs=True)
 

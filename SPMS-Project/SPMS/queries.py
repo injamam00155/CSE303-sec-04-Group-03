@@ -5,6 +5,28 @@ import numpy as np
 
 mydb=dbConnection.queriesDB()
 
+def fetchQuestions(course_id,section_id,assessment,semester):
+    cursor = mydb.cursor()
+    cursor.execute('''        
+    use spms;
+    SELECT question_id,total_marks, weight, clo_id
+    FROM spms.spms_section_t as s,spms.spms_question_t as q
+    WHERE s.section_id=q.section_id
+    AND   s.section_num = {}
+    AND course_id='{}'
+    and assessment_name='{}}'
+    and semester="{}";'''.format(section_id,course_id,assessment,semester))
+    rows=cursor.fetchall()
+    cursor.close()
+    QuestionBank=[[]for i in range(4)]
+    for i in range(len(rows)):
+        QuestionBank[0].append(rows[i][0])
+        QuestionBank[1].append(rows[i][1])
+        QuestionBank[2].append(rows[i][2])
+        QuestionBank[3].append(rows[i][3])
+    return QuestionBank
+    
+
 
 # print(mydb)
 # cursor = mydb.cursor()
@@ -68,6 +90,19 @@ def getName(user_id):
             return name
             #output fname+lname(null for now)
 
+def getDept(user_id):
+    if getGroup(user_id)=="student":
+        str="student"
+    elif getGroup(user_id)=="faculty":
+        str="faculty"
+    cursor = mydb.cursor()
+    cursor.execute('''        
+            SELECT department_id   
+            FROM spms_{}_t
+            WHERE {}_id={}'''.format(user_id))
+    department=cursor.fetchall()
+    cursor.close()
+    return department
 
 def setCurrUser(user_id):
     try:
@@ -140,10 +175,12 @@ def getPassword(user_id):
 
 
 ## Analysis
+
+
 def getStudentCourseWiseCO(user_id,courseid):
     cursor = mydb.cursor()
     cursor.execute('''
-    SELECT coNum, (100*(sum( e.obtainedMarks)/sum( a.totalMarks))) as copercent
+    SELECT coNum, (100*(sum( e.obtained_marks)/sum( a.total_marks))) as copercent
                 FROM spms_registration_t r,
                     spms_question_t a, 
                     spms_evaluation_t e,
@@ -151,7 +188,7 @@ def getStudentCourseWiseCO(user_id,courseid):
                     spms_plo_t p
                 WHERE  r.registration_id = e.registration_id 
                     and e.question_id = a.question_id
-                    and a.co_id=clo.clo_id 
+                    and a.clo_id=clo.clo_id 
                     and clo.plo_id = p.plo_id
                     and  r.student_id = {}
 		            and clo.course_id="{}"
@@ -188,18 +225,18 @@ def getStudentCGPA(student_id):
                         ELSE 0.0
                     END as grade
                 FROM(
-                    SELECT c.clo_id as clo_id,a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                    SELECT c.clo_id as clo_id,a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                     FROM spms_registration_t r,
                         spms_section_t sc, 
                         spms_course_t c,
                         spms_question_t a, 
                         spms_evaluation_t e
-                    WHERE r.section_id = sc.section_id
+                    WHERE r.section_id = sc.sectionID
                         and sc.course_id = c.clo_id 
                         and r.registration_id = e.registration_id 
                         and e.question_id = a.question_id
                         and r.student_id = '{}'
-                    GROUP BY  c.clo_id,a.assessment_name) Derived 
+                    GROUP BY  c.clo_id,a.assessmentName) Derived 
                 GROUP BY clo_id) Derived
                     '''.format(student_id))
         row = cursor.fetchall()[0][0]
@@ -228,19 +265,19 @@ def getStudentWiseGPA(student_id, semester):
                         ELSE 0.0
                     END as grade
                 FROM(
-                    SELECT c.clo_id as clo_id,a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                    SELECT c.clo_id as clo_id,a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                     FROM spms_registration_t r,
                         spms_section_t sc, 
                         spms_course_t c,
                         spms_question_t a, 
                         spms_evaluation_t e
-                    WHERE r.section_id = sc.section_id
+                    WHERE r.section_id = sc.sectionID
                         and sc.course_id = c.clo_id 
                         and r.registration_id = e.registration_id 
                         and e.question_id = a.question_id
                         and r.student_id = '{}'
                         and r.semester='{}' 
-                    GROUP BY  c.clo_id,a.assessment_name) Derived 
+                    GROUP BY  c.clo_id,a.assessmentName) Derived 
                 GROUP BY clo_id) Derived
                     '''.format(student_id, semester))
 
@@ -272,7 +309,7 @@ def getSchoolWiseGPA(school, semester):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_department_t d,
                                 spms_school_t s,
@@ -282,15 +319,15 @@ def getSchoolWiseGPA(school, semester):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                                and st.department_id = d.departmentID
-                                and d.school_id = s.schoolID
-                                and r.section_id = sc.section_id
+                                and st.department_id = d.department_id
+                                and d.school_id = s.school_id
+                                and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
                                 and r.registration_id = e.registration_id 
                                 and e.question_id = a.question_id
-                                and s.schoolID = '{}'
+                                and s.school_id = '{}'
                                 and r.semester='{}'
-                           GROUP BY  st.student_id,c.clo_id,a.assessment_name) Derived1
+                           GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                        GROUP BY student_id,clo_id) Derived2
                    GROUP BY student_id)
                        '''.format(school, semester))
@@ -322,7 +359,7 @@ def getDeptWiseGPA(dept, semester):
                         END as gradepoint
                     FROM(
                         SELECT st.student_id as student_id,c.clo_id as clo_id,
-                            a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                            a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                         FROM spms_student_t st,
                             spms_registration_t r,
                             spms_section_t sc, 
@@ -330,13 +367,13 @@ def getDeptWiseGPA(dept, semester):
                             spms_question_t a, 
                             spms_evaluation_t e
                         WHERE st.student_id = r.student_id
-                            and r.section_id = sc.section_id
+                            and r.section_id = sc.sectionID
                             and sc.course_id = c.clo_id 
                             and r.registration_id = e.registration_id 
                             and e.question_id = a.question_id
                             and st.department_id = '{}'
                             and r.semester='{}'
-                        GROUP BY  st.student_id,c.clo_id,a.assessment_name) Derived1
+                        GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                     GROUP BY student_id,clo_id) Derived2
                 GROUP BY student_id)
                     '''.format(dept, semester))
@@ -369,7 +406,7 @@ def getProgramWiseGPA(program, semester):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                spms_registration_t r,
                                spms_section_t sc, 
@@ -377,13 +414,13 @@ def getProgramWiseGPA(program, semester):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                               and r.section_id = sc.section_id
+                               and r.section_id = sc.sectionID
                                and sc.course_id = c.clo_id 
                                and r.registration_id = e.registration_id 
                                and e.question_id = a.question_id
                                and st.program_id = '{}'
                                and r.semester='{}'
-                           GROUP BY  st.student_id,c.clo_id,a.assessment_name) Derived1
+                           GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                        GROUP BY student_id,clo_id) Derived2
                    GROUP BY student_id)
                        '''.format(program, semester))
@@ -414,7 +451,7 @@ def getCourseWiseGPA(course, semester):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks
                            FROM spms_student_t st,
                                spms_registration_t r,
                                spms_section_t sc, 
@@ -422,13 +459,13 @@ def getCourseWiseGPA(course, semester):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                               and r.section_id = sc.section_id
+                               and r.section_id = sc.sectionID
                                and sc.course_id = c.clo_id 
                                and r.registration_id = e.registration_id 
                                and e.question_id = a.question_id
                                and c.clo_id = '{}'
                                and r.semester='{}'
-                           GROUP BY  st.student_id,a.assessment_name) Derived
+                           GROUP BY  st.student_id,a.assessmentName) Derived
                        GROUP BY student_id) Derived2
                        '''.format(course, semester))
 
@@ -458,7 +495,7 @@ def getInstructorWiseGPA(instructor, semester):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks
                            FROM spms_student_t st,
                                spms_registration_t r,
                                spms_section_t sc, 
@@ -466,12 +503,12 @@ def getInstructorWiseGPA(instructor, semester):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                               and r.section_id = sc.section_id
+                               and r.section_id = sc.sectionID
                                and r.registration_id = e.registration_id 
                                and e.question_id = a.question_id
                                and sc.faculty_id = '{}'
                                and r.semester='{}'
-                           GROUP BY  st.student_id,a.assessment_name) Derived
+                           GROUP BY  st.student_id,a.assessmentName) Derived
                        GROUP BY student_id) Derived2
                        '''.format(instructor, semester))
 
@@ -501,7 +538,7 @@ def getInstructorWiseGPAForCourse(course, semester):
                            END as gradepoint
                        FROM(
                            SELECT sc.faculty_id as FacultyID, st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks
                            FROM spms_student_t st,
                                spms_registration_t r,
                                spms_section_t sc, 
@@ -509,12 +546,12 @@ def getInstructorWiseGPAForCourse(course, semester):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                               and r.section_id = sc.section_id
+                               and r.section_id = sc.sectionID
                                and r.registration_id = e.registration_id 
                                and e.question_id = a.question_id
                                and sc.course_id = '{}'
                                and r.semester='{}'
-                           GROUP BY  sc.faculty_id,st.student_id,a.assessment_name) Derived
+                           GROUP BY  sc.faculty_id,st.student_id,a.assessmentName) Derived
                        GROUP BY FacultyID,student_id) Derived2
                GROUP BY FacultyID
                        '''.format(course, semester))
@@ -568,7 +605,7 @@ def getHeadWiseGPA(head):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_head_t h,
                                spms_registration_t r,
@@ -578,13 +615,13 @@ def getHeadWiseGPA(head):
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
                                 and st.department_id = h.department_id
-                                and r.section_id = sc.section_id
+                                and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
                                 and r.registration_id = e.registration_id 
                                 and e.question_id = a.question_id
                                 and h.headID = '{}'
                                 and r.semester='{}'
-                           GROUP BY  st.student_id,c.clo_id,a.assessment_name) Derived1
+                           GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                        GROUP BY student_id,clo_id) Derived2
                    GROUP BY student_id)
                        '''.format(head.headID, semesters[0]))
@@ -610,7 +647,7 @@ def getHeadWiseGPA(head):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_head_t h,
                                spms_registration_t r,
@@ -620,13 +657,13 @@ def getHeadWiseGPA(head):
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
                                 and st.department_id = h.department_id
-                                and r.section_id = sc.section_id
+                                and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
                                 and r.registration_id = e.registration_id 
                                 and e.question_id = a.question_id
                                 and h.headID = '{}'
                                 and r.semester in {}
-                           GROUP BY  st.student_id,c.clo_id,a.assessment_name) Derived1
+                           GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                        GROUP BY student_id,clo_id) Derived2
                    GROUP BY student_id)
                        '''.format(head.headID, str(tuple(semesters))))
@@ -677,7 +714,7 @@ def getDeanWiseGPA(dean):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_department_t d,
                                 spms_dean_t dn,
@@ -687,15 +724,15 @@ def getDeanWiseGPA(dean):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                                and st.department_id = d.departmentID
+                                and st.department_id = d.department_id
                                 and d.school_id = dn.school_id
-                                and r.section_id = sc.section_id
+                                and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
                                 and r.registration_id = e.registration_id 
                                 and e.question_id = a.question_id
                                 and dn.deanID= '{}'
                                 and r.semester='{}'
-                           GROUP BY  st.student_id,c.clo_id,a.assessment_name) Derived1
+                           GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                        GROUP BY student_id,clo_id) Derived2
                    GROUP BY student_id)
                        '''.format(dean.deanID, semesters[0]))
@@ -721,7 +758,7 @@ def getDeanWiseGPA(dean):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                 spms_department_t d,
                                 spms_dean_t dn,
@@ -731,15 +768,15 @@ def getDeanWiseGPA(dean):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                                and st.department_id = d.departmentID
+                                and st.department_id = d.department_id
                                 and d.school_id = dn.school_id
-                                and r.section_id = sc.section_id
+                                and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
                                 and r.registration_id = e.registration_id 
                                 and e.question_id = a.question_id
                                 and dn.deanID= '{}'
                                 and r.semester in {}
-                           GROUP BY  st.student_id,c.clo_id,a.assessment_name) Derived1
+                           GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                        GROUP BY student_id,clo_id) Derived2
                    GROUP BY student_id)
                        '''.format(dean.deanID, str(tuple(semesters))))
@@ -790,7 +827,7 @@ def getVCWiseGPA(vc):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                spms_registration_t r,
                                spms_section_t sc, 
@@ -798,12 +835,12 @@ def getVCWiseGPA(vc):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                                and r.section_id = sc.section_id
+                                and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
                                 and r.registration_id = e.registration_id 
                                 and e.question_id = a.question_id
                                 and r.semester='{}'
-                           GROUP BY  st.student_id,c.clo_id,a.assessment_name) Derived1
+                           GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                        GROUP BY student_id,clo_id) Derived2
                    GROUP BY student_id)
                        '''.format(semesters[0]))
@@ -831,7 +868,7 @@ def getVCWiseGPA(vc):
                            END as gradepoint
                        FROM(
                            SELECT st.student_id as student_id,c.clo_id as clo_id,
-                               a.weight*(sum(e.obtainedMarks)/sum(a.totalMarks)) as Marks, c.coNum as Credits
+                               a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
                            FROM spms_student_t st,
                                spms_registration_t r,
                                spms_section_t sc, 
@@ -839,12 +876,12 @@ def getVCWiseGPA(vc):
                                spms_question_t a, 
                                spms_evaluation_t e
                            WHERE st.student_id = r.student_id
-                                and r.section_id = sc.section_id
+                                and r.section_id = sc.sectionID
                                 and sc.course_id = c.clo_id 
                                 and r.registration_id = e.registration_id 
                                 and e.question_id = a.question_id
                                 and r.semester in {}
-                           GROUP BY  st.student_id,c.clo_id,a.assessment_name) Derived1
+                           GROUP BY  st.student_id,c.clo_id,a.assessmentName) Derived1
                        GROUP BY student_id,clo_id) Derived2
                    GROUP BY student_id)
                        '''.format(str(tuple(semesters))))
@@ -852,57 +889,85 @@ def getVCWiseGPA(vc):
     cursor.close()
     return row
 
+#CLO Analysis
+def getStudentWiseCLO(student_id):
+    cursor = mydb.cursor()
+    cursor.execute(''' 
+                SELECT co.clo_num as clo_num,100*(sum( e.obtained_marks)/sum( a.total_marks)) as clopercent
+                FROM spms_registration_t r,
+                    spms_question_t a, 
+                    spms_evaluation_t e,
+                    spms_clo_t co
+                WHERE  r.registration_id = e.registration_id 
+                    and e.question_id = a.question_id
+                    and a.clo_id=co.clo_id
+                    and  r.student_id = '{}'
+                GROUP BY  co.clo_num
+                '''.format(student_id))
+    row = cursor.fetchall()
+    cursor.close()
+    
+    CLO=[[]for i in range(2)]
+    for i in range(len(row)):
+        CLO[0].append(row[i][0])
+        CLO[1].append(row[i][1])
+    return CLO
 
 # PLO Analysis
 def getStudentWisePLO(student_id):
     cursor = mydb.cursor()
     cursor.execute(''' 
-                SELECT p.ploNum as plonum,100*(sum( e.obtainedMarks)/sum( a.totalMarks)) as plopercent
+                SELECT p.plo_num as plo_num,100*(sum( e.obtained_marks)/sum( a.total_marks)) as plopercent
                 FROM spms_registration_t r,
                     spms_question_t a, 
                     spms_evaluation_t e,
-                    spms_co_t co, 
+                    spms_clo_t co, 
                     spms_plo_t p
                 WHERE  r.registration_id = e.registration_id 
                     and e.question_id = a.question_id
-                    and a.co_id=co.clo_id 
+                    and a.clo_id=co.clo_id 
                     and co.plo_id = p.plo_id
                     and  r.student_id = '{}'
                 GROUP BY  p.plo_id
                 '''.format(student_id))
     row = cursor.fetchall()
     cursor.close()
-    return row
+    
+    PLO=[[]for i in range(2)]
+    for i in range(len(row)):
+        PLO[0].append(row[i][0])
+        PLO[1].append(row[i][1])
+    return PLO
 
 
 def getCourseWiseStudentPLO(student_id, cat):
     cursor = mydb.cursor()
     cursor.execute(''' 
-               SELECT p.ploNum as ploNum,co.course_id,sum(e.obtainedMarks),sum(a.totalMarks), derived.Total
+               SELECT p.plo_num as plo_num,co.course_id,sum(e.obtained_marks),sum(a.total_marks), derived.Total
                FROM spms_registration_t r,
                    spms_question_t a, 
                    spms_evaluation_t e,
-                   spms_co_t co, 
+                   spms_clo_t co, 
                    spms_plo_t p,
                    (
-                        SELECT p.ploNum as ploNum,sum(a.totalMarks) as Total, r.student_id as student_id
+                        SELECT p.plo_num as plo_num,sum(a.total_marks) as Total, r.student_id as student_id
                         FROM spms_registration_t r,
                             spms_question_t a, 
                             spms_evaluation_t e,
-                            spms_co_t co, 
+                            spms_clo_t co, 
                             spms_plo_t p
                         WHERE r.registration_id = e.registration_id 
                             and e.question_id = a.question_id
-                            and a.co_id=co.clo_id 
+                            and a.clo_id=co.clo_id 
                             and co.plo_id = p.plo_id 
                             and r.student_id = '{}'
                         GROUP BY  r.student_id,p.plo_id) derived
                WHERE r.student_id = derived.student_id
                     and e.registration_id = r.registration_id
                     and e.question_id = a.question_id
-                    and a.co_id=co.clo_id 
+                    and a.clo_id=co.clo_id 
                     and co.plo_id = p.plo_id
-                    and p.ploNum = derived.ploNum
+                    and p.plo_num = derived.plo_num
                GROUP BY  p.plo_id,co.course_id
                '''.format(student_id))
     row = cursor.fetchall()
@@ -938,35 +1003,34 @@ def getCourseWiseStudentPLO(student_id, cat):
         table.append(temptable)
     return plo, courses, table
 
-
 def getCOWiseStudentPLO(student_id, cat):
     cursor = mydb.cursor()
     cursor.execute(''' 
-               SELECT p.ploNum as ploNum,co.coNum, sum(e.obtainedMarks),sum(a.totalMarks),derived.Total 
+               SELECT p.plo_num as plo_num,co.coNum, sum(e.obtained_marks),sum(a.total_marks),derived.Total 
                FROM spms_registration_t r,
                    spms_question_t a, 
                    spms_evaluation_t e,
-                   spms_co_t co, 
+                   spms_clo_t co, 
                    spms_plo_t p,
                    (
-                        SELECT p.ploNum as ploNum,sum(a.totalMarks) as Total, r.student_id as student_id
+                        SELECT p.plo_num as plo_num,sum(a.total_marks) as Total, r.student_id as student_id
                         FROM spms_registration_t r,
                             spms_question_t a, 
                             spms_evaluation_t e,
-                            spms_co_t co, 
+                            spms_clo_t co, 
                             spms_plo_t p
                         WHERE r.registration_id = e.registration_id 
                             and e.question_id = a.question_id
-                            and a.co_id=co.clo_id 
+                            and a.clo_id=co.clo_id 
                             and co.plo_id = p.plo_id 
                             and r.student_id = '{}'
                         GROUP BY  r.student_id,p.plo_id) derived
                WHERE r.student_id = derived.student_id
                     and e.registration_id = r.registration_id
                     and e.question_id = a.question_id
-                    and a.co_id=co.clo_id 
+                    and a.clo_id=co.clo_id 
                     and co.plo_id = p.plo_id
-                    and p.ploNum = derived.ploNum
+                    and p.plo_num = derived.plo_num
                GROUP BY  p.plo_id,co.coNum
                '''.format(student_id))
     row = cursor.fetchall()
@@ -1006,29 +1070,31 @@ def getCOWiseStudentPLO(student_id, cat):
 def getSchoolWisePLO(school):
     cursor = mydb.cursor()
     cursor.execute('''
-             SELECT derived.plonum, avg(per)
+             SELECT derived.plo_num, avg(per)
              FROM(
-                SELECT p.plo_id as plo_id,p.ploNum as ploNum, 100*sum(e.obtainedMarks)/sum(a.TotalMarks) as per
+                SELECT p.plo_id as plo_id,p.plo_num as plo_num, 100*sum(e.obtained_marks)/sum(a.total_marks) as per
                 FROM spms_registration_t r,
                     spms_evaluation_t e,
                     spms_student_t st,
                     spms_department_t d,
                     spms_school_t s,
                     spms_question_t a,
-                    spms_co_t c,
+                    spms_clo_t c,
                     spms_plo_t p
                 WHERE r.student_id = st.student_id
-                    and st.department_id = d.departmentID
-                    and d.school_id = s.schoolID
+                    and st.department_id = d.department_id
+                    and d.school_id = s.school_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
                     and d.school_id = '{}'
-                    GROUP BY p.ploNum,r.student_id) derived
-             GROUP BY derived.ploNum
+                    GROUP BY p.plo_num,r.student_id) derived
+             GROUP BY derived.plo_num
                    '''.format(school))
     row = cursor.fetchall()
+    Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+
     cursor.close()
     return row
 
@@ -1036,25 +1102,25 @@ def getSchoolWisePLO(school):
 def getDeptWisePLO(dept):
     cursor = mydb.cursor()
     cursor.execute('''
-             SELECT derived.plonum, avg(per)
+             SELECT derived.plo_num, avg(per)
              FROM(
-                SELECT p.plo_id as plo_id,p.ploNum as ploNum, 100*sum(e.obtainedMarks)/sum(a.TotalMarks) as per
+                SELECT p.plo_id as plo_id,p.plo_num as plo_num, 100*sum(e.obtained_marks)/sum(a.total_marks) as per
                 FROM spms_registration_t r,
                     spms_evaluation_t e,
                     spms_student_t st,
                     spms_department_t d,
                     spms_question_t a,
-                    spms_co_t c,
+                    spms_clo_t c,
                     spms_plo_t p
                 WHERE r.student_id = st.student_id
                     and st.department_id = d.departmentID
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
                     and st.department_id = '{}'
-                    GROUP BY p.ploNum,r.student_id) derived
-             GROUP BY derived.ploNum
+                    GROUP BY p.plo_num,r.student_id) derived
+             GROUP BY derived.plo_num
                    '''.format(dept))
     row = cursor.fetchall()
     cursor.close()
@@ -1065,21 +1131,21 @@ def getDeptWisePLO(dept):
 def getProgramWisePLO(program):
     cursor = mydb.cursor()
     cursor.execute('''
-             SELECT derived.plonum, avg(per)
+             SELECT derived.plo_num, avg(per)
              FROM(
-                SELECT p.plo_id as plo_id, p.ploNum as ploNum, 100*sum(e.obtainedMarks)/sum(a.TotalMarks) as per
+                SELECT p.plo_id as plo_id, p.plo_num as plo_num, 100*sum(e.obtained_marks)/sum(a.total_marks) as per
                 FROM spms_registration_t r,
                     spms_evaluation_t e,
                     spms_student_t st,
                     spms_program_t p,
                     spms_question_t a,
-                    spms_co_t c,
+                    spms_clo_t c,
                     spms_plo_t p
                 WHERE r.student_id = st.student_id
-                    and st.program_id = p.programID
+                    and st.program_id = p.program_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
                     and st.program_id = '{}'
                     GROUP BY p.plo_id,r.student_id) derived
@@ -1102,9 +1168,9 @@ def getSchoolWiseEnrolledStudents(school, semesters):
                 spms_student_t st,
                 spms_registration_t r
             WHERE r.student_id = st.student_id
-                and st.department_id = d.departmentID
-                and d.school_id = s.schoolID
-                 and s.schoolID = '{}'
+                and st.department_id = d.department_id
+                and d.school_id = s.school_id
+                 and s.school_id = '{}'
                 and r.semester = '{}'
             '''.format(school, semesters[0]))
         row = cursor.fetchall()
@@ -1116,9 +1182,9 @@ def getSchoolWiseEnrolledStudents(school, semesters):
                        spms_student_t st,
                        spms_registration_t r
                    WHERE r.student_id = st.student_id
-                       and st.department_id = d.departmentID
-                       and d.school_id = s.schoolID
-                        and s.schoolID = '{}'
+                       and st.department_id = d.department_id
+                       and d.school_id = s.school_id
+                        and s.school_id = '{}'
                        and r.semester in {}
                    '''.format(school, str(tuple(semesters))))
         row = cursor.fetchall()
@@ -1164,7 +1230,7 @@ def getProgramWiseEnrolledStudents(program, semesters):
                 spms_student_t st,
                 spms_registration_t r
             WHERE r.student_id = st.student_id
-                and st.program_id = p.programID
+                and st.program_id = p.program_id
                 and st.program_id = '{}'
                 and r.semester = '{}'
             '''.format(program, semesters[0]))
@@ -1177,7 +1243,7 @@ def getProgramWiseEnrolledStudents(program, semesters):
                        spms_student_t st,
                        spms_registration_t r
                    WHERE r.student_id = st.student_id
-                       and st.program_id = p.programID
+                       and st.program_id = p.program_id
                        and st.program_id = '{}'
                        and r.semester in {}
                    '''.format(program, str(tuple(semesters))))
@@ -1209,20 +1275,20 @@ def getProgramWisePLOStats(program):
         cursor = mydb.cursor()
         cursor.execute('''SELECT COUNT(*)
                 FROM(SELECT AVG(percourse) as actual
-                    FROM (SELECT r.student_id as student_id, 100*sum(e.obtainedMarks)/sum(a.totalMarks) as percourse
+                    FROM (SELECT r.student_id as student_id, 100*sum(e.obtained_marks)/sum(a.total_marks) as percourse
                         FROM spms_registration_t r,
                             spms_evaluation_t e,
                             spms_question_t a,
-                            spms_co_t c,
+                            spms_clo_t c,
                             spms_plo_t p,
                             spms_program_t pr
                         WHERE r.registration_id = e.registration_id
                             and e.question_id = a.question_id
-                            and a.co_id = c.clo_id
+                            and a.clo_id = c.clo_id
                             and c.plo_id = p.plo_id
-                            and p.program_id = pr.programID
-                            and pr.programID='{}'
-                            and p.ploNum = '{}'
+                            and p.program_id = pr.program_id
+                            and pr.program_id='{}'
+                            and p.plo_num = '{}'
                         GROUP BY r.student_id,c.clo_id) per
                     GROUP BY per.student_id) avgTable
           '''.format(program, p))
@@ -1239,20 +1305,20 @@ def getProgramWisePLOStats(program):
                FROM(
                 SELECT student_id, AVG(percourse) as actual
                 FROM(
-                           SELECT r.student_id as student_id, 100*sum(e.obtainedMarks)/sum(a.totalMarks) as percourse
+                           SELECT r.student_id as student_id, 100*sum(e.obtained_marks)/sum(a.total_marks) as percourse
                                FROM spms_registration_t r,
                                    spms_evaluation_t e,
                                    spms_question_t a,
-                                   spms_co_t c,
+                                   spms_clo_t c,
                                    spms_plo_t p,
                                    spms_program_t pr
                                WHERE r.registration_id = e.registration_id
                                    and e.question_id = a.question_id
-                                   and a.co_id = c.clo_id
+                                   and a.clo_id = c.clo_id
                                    and c.plo_id = p.plo_id
-                                   and p.program_id = pr.programID
-                                   and pr.programID='{}'
-                                   and p.ploNum ='{}'
+                                   and p.program_id = pr.program_id
+                                   and pr.program_id='{}'
+                                   and p.plo_num ='{}'
                                GROUP BY r.student_id,r.registration_id) d1
                            GROUP BY student_id)d2
                            WHERE actual>=40
@@ -1271,29 +1337,29 @@ def getDeptWisePLOStats(dept):
     cursor = mydb.cursor()
 
     cursor.execute('''
-              SELECT ploNum,COUNT(Marks)
+              SELECT plo_num,COUNT(Marks)
               FROM(
-                    SELECT ploNum, student_id, avg(coursemarks) as Marks
+                    SELECT plo_num, student_id, avg(coursemarks) as Marks
                     FROM(
-                          SELECT p.ploNum as ploNum, r.student_id as student_id,c.course_id, 
-                                100*(sum(e.obtainedMarks)/sum(a.totalMarks)) as coursemarks
+                          SELECT p.plo_num as plo_num, r.student_id as student_id,c.course_id, 
+                                100*(sum(e.obtained_marks)/sum(a.total_marks)) as coursemarks
                           FROM spms_student_t st,
                               spms_registration_t r,
                               spms_department_t d,
                               spms_evaluation_t e,
                               spms_question_t a,
-                              spms_co_t c,
+                              spms_clo_t c,
                               spms_plo_t p
                           WHERE st.student_id = r.student_id
                               and e.registration_id = r.registration_id
                               and a.question_id = e.question_id
-                              and a.co_id = c.clo_id
+                              and a.clo_id = c.clo_id
                               and c.plo_id = p.plo_id
-                              and st.department_id = d.departmentID
-                              and d.departmentID = '{}'
-                          GROUP BY p.ploNum, r.student_id,c.course_id) derived1
-                      GROUP BY  ploNum,student_id) derived2
-                    GROUP BY ploNum
+                              and st.department_id = d.department_id
+                              and d.department_id = '{}'
+                          GROUP BY p.plo_num, r.student_id,c.course_id) derived1
+                      GROUP BY  plo_num,student_id) derived2
+                    GROUP BY plo_num
           '''.format(dept))
 
     row1 = cursor.fetchall()
@@ -1301,30 +1367,30 @@ def getDeptWisePLOStats(dept):
     row1.sort(key=lambda t: len(t[0]))
 
     cursor.execute('''
-                  SELECT ploNum,COUNT(Marks)
+                  SELECT plo_num,COUNT(Marks)
                   FROM(
-                        SELECT ploNum, student_id, avg(coursemarks) as Marks
+                        SELECT plo_num, student_id, avg(coursemarks) as Marks
                         FROM(
-                              SELECT p.ploNum as ploNum, r.student_id as student_id,c.course_id, 
-                                    100*(sum(e.obtainedMarks)/sum(a.totalMarks)) as coursemarks
+                              SELECT p.plo_num as plo_num, r.student_id as student_id,c.course_id, 
+                                    100*(sum(e.obtained_marks)/sum(a.total_marks)) as coursemarks
                               FROM spms_student_t st,
                                   spms_registration_t r,
                                   spms_department_t d,
                                   spms_evaluation_t e,
                                   spms_question_t a,
-                                  spms_co_t c,
+                                  spms_clo_t c,
                                   spms_plo_t p
                               WHERE st.student_id = r.student_id
                                   and e.registration_id = r.registration_id
                                   and a.question_id = e.question_id
-                                  and a.co_id = c.clo_id
+                                  and a.clo_id = c.clo_id
                                   and c.plo_id = p.plo_id
-                                  and st.department_id = d.departmentID
-                                  and d.departmentID = '{}'
-                              GROUP BY p.ploNum, r.student_id,c.course_id) derived1
-                          GROUP BY  ploNum,student_id
+                                  and st.department_id = d.department_id
+                                  and d.department_id = '{}'
+                              GROUP BY p.plo_num, r.student_id,c.course_id) derived1
+                          GROUP BY  plo_num,student_id
                           HAVING avg(coursemarks)>=40) derived2
-                        GROUP BY ploNum
+                        GROUP BY plo_num
               '''.format(dept))
 
     row2 = cursor.fetchall()
@@ -1348,63 +1414,63 @@ def getSchoolWisePLOStats(school):
     cursor = mydb.cursor()
 
     cursor.execute('''
-              SELECT ploNum,COUNT(Marks)
+              SELECT plo_num,COUNT(Marks)
               FROM(
-                    SELECT ploNum, student_id, avg(coursemarks) as Marks
+                    SELECT plo_num, student_id, avg(coursemarks) as Marks
                     FROM(
-                          SELECT p.ploNum as ploNum, r.student_id as student_id,c.course_id, 
-                                100*(sum(e.obtainedMarks)/sum(a.totalMarks)) as coursemarks
+                          SELECT p.plo_num as plo_num, r.student_id as student_id,c.course_id, 
+                                100*(sum(e.obtained_marks)/sum(a.total_marks)) as coursemarks
                           FROM spms_student_t st,
                               spms_registration_t r,
                               spms_department_t d,
                               spms_school_t s,
                               spms_evaluation_t e,
                               spms_question_t a,
-                              spms_co_t c,
+                              spms_clo_t c,
                               spms_plo_t p
                           WHERE st.student_id = r.student_id
                               and e.registration_id = r.registration_id
                               and a.question_id = e.question_id
-                              and a.co_id = c.clo_id
+                              and a.clo_id = c.clo_id
                               and c.plo_id = p.plo_id
-                              and st.department_id = d.departmentID
-                              and d.school_id = s.schoolID
-                              and s.schoolID = '{}'
-                          GROUP BY p.ploNum, r.student_id,c.course_id) derived1
-                      GROUP BY  ploNum,student_id) derived2
-                    GROUP BY ploNum
+                              and st.department_id = d.department_id
+                              and d.school_id = s.school_id
+                              and s.school_id = '{}'
+                          GROUP BY p.plo_num, r.student_id,c.course_id) derived1
+                      GROUP BY  plo_num,student_id) derived2
+                    GROUP BY plo_num
           '''.format(school))
 
     row1 = cursor.fetchall()
     row1.sort(key=lambda t: len(t[0]))
     cursor.close()
     cursor.execute('''
-                  SELECT ploNum,COUNT(Marks)
+                  SELECT plo_num,COUNT(Marks)
                   FROM(
-                        SELECT ploNum, student_id, avg(coursemarks) as Marks
+                        SELECT plo_num, student_id, avg(coursemarks) as Marks
                         FROM(
-                              SELECT p.ploNum as ploNum, r.student_id as student_id,c.course_id, 
-                                    100*(sum(e.obtainedMarks)/sum(a.totalMarks)) as coursemarks
+                              SELECT p.plo_num as plo_num, r.student_id as student_id,c.course_id, 
+                                    100*(sum(e.obtained_marks)/sum(a.total_marks)) as coursemarks
                               FROM spms_student_t st,
                                   spms_registration_t r,
                                   spms_department_t d,
                                   spms_school_t s,
                                   spms_evaluation_t e,
                                   spms_question_t a,
-                                  spms_co_t c,
+                                  spms_clo_t c,
                                   spms_plo_t p
                               WHERE st.student_id = r.student_id
                                   and e.registration_id = r.registration_id
                                   and a.question_id = e.question_id
-                                  and a.co_id = c.clo_id
+                                  and a.clo_id = c.clo_id
                                   and c.plo_id = p.plo_id
-                                  and st.department_id = d.departmentID
-                                  and d.school_id = s.schoolID
-                                  and s.schoolID = '{}'
-                              GROUP BY p.ploNum, r.student_id,c.course_id) derived1
-                          GROUP BY  ploNum,student_id
+                                  and st.department_id = d.department_id
+                                  and d.school_id = s.school_id
+                                  and s.school_id = '{}'
+                              GROUP BY p.plo_num, r.student_id,c.course_id) derived1
+                          GROUP BY  plo_num,student_id
                           HAVING avg(coursemarks)>=40) derived2
-                        GROUP BY ploNum
+                        GROUP BY plo_num
               '''.format(school))
 
     row2 = cursor.fetchall()
@@ -1428,57 +1494,57 @@ def getSchoolWisePLOStats(school):
 def getSchoolWisePLOComp(school, semester):
     cursor = mydb.cursor()
     cursor.execute('''
-        SELECT ploNum,COUNT(*)
+        SELECT plo_num,COUNT(*)
         FROM(
-            SELECT p.ploNum as ploNum, c.course_id, r.student_id, 100*(sum(e.obtainedMarks)/sum(a.totalMarks))
+            SELECT p.plo_num as plo_num, c.course_id, r.student_id, 100*(sum(e.obtained_marks)/sum(a.total_marks))
             FROM spms_student_t st,
                 spms_registration_t r,
                 spms_department_t d,
                 spms_school_t s,
                 spms_evaluation_t e,
                 spms_question_t a,
-                spms_co_t c,
+                spms_clo_t c,
                 spms_plo_t p
             WHERE st.student_id = r.student_id
                 and e.registration_id = r.registration_id
                 and a.question_id = e.question_id
-                and a.co_id = c.clo_id
+                and a.clo_id = c.clo_id
                 and c.plo_id = p.plo_id
-                and st.department_id = d.departmentID
-                and d.school_id = s.schoolID
-                and s.schoolID = '{}'
+                and st.department_id = d.department_id
+                and d.school_id = s.school_id
+                and s.school_id = '{}'
                 and r.semester = '{}'
-            GROUP BY p.ploNum, c.course_id, r.student_id) derived
-        GROUP BY  derived.ploNum
+            GROUP BY p.plo_num, c.course_id, r.student_id) derived
+        GROUP BY  derived.plo_num
     '''.format(school, semester))
 
     row1 = cursor.fetchall()
     row1.sort(key=lambda t: len(t[0]))
     cursor.close()
     cursor.execute('''
-            SELECT ploNum,COUNT(*)
+            SELECT plo_num,COUNT(*)
             FROM(
-                SELECT p.ploNum as ploNum, c.course_id, r.student_id, 100*(sum(e.obtainedMarks)/sum(a.totalMarks))
+                SELECT p.plo_num as plo_num, c.course_id, r.student_id, 100*(sum(e.obtained_marks)/sum(a.total_marks))
                 FROM spms_student_t st,
                     spms_registration_t r,
                     spms_department_t d,
                     spms_school_t s,
                     spms_evaluation_t e,
                     spms_question_t a,
-                    spms_co_t c,
+                    spms_clo_t c,
                     spms_plo_t p
                 WHERE st.student_id = r.student_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
-                    and st.department_id = d.departmentID
-                    and d.school_id = s.schoolID
-                    and s.schoolID = '{}'
+                    and st.department_id = d.department_id
+                    and d.school_id = s.school_id
+                    and s.school_id = '{}'
                     and r.semester = '{}'
-                GROUP BY p.ploNum, c.course_id, r.student_id
-                HAVING  100*(sum(e.obtainedMarks)/sum(a.totalMarks))>=40) derived
-            GROUP BY  derived.ploNum
+                GROUP BY p.plo_num, c.course_id, r.student_id
+                HAVING  100*(sum(e.obtained_marks)/sum(a.total_marks))>=40) derived
+            GROUP BY  derived.plo_num
         '''.format(school, semester))
 
     row2 = cursor.fetchall()
@@ -1501,53 +1567,53 @@ def getSchoolWisePLOComp(school, semester):
 def getDeptWisePLOComp(dept, semester):
     cursor = mydb.cursor()
     cursor.execute('''
-        SELECT ploNum,COUNT(*)
+        SELECT plo_num,COUNT(*)
         FROM(
-            SELECT p.ploNum as ploNum, c.course_id, r.student_id, 100*(sum(e.obtainedMarks)/sum(a.totalMarks))
+            SELECT p.plo_num as plo_num, c.course_id, r.student_id, 100*(sum(e.obtained_marks)/sum(a.total_marks))
             FROM spms_student_t st,
                 spms_registration_t r,
                 spms_department_t d,
                 spms_evaluation_t e,
                 spms_question_t a,
-                spms_co_t c,
+                spms_clo_t c,
                 spms_plo_t p
             WHERE st.student_id = r.student_id
                 and e.registration_id = r.registration_id
                 and a.question_id = e.question_id
-                and a.co_id = c.clo_id
+                and a.clo_id = c.clo_id
                 and c.plo_id = p.plo_id
-                and st.department_id = d.departmentID
-                and d.departmentID = '{}'
+                and st.department_id = d.department_id
+                and d.department_id = '{}'
                 and r.semester = '{}'
-            GROUP BY p.ploNum, c.course_id, r.student_id) derived
-        GROUP BY  derived.ploNum
+            GROUP BY p.plo_num, c.course_id, r.student_id) derived
+        GROUP BY  derived.plo_num
     '''.format(dept, semester))
 
     row1 = cursor.fetchall()
     row1.sort(key=lambda t: len(t[0]))
     cursor.close()
     cursor.execute('''
-            SELECT ploNum,COUNT(*)
+            SELECT plo_num,COUNT(*)
             FROM(
-                SELECT p.ploNum as ploNum, c.course_id, r.student_id, 100*(sum(e.obtainedMarks)/sum(a.totalMarks))
+                SELECT p.plo_num as plo_num, c.course_id, r.student_id, 100*(sum(e.obtained_marks)/sum(a.total_marks))
                 FROM spms_student_t st,
                     spms_registration_t r,
                     spms_department_t d,
                     spms_evaluation_t e,
                     spms_question_t a,
-                    spms_co_t c,
+                    spms_clo_t c,
                     spms_plo_t p
                 WHERE st.student_id = r.student_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
-                    and st.department_id = d.departmentID
-                    and d.departmentID = '{}'
+                    and st.department_id = d.department_id
+                    and d.department_id = '{}'
                     and r.semester = '{}'
-                GROUP BY p.ploNum, c.course_id, r.student_id
-                HAVING  100*(sum(e.obtainedMarks)/sum(a.totalMarks))>=40) derived
-            GROUP BY  derived.ploNum
+                GROUP BY p.plo_num, c.course_id, r.student_id
+                HAVING  100*(sum(e.obtained_marks)/sum(a.total_marks))>=40) derived
+            GROUP BY  derived.plo_num
         '''.format(dept, semester))
 
     row2 = cursor.fetchall()
@@ -1570,53 +1636,53 @@ def getDeptWisePLOComp(dept, semester):
 def getProgramWisePLOComp(program, semester):
     cursor = mydb.cursor()
     cursor.execute('''
-        SELECT ploNum,COUNT(*)
+        SELECT plo_num,COUNT(*)
         FROM(
-            SELECT p.ploNum as ploNum, c.course_id, r.student_id, 100*(sum(e.obtainedMarks)/sum(a.totalMarks))
+            SELECT p.plo_num as plo_num, c.course_id, r.student_id, 100*(sum(e.obtained_marks)/sum(a.total_marks))
             FROM spms_student_t st,
                 spms_registration_t r,
                 spms_program_t pr,
                 spms_evaluation_t e,
                 spms_question_t a,
-                spms_co_t c,
+                spms_clo_t c,
                 spms_plo_t p
             WHERE st.student_id = r.student_id
                 and e.registration_id = r.registration_id
                 and a.question_id = e.question_id
-                and a.co_id = c.clo_id
+                and a.clo_id = c.clo_id
                 and c.plo_id = p.plo_id
-                and st.program_id = pr.programID
-                and pr.programID = '{}'
+                and st.program_id = pr.program_id
+                and pr.program_id = '{}'
                 and r.semester = '{}'
-            GROUP BY p.ploNum, c.course_id, r.student_id) derived
-        GROUP BY  derived.ploNum
+            GROUP BY p.plo_num, c.course_id, r.student_id) derived
+        GROUP BY  derived.plo_num
     '''.format(program, semester))
 
     row1 = cursor.fetchall()
     row1.sort(key=lambda t: len(t[0]))
     cursor.close()
     cursor.execute('''
-            SELECT ploNum,COUNT(*)
+            SELECT plo_num,COUNT(*)
             FROM(
-                SELECT p.ploNum as ploNum, c.course_id, r.student_id, 100*(sum(e.obtainedMarks)/sum(a.totalMarks))
+                SELECT p.plo_num as plo_num, c.course_id, r.student_id, 100*(sum(e.obtained_marks)/sum(a.total_marks))
                 FROM spms_student_t st,
                     spms_registration_t r,
                     spms_program_t pr,
                     spms_evaluation_t e,
                     spms_question_t a,
-                    spms_co_t c,
+                    spms_clo_t c,
                     spms_plo_t p
                 WHERE st.student_id = r.student_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
-                    and st.program_id = pr.programID
-                    and pr.programID = '{}'
+                    and st.program_id = pr.program_id
+                    and pr.program_id = '{}'
                     and r.semester = '{}'
                 GROUP BY p.plo_id, c.course_id, r.student_id
-                HAVING  100*(sum(e.obtainedMarks)/sum(a.totalMarks))>=40) derived
-            GROUP BY  derived.ploNum
+                HAVING  100*(sum(e.obtained_marks)/sum(a.total_marks))>=40) derived
+            GROUP BY  derived.plo_num
         '''.format(program, semester))
 
     row2 = cursor.fetchall()
@@ -1640,22 +1706,22 @@ def getCourseWisePLOComp(course, semester):
     cursor = mydb.cursor()
 
     cursor.execute('''
-        SELECT ploNum, COUNT(marks)
+        SELECT plo_num, COUNT(marks)
         FROM(
-            SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+            SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
             FROM spms_registration_t r,
                 spms_evaluation_t e,
                 spms_question_t a,
-                spms_co_t c,
+                spms_clo_t c,
                 spms_plo_t p
             WHERE r.registration_id = e.registration_id
                 and e.question_id = a.question_id
-                and a.co_id = c.clo_id
+                and a.clo_id = c.clo_id
                 and c.plo_id = p.plo_id
                 and c.course_id = '{}'
                 and r.semester ='{}'
-            GROUP BY p.ploNum,r.student_id) derived1
-        GROUP BY ploNum
+            GROUP BY p.plo_num,r.student_id) derived1
+        GROUP BY plo_num
     '''.format(course, semester))
 
     temp1 = cursor.fetchall()
@@ -1664,23 +1730,23 @@ def getCourseWisePLOComp(course, semester):
 
     expected = temp1[0][1]
     cursor.execute('''
-           SELECT ploNum, COUNT(marks)
+           SELECT plo_num, COUNT(marks)
            FROM(
-               SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+               SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                FROM spms_registration_t r,
                    spms_evaluation_t e,
                    spms_question_t a,
-                   spms_co_t c,
+                   spms_clo_t c,
                    spms_plo_t p
                WHERE r.registration_id = e.registration_id
                    and e.question_id = a.question_id
-                   and a.co_id = c.clo_id
+                   and a.clo_id = c.clo_id
                    and c.plo_id = p.plo_id
                    and c.course_id = '{}'
                    and r.semester ='{}'
-               GROUP BY p.ploNum,r.student_id
-               HAVING 100*sum(e.obtainedMarks)/sum(a.totalMarks)>=40) derived1
-           GROUP BY ploNum
+               GROUP BY p.plo_num,r.student_id
+               HAVING 100*sum(e.obtained_marks)/sum(a.total_marks)>=40) derived1
+           GROUP BY plo_num
        '''.format(course, semester))
 
     actual = []
@@ -1702,19 +1768,19 @@ def getStudentWisePLOComp(student, semester):
     cursor.execute('''
         SELECT  COUNT(marks)
         FROM(
-            SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+            SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
             FROM spms_registration_t r,
                 spms_evaluation_t e,
                 spms_question_t a,
-                spms_co_t c,
+                spms_clo_t c,
                 spms_plo_t p
             WHERE r.registration_id = e.registration_id
                 and e.question_id = a.question_id
-                and a.co_id = c.clo_id
+                and a.clo_id = c.clo_id
                 and c.plo_id = p.plo_id
                 and r.student_id='{}'
                 and r.semester ='{}'
-            GROUP BY p.ploNum,c.course_id) derived1
+            GROUP BY p.plo_num,c.course_id) derived1
     '''.format(student, semester))
 
     expected = cursor.fetchall()
@@ -1722,20 +1788,20 @@ def getStudentWisePLOComp(student, semester):
     cursor.execute('''
            SELECT COUNT(marks)
            FROM(
-               SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+               SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                FROM spms_registration_t r,
                    spms_evaluation_t e,
                    spms_question_t a,
-                   spms_co_t c,
+                   spms_clo_t c,
                    spms_plo_t p
                WHERE r.registration_id = e.registration_id
                    and e.question_id = a.question_id
-                   and a.co_id = c.clo_id
+                   and a.clo_id = c.clo_id
                    and c.plo_id = p.plo_id
                    and r.student_id = '{}'
                    and r.semester ='{}'
-               GROUP BY p.ploNum,c.course_id
-               HAVING 100*sum(e.obtainedMarks)/sum(a.totalMarks)>=40) derived1
+               GROUP BY p.plo_num,c.course_id
+               HAVING 100*sum(e.obtained_marks)/sum(a.total_marks)>=40) derived1
        '''.format(student, semester))
 
     actual = cursor.fetchall()
@@ -1749,23 +1815,23 @@ def getCourseReport(course):
     total = 0
     cursor = mydb.cursor()
     cursor.execute('''
-               SELECT coNum, ploNum, COUNT(marks)
+               SELECT coNum, plo_num, COUNT(marks)
                FROM(
-                       SELECT c.coNum as coNum,p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                       SELECT c.coNum as coNum,p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                        FROM spms_registration_t r,
                            spms_evaluation_t e,
                            spms_question_t a, 
-                           spms_co_t c,
+                           spms_clo_t c,
                            spms_plo_t p
                        WHERE r.registration_id = e.registration_id
                            and e.question_id = a.question_id
-                           and a.co_id = c.clo_id
+                           and a.clo_id = c.clo_id
                            and c.plo_id = p.plo_id
                             and c.course_id = '{}'
                        GROUP BY r.student_id,c.course_id,c.clo_id, p.plo_id
                        )derived
                WHERE marks>=40
-               GROUP BY coNum,ploNum
+               GROUP BY coNum,plo_num
                '''.format(course))
     row = cursor.fetchall()
     cursor.close()
@@ -1774,23 +1840,23 @@ def getCourseReport(course):
 
     cursor = mydb.cursor()
     cursor.execute('''
-               SELECT coNum, ploNum, COUNT(marks)
+               SELECT coNum, plo_num, COUNT(marks)
                FROM(
                        SELECT r.student_id as student_id,c.course_id as clo_id,c.coNum as coNum,
-                       p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                       p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                        FROM spms_registration_t r,
                            spms_evaluation_t e,
                            spms_question_t a, 
-                           spms_co_t c,
+                           spms_clo_t c,
                            spms_plo_t p
                        WHERE r.registration_id = e.registration_id
                            and e.question_id = a.question_id
-                           and a.co_id = c.clo_id
+                           and a.clo_id = c.clo_id
                            and c.plo_id = p.plo_id
                             and c.course_id = '{}'
                        GROUP BY r.student_id,c.course_id,c.clo_id, p.plo_id
                        )derived
-                GROUP BY clo_id,coNum,ploNum
+                GROUP BY clo_id,coNum,plo_num
                '''.format(course))
     total = cursor.fetchone()[2]
     cursor.close()
@@ -1822,16 +1888,16 @@ def getProgramReport(program):
     cursor.execute('''
         SELECT coNum, COUNT(marks)
         FROM(
-            SELECT c.coNum as coNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+            SELECT c.coNum as coNum,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
             FROM spms_student_t st, 
                 spms_registration_t r,
                 spms_evaluation_t e,
                 spms_question_t a, 
-                spms_co_t c
+                spms_clo_t c
             WHERE st.student_id = r.student_id
                 and r.registration_id = e.registration_id
                 and e.question_id = a.question_id
-                and a.co_id = c.clo_id
+                and a.clo_id = c.clo_id
                 and st.program_id = '{}'
             GROUP BY c.coNum,r.student_id) derived
         GROUP BY coNum
@@ -1842,16 +1908,16 @@ def getProgramReport(program):
     cursor.execute('''
             SELECT coNum, COUNT(marks)
             FROM(
-                SELECT c.coNum as coNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                SELECT c.coNum as coNum,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                 FROM spms_student_t st, 
                     spms_registration_t r,
                     spms_evaluation_t e,
                     spms_question_t a, 
-                    spms_co_t c
+                    spms_clo_t c
                 WHERE st.student_id = r.student_id
                     and r.registration_id = e.registration_id
                     and e.question_id = a.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and st.program_id = '{}'
                 GROUP BY c.coNum,r.student_id) derived
             WHERE marks>=40
@@ -1861,23 +1927,23 @@ def getProgramReport(program):
     row2 = cursor.fetchall()
     cursor.close()
     cursor.execute('''
-            SELECT ploNum, COUNT(marks)
+            SELECT plo_num, COUNT(marks)
             FROM(
-                SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                 FROM spms_student_t st, 
                     spms_registration_t r,
                     spms_evaluation_t e,
                     spms_question_t a, 
-                    spms_co_t c,
+                    spms_clo_t c,
                     spms_plo_t p
                 WHERE st.student_id = r.student_id
                     and r.registration_id = e.registration_id
                     and e.question_id = a.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
                     and st.program_id = '{}'
-                GROUP BY p.ploNum,r.student_id) derived
-            GROUP BY ploNum
+                GROUP BY p.plo_num,r.student_id) derived
+            GROUP BY plo_num
         '''.format(program))
 
     row3 = cursor.fetchall()
@@ -1885,24 +1951,24 @@ def getProgramReport(program):
     row3.sort(key=lambda t: len(t[0]))
 
     cursor.execute('''
-                SELECT ploNum, COUNT(marks)
+                SELECT plo_num, COUNT(marks)
                 FROM(
-                    SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                    SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                     FROM spms_student_t st, 
                         spms_registration_t r,
                         spms_evaluation_t e,
                         spms_question_t a, 
-                        spms_co_t c,
+                        spms_clo_t c,
                         spms_plo_t p
                     WHERE st.student_id = r.student_id
                         and r.registration_id = e.registration_id
                         and e.question_id = a.question_id
-                        and a.co_id = c.clo_id
+                        and a.clo_id = c.clo_id
                         and c.plo_id = p.plo_id
                         and st.program_id = '{}'
-                    GROUP BY p.ploNum,r.student_id) derived
+                    GROUP BY p.plo_num,r.student_id) derived
                 WHERE marks>=40
-                GROUP BY ploNum
+                GROUP BY plo_num
             '''.format(program))
 
     row4 = cursor.fetchall()
@@ -1948,16 +2014,16 @@ def getDeptReport(dept):
     cursor.execute('''
         SELECT coNum, COUNT(marks)
         FROM(
-            SELECT c.coNum as coNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+            SELECT c.coNum as coNum,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
             FROM spms_student_t st, 
                 spms_registration_t r,
                 spms_evaluation_t e,
                 spms_question_t a, 
-                spms_co_t c
+                spms_clo_t c
             WHERE st.student_id = r.student_id
                 and r.registration_id = e.registration_id
                 and e.question_id = a.question_id
-                and a.co_id = c.clo_id
+                and a.clo_id = c.clo_id
                 and st.department_id = '{}'
             GROUP BY c.coNum,r.student_id) derived
         GROUP BY coNum
@@ -1968,16 +2034,16 @@ def getDeptReport(dept):
     cursor.execute('''
             SELECT coNum, COUNT(marks)
             FROM(
-                SELECT c.coNum as coNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                SELECT c.coNum as coNum,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                 FROM spms_student_t st, 
                     spms_registration_t r,
                     spms_evaluation_t e,
                     spms_question_t a, 
-                    spms_co_t c
+                    spms_clo_t c
                 WHERE st.student_id = r.student_id
                     and r.registration_id = e.registration_id
                     and e.question_id = a.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and st.department_id = '{}'
                 GROUP BY c.coNum,r.student_id) derived
             WHERE marks>=40
@@ -1987,23 +2053,23 @@ def getDeptReport(dept):
     row2 = cursor.fetchall()
     cursor.close()
     cursor.execute('''
-            SELECT ploNum, COUNT(marks)
+            SELECT plo_num, COUNT(marks)
             FROM(
-                SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                 FROM spms_student_t st, 
                     spms_registration_t r,
                     spms_evaluation_t e,
                     spms_question_t a, 
-                    spms_co_t c,
+                    spms_clo_t c,
                     spms_plo_t p
                 WHERE st.student_id = r.student_id
                     and r.registration_id = e.registration_id
                     and e.question_id = a.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
                     and st.department_id = '{}'
-                GROUP BY p.ploNum,r.student_id) derived
-            GROUP BY ploNum
+                GROUP BY p.plo_num,r.student_id) derived
+            GROUP BY plo_num
         '''.format(dept))
 
     row3 = cursor.fetchall()
@@ -2011,24 +2077,24 @@ def getDeptReport(dept):
     row3.sort(key=lambda t: len(t[0]))
 
     cursor.execute('''
-                SELECT ploNum, COUNT(marks)
+                SELECT plo_num, COUNT(marks)
                 FROM(
-                    SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                    SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                     FROM spms_student_t st, 
                         spms_registration_t r,
                         spms_evaluation_t e,
                         spms_question_t a, 
-                        spms_co_t c,
+                        spms_clo_t c,
                         spms_plo_t p
                     WHERE st.student_id = r.student_id
                         and r.registration_id = e.registration_id
                         and e.question_id = a.question_id
-                        and a.co_id = c.clo_id
+                        and a.clo_id = c.clo_id
                         and c.plo_id = p.plo_id
                         and st.department_id = '{}'
-                    GROUP BY p.ploNum,r.student_id) derived
+                    GROUP BY p.plo_num,r.student_id) derived
                 WHERE marks>=40
-                GROUP BY ploNum
+                GROUP BY plo_num
             '''.format(dept))
 
     row4 = cursor.fetchall()
@@ -2074,21 +2140,21 @@ def getSchoolReport(school):
     cursor.execute('''
         SELECT coNum, COUNT(marks)
         FROM(
-            SELECT c.coNum as coNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+            SELECT c.coNum as coNum,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
             FROM spms_student_t st, 
                 spms_department_t d,
                 spms_school_t s,
                 spms_registration_t r,
                 spms_evaluation_t e,
                 spms_question_t a, 
-                spms_co_t c
+                spms_clo_t c
             WHERE st.student_id = r.student_id
-                and st.department_id = d.departmentID
-                and d.school_id = s.schoolID
+                and st.department_id = d.department_id
+                and d.school_id = s.school_id
                 and r.registration_id = e.registration_id
                 and e.question_id = a.question_id
-                and a.co_id = c.clo_id
-                and s.schoolID = '{}'
+                and a.clo_id = c.clo_id
+                and s.school_id = '{}'
             GROUP BY c.coNum,r.student_id) derived
         GROUP BY coNum
     '''.format(school))
@@ -2098,21 +2164,21 @@ def getSchoolReport(school):
     cursor.execute('''
             SELECT coNum, COUNT(marks)
             FROM(
-                SELECT c.coNum as coNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                SELECT c.coNum as coNum,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                 FROM spms_student_t st, 
                     spms_department_t d,
                     spms_school_t s,
                     spms_registration_t r,
                     spms_evaluation_t e,
                     spms_question_t a, 
-                    spms_co_t c
+                    spms_clo_t c
                 WHERE st.student_id = r.student_id
-                    and st.department_id = d.departmentID
-                    and d.school_id = s.schoolID
+                    and st.department_id = d.department_id
+                    and d.school_id = s.school_id
                     and r.registration_id = e.registration_id
                     and e.question_id = a.question_id
-                    and a.co_id = c.clo_id
-                    and s.schoolID = '{}'
+                    and a.clo_id = c.clo_id
+                    and s.school_id = '{}'
                     GROUP BY c.coNum,r.student_id) derived
             WHERE marks>=40
             GROUP BY coNum
@@ -2121,27 +2187,27 @@ def getSchoolReport(school):
     row2 = cursor.fetchall()
     cursor.close()
     cursor.execute('''
-            SELECT ploNum, COUNT(marks)
+            SELECT plo_num, COUNT(marks)
             FROM(
-                SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                 FROM spms_student_t st, 
                     spms_department_t d,
                     spms_school_t s,
                     spms_registration_t r,
                     spms_evaluation_t e,
                     spms_question_t a, 
-                    spms_co_t c,
+                    spms_clo_t c,
                     spms_plo_t p
                 WHERE st.student_id = r.student_id
-                    and st.department_id = d.departmentID
-                    and d.school_id = s.schoolID
+                    and st.department_id = d.department_id
+                    and d.school_id = s.school_id
                     and r.registration_id = e.registration_id
                     and e.question_id = a.question_id
-                    and a.co_id = c.clo_id
+                    and a.clo_id = c.clo_id
                     and c.plo_id = p.plo_id
-                    and s.schoolID = '{}'
-                    GROUP BY p.ploNum,r.student_id) derived
-            GROUP BY ploNum
+                    and s.school_id = '{}'
+                    GROUP BY p.plo_num,r.student_id) derived
+            GROUP BY plo_num
         '''.format(school))
 
     row3 = cursor.fetchall()
@@ -2149,28 +2215,28 @@ def getSchoolReport(school):
     row3.sort(key=lambda t: len(t[0]))
 
     cursor.execute('''
-                SELECT ploNum, COUNT(marks)
+                SELECT plo_num, COUNT(marks)
                 FROM(
-                    SELECT p.ploNum as ploNum,100*sum(e.obtainedMarks)/sum(a.totalMarks) as marks
+                    SELECT p.plo_num as plo_num,100*sum(e.obtained_marks)/sum(a.total_marks) as marks
                     FROM spms_student_t st, 
                         spms_department_t d,
                         spms_school_t s,
                         spms_registration_t r,
                         spms_evaluation_t e,
                         spms_question_t a, 
-                        spms_co_t c,
+                        spms_clo_t c,
                         spms_plo_t p
                     WHERE st.student_id = r.student_id
-                        and st.department_id = d.departmentID
-                        and d.school_id = s.schoolID
+                        and st.department_id = d.department_id
+                        and d.school_id = s.school_id
                         and r.registration_id = e.registration_id
                         and e.question_id = a.question_id
-                        and a.co_id = c.clo_id
+                        and a.clo_id = c.clo_id
                         and c.plo_id = p.plo_id
-                        and s.schoolID = '{}'
-                    GROUP BY p.ploNum,r.student_id) derived
+                        and s.school_id = '{}'
+                    GROUP BY p.plo_num,r.student_id) derived
                 WHERE marks>=40
-                GROUP BY ploNum
+                GROUP BY plo_num
             '''.format(school))
 
     row4 = cursor.fetchall()
@@ -2209,14 +2275,24 @@ def getSchoolReport(school):
 
     return finalrow
 
-# def getUserDept():
-#     user_id=
-#     if(getGroup(user_id)=="faculty"):
-#         table="spms_faculty_t"
-#     elif(getGroup(user_id)=="student"):
-#         table="spms_student_t"
-#     cursor=mydb.cursor()
-#     cursor.execute('''
-#     SELECT department
-#     FROM '''
-#     )
+def getQuestion(semester,course_id,section_num,assessment_name):
+    cursor=mydb.cursor()
+    cursor.execute('''
+            SELECT st.section_id
+            FROM spms_student_t st,
+            WHERE st.semester='{}'
+            and st.course_id='{}'
+            and st.section_num='{}'
+            )'''.format(semester,course_id,section_num))
+    cursor.close()
+    sectionid=cursor.fetchall()
+    cursor.execute('''
+            SELECT st.question_id
+            FROM spms_question_t st,
+            WHERE st.section_id='{}'
+            and st.question_id= '{}'
+            )'''.format(sectionid,assessment_name))
+    cursor.close()
+    question=cursor.fetchall()
+    return question
+
