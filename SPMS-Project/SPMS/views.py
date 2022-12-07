@@ -73,11 +73,13 @@ def dashboard(request):
 
 def CoPloAnal(request):
     # queries.getStudentCourseWiseCO(queries.getCurrUser()[0][0],"CSE101")
+    user_id=queries.getCurrUser()[0][0]
     context={
             "page":"coplo",
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "COwisePLO":cowiseplo(user_id)
             }
     return render(request,"Student/co-plo-analysis.html",context)
 
@@ -247,10 +249,15 @@ def TwoTraceLineChart(a,b,c):
     fig=go.Figure(data=graph)
     return plot(fig, output_type='div',include_plotlyjs=True)
 
+def cowiseplo(user_id):
+    row = queries.getCOWiseStudentPLO(user_id)
+    fig = px.histogram(row).update_xaxes(categoryorder='total descending')
+    return plot(fig, output_type='div',include_plotlyjs=True)
+
 def PLOAchieveTable(user_id):
         row=queries.getCourseWiseStudentPLO(user_id)
         df=[["Courses","PLO1","PLO2","PLO3","PLO4","PLO5","PLO6","PLO7","PLO8","PLO9","PLO10","PLO11","PLO12"]]
-        for i in range(len(row)):
+        for i in range(len(row[2])):
             df.append(row[2][i])
         fig=ff.create_table(df)
         return plot(fig, output_type='div',include_plotlyjs=True)
