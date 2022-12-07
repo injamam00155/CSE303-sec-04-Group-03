@@ -90,19 +90,19 @@ def getName(user_id):
             return name
             #output fname+lname(null for now)
 
-# def getDept(user_id):
-#     if getGroup(user_id)=="student":
-#         str="student"
-#     elif getGroup(user_id)=="faculty":
-#         str="faculty"
-#     cursor = mydb.cursor()
-#     cursor.execute('''        
-#             SELECT department_id   
-#             FROM spms_{}_t
-#             WHERE {}_id={}'''.format(user_id))
-#     department=cursor.fetchall()
-#     cursor.close()
-#     return department
+def getDept(user_id):
+    if getGroup(user_id)=="student":
+        str="student"
+    elif getGroup(user_id)=="faculty":
+        str="faculty"
+    cursor = mydb.cursor()
+    cursor.execute('''        
+            SELECT department_id   
+            FROM spms_{}_t
+            WHERE {}_id={}'''.format(str,str,user_id))
+    department=cursor.fetchall()
+    cursor.close()
+    return department
 
 def setCurrUser(user_id):
     try:
@@ -248,7 +248,7 @@ def getStudentSemesterWiseGPA(student_id):
     cursor.execute('''
             SELECT Semester,sum(Credits*grade)/sum(Credits)
             FROM(   
-                SELECT  Credits,
+                SELECT  Semester,Credits, CourseID,
                     CASE
                         WHEN sum(Marks) >= 85 THEN 4.0
                         WHEN sum(Marks) >= 80 AND sum(Marks)<85 THEN 3.7
@@ -263,21 +263,27 @@ def getStudentSemesterWiseGPA(student_id):
                         ELSE 0.0
                     END as grade
                 FROM(
-                    SELECT c.clo_id as clo_id,a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
+                    SELECT r.semester as Semester,c.course_id as CourseID,a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.credit as Credits
                     FROM spms_registration_t r,
                         spms_section_t sc, 
                         spms_course_t c,
                         spms_question_t a, 
                         spms_evaluation_t e
                     WHERE r.section_id = sc.section_id
-                        and sc.course_id = c.course_id
+                        and c.course_id = sc.course_id 
                         and r.registration_id = e.registration_id 
-                        and e.question_id = a.question_id
+                        and a.question_id = e.question_id
                         and r.student_id = '{}'
-                    GROUP BY  c.clo_id,a.assessment_name) Derived 
-                GROUP BY clo_id) Derived
-            GROUP BY Semester'''.format(student_id))
-
+                    GROUP BY  c.course_id,a.assessment_name) Derived 
+                GROUP BY CourseID) Derived
+			GROUP BY Semester'''.format(student_id))
+    row=cursor.fetchall()
+    semestergpa=[[]for i in range(2)]
+    for i in range(len(row)):
+        semestergpa[0].append(row[i][0])
+        semestergpa[1].append(row[i][1])
+    return semestergpa
+    
 
 def getStudentWiseGPA(student_id, semester):
     cursor = mydb.cursor()
@@ -369,6 +375,54 @@ def getSchoolWiseGPA(school, semester):
     cursor.close()
     return np.round(row, 3)
 
+def getDeptSemesterWiseGPA(dept):
+    cursor = mydb.cursor()
+    cursor.execute('''
+            SELECT Semester,AVG(grade) as avgGrade
+            FROM(
+                SELECT Semester,StudentID,sum(Credits*gradepoint)/sum(Credits) as grade
+                FROM(   
+                    SELECT  Semester,StudentID,Credits,
+                        CASE
+                            WHEN sum(Marks) >= 85 THEN 4.0
+                            WHEN sum(Marks) >= 80 AND sum(Marks)<85 THEN 3.7
+                            WHEN sum(Marks) >= 75 AND sum(Marks)<80 THEN 3.3
+                            WHEN sum(Marks) >= 70 AND sum(Marks)<75 THEN 3.0
+                            WHEN sum(Marks) >= 65 AND sum(Marks)<70 THEN 2.7
+                            WHEN sum(Marks) >= 60 AND sum(Marks)<65 THEN 2.3
+                            WHEN sum(Marks) >= 55 AND sum(Marks)<60 THEN 2.0
+                            WHEN sum(Marks) >= 50 AND sum(Marks)<55 THEN 1.7
+                            WHEN sum(Marks) >= 45 AND sum(Marks)<50 THEN 1.3
+                            WHEN sum(Marks) >= 40 AND sum(Marks)<45 THEN 1.0
+                            ELSE 0.0
+                        END as gradepoint
+                    FROM(
+                        SELECT r.semester as Semester,st.student_id as StudentID,c.course_id as CourseID,
+                            a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.credit as Credits
+                        FROM spms_student_t st,
+                            spms_registration_t r,
+                            spms_section_t sc, 
+                            spms_course_t c,
+                            spms_question_t a, 
+                            spms_evaluation_t e
+                        WHERE st.student_id = r.student_id
+                            and r.section_id = sc.section_id
+                            and sc.course_id = c.course_id
+                            and r.registration_id = e.registration_id 
+                            and e.question_id = a.question_id
+                            and st.department_id = '{}'
+                        GROUP BY  st.student_id,c.course_id) Derived
+                    GROUP BY StudentID,CourseID) Derived
+                GROUP BY Semester) Derived
+                    '''.format(dept))
+
+    row=cursor.fetchall()
+    cursor.close()
+    semestergpa=[[]for i in range(2)]
+    for i in range(len(row)):
+        semestergpa[0].append(row[i][0])
+        semestergpa[1].append(row[i][1])
+    return semestergpa
 
 def getDeptWiseGPA(dept, semester):
     cursor = mydb.cursor()
@@ -1127,7 +1181,7 @@ def getSchoolWisePLO(school):
              GROUP BY derived.plo_num
                    '''.format(school))
     row = cursor.fetchall()
-    Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+    # Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
 
 #     cursor.close()
 #     return row
