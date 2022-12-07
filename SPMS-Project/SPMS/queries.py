@@ -90,19 +90,19 @@ def getName(user_id):
             return name
             #output fname+lname(null for now)
 
-def getDept(user_id):
-    if getGroup(user_id)=="student":
-        str="student"
-    elif getGroup(user_id)=="faculty":
-        str="faculty"
-    cursor = mydb.cursor()
-    cursor.execute('''        
-            SELECT department_id   
-            FROM spms_{}_t
-            WHERE {}_id={}'''.format(user_id))
-    department=cursor.fetchall()
-    cursor.close()
-    return department
+# def getDept(user_id):
+#     if getGroup(user_id)=="student":
+#         str="student"
+#     elif getGroup(user_id)=="faculty":
+#         str="faculty"
+#     cursor = mydb.cursor()
+#     cursor.execute('''        
+#             SELECT department_id   
+#             FROM spms_{}_t
+#             WHERE {}_id={}'''.format(user_id))
+#     department=cursor.fetchall()
+#     cursor.close()
+#     return department
 
 def setCurrUser(user_id):
     try:
@@ -207,7 +207,7 @@ def getStudentCourseWiseCO(user_id,courseid):
 
 def getStudentCGPA(student_id):
         cursor = mydb.cursor()
-        cursor.execute(''' 
+        cursor.execute('''
             SELECT sum(Credits*grade)/sum(Credits)
             FROM(   
                 SELECT  Credits,
@@ -243,6 +243,40 @@ def getStudentCGPA(student_id):
         cursor.close()
         return np.round(row, 3)
 
+def getStudentSemesterWiseGPA(student_id):
+    cursor = mydb.cursor()
+    cursor.execute('''
+            SELECT Semester,sum(Credits*grade)/sum(Credits)
+            FROM(   
+                SELECT  Credits,
+                    CASE
+                        WHEN sum(Marks) >= 85 THEN 4.0
+                        WHEN sum(Marks) >= 80 AND sum(Marks)<85 THEN 3.7
+                        WHEN sum(Marks) >= 75 AND sum(Marks)<80 THEN 3.3
+                        WHEN sum(Marks) >= 70 AND sum(Marks)<75 THEN 3.0
+                        WHEN sum(Marks) >= 65 AND sum(Marks)<70 THEN 2.7
+                        WHEN sum(Marks) >= 60 AND sum(Marks)<65 THEN 2.3
+                        WHEN sum(Marks) >= 55 AND sum(Marks)<60 THEN 2.0
+                        WHEN sum(Marks) >= 50 AND sum(Marks)<55 THEN 1.7
+                        WHEN sum(Marks) >= 45 AND sum(Marks)<50 THEN 1.3
+                        WHEN sum(Marks) >= 40 AND sum(Marks)<45 THEN 1.0
+                        ELSE 0.0
+                    END as grade
+                FROM(
+                    SELECT c.clo_id as clo_id,a.weight*(sum(e.obtained_marks)/sum(a.total_marks)) as Marks, c.coNum as Credits
+                    FROM spms_registration_t r,
+                        spms_section_t sc, 
+                        spms_course_t c,
+                        spms_question_t a, 
+                        spms_evaluation_t e
+                    WHERE r.section_id = sc.section_id
+                        and sc.course_id = c.course_id
+                        and r.registration_id = e.registration_id 
+                        and e.question_id = a.question_id
+                        and r.student_id = '{}'
+                    GROUP BY  c.clo_id,a.assessment_name) Derived 
+                GROUP BY clo_id) Derived
+            GROUP BY Semester'''.format(student_id))
 
 
 def getStudentWiseGPA(student_id, semester):
@@ -1003,100 +1037,100 @@ def getCourseWiseStudentPLO(student_id, cat):
         table.append(temptable)
     return plo, courses, table
 
-def getCOWiseStudentPLO(student_id, cat):
-    cursor = mydb.cursor()
-    cursor.execute(''' 
-               SELECT p.plo_num as plo_num,co.coNum, sum(e.obtained_marks),sum(a.total_marks),derived.Total 
-               FROM spms_registration_t r,
-                   spms_question_t a, 
-                   spms_evaluation_t e,
-                   spms_clo_t co, 
-                   spms_plo_t p,
-                   (
-                        SELECT p.plo_num as plo_num,sum(a.total_marks) as Total, r.student_id as student_id
-                        FROM spms_registration_t r,
-                            spms_question_t a, 
-                            spms_evaluation_t e,
-                            spms_clo_t co, 
-                            spms_plo_t p
-                        WHERE r.registration_id = e.registration_id 
-                            and e.question_id = a.question_id
-                            and a.clo_id=co.clo_id 
-                            and co.plo_id = p.plo_id 
-                            and r.student_id = '{}'
-                        GROUP BY  r.student_id,p.plo_id) derived
-               WHERE r.student_id = derived.student_id
-                    and e.registration_id = r.registration_id
-                    and e.question_id = a.question_id
-                    and a.clo_id=co.clo_id 
-                    and co.plo_id = p.plo_id
-                    and p.plo_num = derived.plo_num
-               GROUP BY  p.plo_id,co.coNum
-               '''.format(student_id))
-    row = cursor.fetchall()
-    cursor.close()
-    table = []
-    cos = []
+# def getCOWiseStudentPLO(student_id, cat):
+#     cursor = mydb.cursor()
+#     cursor.execute(''' 
+#                SELECT p.plo_num as plo_num,co.coNum, sum(e.obtained_marks),sum(a.total_marks),derived.Total 
+#                FROM spms_registration_t r,
+#                    spms_question_t a, 
+#                    spms_evaluation_t e,
+#                    spms_clo_t co, 
+#                    spms_plo_t p,
+#                    (
+#                         SELECT p.plo_num as plo_num,sum(a.total_marks) as Total, r.student_id as student_id
+#                         FROM spms_registration_t r,
+#                             spms_question_t a, 
+#                             spms_evaluation_t e,
+#                             spms_clo_t co, 
+#                             spms_plo_t p
+#                         WHERE r.registration_id = e.registration_id 
+#                             and e.question_id = a.question_id
+#                             and a.clo_id=co.clo_id 
+#                             and co.plo_id = p.plo_id 
+#                             and r.student_id = '{}'
+#                         GROUP BY  r.student_id,p.plo_id) derived
+#                WHERE r.student_id = derived.student_id
+#                     and e.registration_id = r.registration_id
+#                     and e.question_id = a.question_id
+#                     and a.clo_id=co.clo_id 
+#                     and co.plo_id = p.plo_id
+#                     and p.plo_num = derived.plo_num
+#                GROUP BY  p.plo_id,co.coNum
+#                '''.format(student_id))
+#     row = cursor.fetchall()
+#     cursor.close()
+#     table = []
+#     cos = []
 
-    for entry in row:
-        if entry[1] not in cos:
-            cos.append(entry[1])
-    cos.sort()
-    plo = ["PLO1", "PLO2", "PLO3", "PLO4", "PLO5", "PLO6", "PLO7", "PLO8", "PLO9", "PLO10", "PLO11", "PLO12"]
+#     for entry in row:
+#         if entry[1] not in cos:
+#             cos.append(entry[1])
+#     cos.sort()
+#     plo = ["PLO1", "PLO2", "PLO3", "PLO4", "PLO5", "PLO6", "PLO7", "PLO8", "PLO9", "PLO10", "PLO11", "PLO12"]
 
-    for i in cos:
-        temptable = []
-        if cat == 'report':
-            temptable = [i]
+#     for i in cos:
+#         temptable = []
+#         if cat == 'report':
+#             temptable = [i]
 
-        for j in plo:
-            found = False
-            for k in row:
-                if j == k[0] and i == k[1]:
-                    if cat == 'report':
-                        temptable.append(np.round(100 * k[2] / k[3], 2))
-                    elif cat == 'chart':
-                        temptable.append(np.round(100 * k[2] / k[4], 2))
-                    found = True
-            if not found:
-                if cat == 'report':
-                    temptable.append('N/A')
-                elif cat == 'chart':
-                    temptable.append(0)
-        table.append(temptable)
-    return plo, cos, table
+#         for j in plo:
+#             found = False
+#             for k in row:
+#                 if j == k[0] and i == k[1]:
+#                     if cat == 'report':
+#                         temptable.append(np.round(100 * k[2] / k[3], 2))
+#                     elif cat == 'chart':
+#                         temptable.append(np.round(100 * k[2] / k[4], 2))
+#                     found = True
+#             if not found:
+#                 if cat == 'report':
+#                     temptable.append('N/A')
+#                 elif cat == 'chart':
+#                     temptable.append(0)
+#         table.append(temptable)
+#     return plo, cos, table
 
 
-def getSchoolWisePLO(school):
-    cursor = mydb.cursor()
-    cursor.execute('''
-             SELECT derived.plo_num, avg(per)
-             FROM(
-                SELECT p.plo_id as plo_id,p.plo_num as plo_num, 100*sum(e.obtained_marks)/sum(a.total_marks) as per
-                FROM spms_registration_t r,
-                    spms_evaluation_t e,
-                    spms_student_t st,
-                    spms_department_t d,
-                    spms_school_t s,
-                    spms_question_t a,
-                    spms_clo_t c,
-                    spms_plo_t p
-                WHERE r.student_id = st.student_id
-                    and st.department_id = d.department_id
-                    and d.school_id = s.school_id
-                    and e.registration_id = r.registration_id
-                    and a.question_id = e.question_id
-                    and a.clo_id = c.clo_id
-                    and c.plo_id = p.plo_id
-                    and d.school_id = '{}'
-                    GROUP BY p.plo_num,r.student_id) derived
-             GROUP BY derived.plo_num
-                   '''.format(school))
-    row = cursor.fetchall()
-    Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+# def getSchoolWisePLO(school):
+#     cursor = mydb.cursor()
+#     cursor.execute('''
+#              SELECT derived.plo_num, avg(per)
+#              FROM(
+#                 SELECT p.plo_id as plo_id,p.plo_num as plo_num, 100*sum(e.obtained_marks)/sum(a.total_marks) as per
+#                 FROM spms_registration_t r,
+#                     spms_evaluation_t e,
+#                     spms_student_t st,
+#                     spms_department_t d,
+#                     spms_school_t s,
+#                     spms_question_t a,
+#                     spms_clo_t c,
+#                     spms_plo_t p
+#                 WHERE r.student_id = st.student_id
+#                     and st.department_id = d.department_id
+#                     and d.school_id = s.school_id
+#                     and e.registration_id = r.registration_id
+#                     and a.question_id = e.question_id
+#                     and a.clo_id = c.clo_id
+#                     and c.plo_id = p.plo_id
+#                     and d.school_id = '{}'
+#                     GROUP BY p.plo_num,r.student_id) derived
+#              GROUP BY derived.plo_num
+#                    '''.format(school))
+#     row = cursor.fetchall()
+#     Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
 
-    cursor.close()
-    return row
+#     cursor.close()
+#     return row
 
 
 def getDeptWisePLO(dept):
