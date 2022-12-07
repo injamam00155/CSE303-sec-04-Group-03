@@ -39,6 +39,7 @@ def home(request):
         "id":user_id,
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "department":queries.getDept(queries.getCurrUser()[0][0]),
         "PLOAchievement":PloAchieve(user_id),
         "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(user_id)[1],queries.getStudentWiseCLO(user_id)[0]),
         "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(user_id)[1],queries.getStudentWisePLO(user_id)[0]),
@@ -79,6 +80,7 @@ def CoPloAnal(request):
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "department":queries.getDept(queries.getCurrUser()[0][0]),
         "COwisePLO":cowiseplo(user_id)
             }
     return render(request,"Student/co-plo-analysis.html",context)
@@ -89,6 +91,7 @@ def coursePloAnal(request):
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "department":queries.getDept(queries.getCurrUser()[0][0]),
             }
     return render(request,"Student\course-plo-analysis.html",context)
 
@@ -98,10 +101,31 @@ def PloAchievement(request):
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
-        "PloAchieveTable":PLOAchieveTable(queries.getCurrUser()[0][0])
+        "PloAchieveTable":PLOAchieveTable(queries.getCurrUser()[0][0]),
+        "department":queries.getDept(queries.getCurrUser()[0][0]),
         }
     return render(request,"Student\PloAchievement.html",context)
 
+def CourseOutlineData(request):
+    course_id=request.GET.get('cid')
+    section_num=request.GET.get('sec_num')
+    semester=request.GET.get('semr')
+    try:
+        outline=queries.getCourseOutline(course_id,semester,section_num)
+        return outline
+    except:
+        pass
+
+def CourseOutline(request):
+        context={
+        "page":"cout",
+        "id":queries.getCurrUser()[0][0],
+        "group":queries.getCurrUser()[0][1],
+        "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "department":queries.getDept(queries.getCurrUser()[0][0]),
+        "outline":CourseOutlineData(request),
+        }
+        return render (request,"Student\CourseOutline.html",context)
 
 def StuPloAnal(request):
     context={
@@ -109,6 +133,7 @@ def StuPloAnal(request):
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "department":queries.getDept(queries.getCurrUser()[0][0]),
         }
     return render(request,"Faculty\StuPloAnal.html",context)
 
@@ -118,6 +143,7 @@ def StuPloTbl(request):
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "department":queries.getDept(queries.getCurrUser()[0][0]),
         }
     }
     return render(request,"Faculty\StuPloTbl.html",context)
@@ -128,6 +154,7 @@ def CourseReport(request):
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "department":queries.getDept(queries.getCurrUser()[0][0]),
         }
     return render(request,"Faculty\CourseReport.html",context)
 
@@ -135,11 +162,11 @@ def QTable(request):
     question=[]
     fig=[]
     course_id=request.GET.get('courseid')
-    section_id=request.GET.get('section')
+    section_num=request.GET.get('section_num')
     assessment=request.GET.get('assessment')
     semester=request.GET.get('semester')
     try:
-        question=queries.fetchQuestions(course_id,section_id,assessment,semester)
+        question=queries.fetchQuestions(course_id,section_num,assessment,semester)
         df=[["Q Num","Question","Marks","Weight","CO Num"]]
         for i in range(len(question)):
             df.append(question[i])
@@ -149,19 +176,6 @@ def QTable(request):
         pass
 
 def QuestionBank(request):
-    # course_id=""
-    # section_id=""
-    # assessment=""
-    # semester=""
-    # course_id=request.GET.get('courseid')
-    # section_id=request.GET.get('section')
-    # assessment=request.GET.get('assessment')
-    # semester=request.GET.get('semester')
-    # print(course_id,section_id,assessment,semester)
-    # try:
-    #     question=queries.fetchQuestions(course_id,section_id,assessment,semester)
-    # except:
-    #     pass
     context={
         "page":"ques",
         "id":queries.getCurrUser()[0][0],
@@ -179,6 +193,7 @@ def QuestionBankEntry(request):
             "group":queries.getCurrUser()[0][1],
             "department":queries.getCurrDept(),
             "name":queries.getName(str(queries.getCurrUser()[0][0])),
+            "department":queries.getDept(queries.getCurrUser()[0][0]),
             }
     return render(request,"Faculty\QuestionBankEntry.html",context)
 
@@ -188,6 +203,7 @@ def COentry(request):
             "id":queries.getCurrUser(),
             "group":queries.getCurrUser(),
             "name":queries.getName(str(queries.getCurrUser()[0][0])),
+            "department":queries.getDept(queries.getCurrUser()[0][0]),
             }
     return render(request,"Faculty\COentry.html",context)
 
@@ -197,6 +213,7 @@ def ProgramW(request):
             "id":queries.getCurrUser()[0],
             "group":queries.getCurrUser()[1],
             "name":queries.getName(str(queries.getCurrUser()[0])),
+            "department":queries.getDept(queries.getCurrUser()[0][0]),
             }
     return render(request,"Faculty\ProgramW.html",context)
 
@@ -206,6 +223,7 @@ def departmentWise(request):
             "id":queries.getCurrUser()[0],
             "group":queries.getCurrUser()[1],
             "name":queries.getName(str(queries.getCurrUser()[0])),
+            "department":queries.getDept(queries.getCurrUser()[0][0]),
             }
     return render(request,"Faculty\departmentWise.html",context)
 
