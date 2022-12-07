@@ -32,7 +32,7 @@ def home(request):
         "PloAchievement":PloAchieve(student_id),
         "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(student_id)[1],queries.getStudentWiseCLO(student_id)[0]),
         "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(student_id)[1],queries.getStudentWisePLO(student_id)[0]),
-        "GPAAnalysis":TwoTraceLineChart(queries.)
+        # "GPAAnalysis":TwoTraceLineChart(queries.)
         "PLOAnalysis":TwoTraceSpider(queries.getStudentWisePLO(student_id)[0],queries.getStudentWisePLO(student_id)[1],queries.getDeptWisePLO(queries.getDept(student_id))[1])
         }
         
@@ -195,13 +195,13 @@ def TwoTraceSpider(t,r1,r2):
     fig.add_trace(data=go.Scatterpolar(
         r = r1,
         theta = t,
-        fill='toself'
-        name="You"
+        fill='toself',
+        name="You",
     ))
     fig.add_trace(data=go.Scatterpolar(
         r = r2,
         theta = t,
-        fill='toself'
+        fill='toself',
         name="Department Average"
     ))
     return plot(fig, output_type='div',include_plotlyjs=True)
