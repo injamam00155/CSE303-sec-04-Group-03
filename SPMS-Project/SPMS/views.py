@@ -29,7 +29,8 @@ def PloCompare(user_id):
         'YourPLO':queries.getStudentWisePLO(user_id)[1],
         'DepartmentAverage':queries.getDeptWisePLO(queries.getDept(user_id)[0][0])[1]
     })
-    fig = px.histogram(df,barmode='group')
+    fig = px.bar(df,x="PLO ID",y="Percentage Achieved",barmode='group')
+    fig.show()
     Plo=fig.to_html()
     return Plo
 
@@ -46,7 +47,7 @@ def home(request):
         "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(user_id)[1],queries.getStudentWiseCLO(user_id)[0]),
         "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(user_id)[1],queries.getStudentWisePLO(user_id)[0]),
         "GPAAnalysis":TwoTraceLineChart(queries.getStudentSemesterWiseGPA(user_id)[0],queries.getStudentSemesterWiseGPA(user_id)[1],queries.getDeptSemesterWiseGPA(user_dept)[1]),
-        "PLOCompare":PloCompare(user_id)
+        # "PLOCompare":PloCompare(user_id)
         }
         
     return render(request,"Student/sHome.html", context)
