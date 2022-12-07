@@ -1,24 +1,29 @@
-from SPMS import dbConnection
+# import dbConnection
 import mysql.connector
 from django.db import connection
 import numpy as np
 
-mydb=dbConnection.queriesDB()
+mydb=mysql.connector.connect(
+        host= '127.0.0.1',
+        user= 'root',  
+        password= 'inja',  
+        database= 'spms'  
+    )
 
 def fetchQuestions(course_id,section_id,assessment,semester):
     cursor = mydb.cursor()
-    cursor.execute('''        
-    use spms;
+    cursor.execute('''
     SELECT question_id,total_marks, weight, clo_id
     FROM spms.spms_section_t as s,spms.spms_question_t as q
     WHERE s.section_id=q.section_id
     AND   s.section_num = {}
-    AND course_id='{}'
-    and assessment_name='{}}'
+    AND s.course_id='{}'
+    and assessment_name='{}'
     and semester="{}";'''.format(section_id,course_id,assessment,semester))
     rows=cursor.fetchall()
     cursor.close()
-    QuestionBank=[[]for i in range(4)]
+    QuestionBank=[[]for i in range(len(rows[0]))]
+    
     for i in range(len(rows)):
         QuestionBank[0].append(rows[i][0])
         QuestionBank[1].append(rows[i][1])

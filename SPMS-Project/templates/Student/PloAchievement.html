@@ -60,24 +60,10 @@
     </div>
 </div>
 
-
-
 </div>
 {%endblock%}
 
 
 {% block javascripts %}
 
-  <script>
-    block = document.getElementById('pie');
-
-    var pielist = []
-    for (let i = 0; i < courses.length; i++) {
-        pielist.push({
-           label: courses[i],
-           data: table[i],
-           backgroundColor:colors[i]
-        });
-     }
-  </script>
 {% endblock javascripts %}

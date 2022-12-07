@@ -9,10 +9,10 @@
             </div>
             <div class="form-group col-md-6 col">
               <label for="semester">Semester</label>
-              <input type="text" class="form-control" id="semester" placeholder="Spring 2020">
+              <input type="text" class="form-control" name="semester" placeholder="Spring 2020">
             {% comment %} <small class="form-text text-muted">We'll never share your email with anyone else.</small> {% endcomment %}
             </div>
-    </div>
+        </div>
     <div class="form-row row">
             <div class="form-group col-md-6 col">
               <label for="section">Section no.:</label>
@@ -22,37 +22,40 @@
             <div class="form-group col-md-6 col">
                 <label for="section">Assessment Type:</label>
                 <select class="form-select" name -"assessment" placeholder="Assessment">
-                <option>QUIZ</option>
-                <option>MID</option>
-                <option>FINAL</option>
+                <option>Quiz</option>
+                <option>Mid</option>
+                <option>Final</option>
+                <option>Lab</option>
                 </select>
             </div>
             <p><br></p>
-        <center><button type="submit" class="btn btn-primary col-6" >Submit</button></center>
+        <center><button type="submit" class="btn btn-primary col-6" >Search Questions</button></center>
       </form>
-      
+      <br><br><br><br>
       
       <div>
         <table class="table table-striped table-dark">
           <thead>
             <tr>
-              <th scope="col">Question</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col col-1">Question No.</th>
+              <th scope="col col-5">Question</th>
+              <th scope="col col-2">Marks</th>
+              <th scope="col col-2">Weight</th>
+              <th scope="col col-2">CO Num</th>
             </tr>
+
           </thead>
           <tbody>
-        {% for q in {{question}} %}
+        {% comment %} {% for q in {{question}} %}
           
             <tr>
               <th scope="row">  {{question[0]}}</th>
-              <td>              {{question[1]}}</td>
-              <td>              {{question[2]}}</td>
-              <td>              {{question[3]}}</td>
+              <td scope="row">  {{question[1]}}</td>
+              <td scope="row">   {{question[2]}}</td>
+              <td scope="row">>  {{question[3]}}</td>
             </tr>
             
-        {% endfor %}
+        {% endfor %} {% endcomment %}
       </tbody>
       </table>
       </div>
