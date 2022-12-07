@@ -18,26 +18,20 @@ def PloAchieve(user_id):
         x=queries.getStudentWisePLO(user_id)[0], 
         y=queries.getStudentWisePLO(user_id)[1],
         labels={'x':'PLO ID','y':'Percentage Achieved'})
-    PloAchievement=fig.to_html()
-    return PloAchievement
+    return plot(fig, output_type='div',include_plotlyjs=True)
 
 def PloCompare(user_id):
-    # fig = px.bar(x=queries.getStudentWisePLO(user_id)[0], y=queries.getStudentWisePLO(user_id)[1])
-    # fig = px.bar(queries.getStudentWisePLO(user_id))
     df=pd.DataFrame({
         'PLONumber':queries.getStudentWisePLO(user_id)[0],
         'YourPLO':queries.getStudentWisePLO(user_id)[1],
-        'DepartmentAverage':queries.getDeptWisePLO(queries.getDept(user_id)[0][0])[1]
+        'DeptAverage':queries.getDeptWisePLO(queries.getDept(user_id))[1]
     })
-    fig = px.bar(df,x="PLO ID",y="Percentage Achieved",barmode='group')
-    fig.show()
-    Plo=fig.to_html()
-    return Plo
+    fig = px.histogram(df,x="PLONumber",y=["YourPLO","DeptAverage"],barmode='group')
+    return plot(fig, output_type='div',include_plotlyjs=True)
 
-def home(request):
-    # plot_div = OneTraceSpider([1,2,3,4,5,6],["banna","inja","jaima","niaz","akib","faiza"])
+def home(request):  
     user_id=queries.getCurrUser()[0][0]
-    user_dept=queries.getDept(user_id)[0][0]
+    user_dept=queries.getDept(user_id)
     context={
         "page":"dashboard",
         "id":user_id,
@@ -47,7 +41,7 @@ def home(request):
         "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(user_id)[1],queries.getStudentWiseCLO(user_id)[0]),
         "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(user_id)[1],queries.getStudentWisePLO(user_id)[0]),
         "GPAAnalysis":TwoTraceLineChart(queries.getStudentSemesterWiseGPA(user_id)[0],queries.getStudentSemesterWiseGPA(user_id)[1],queries.getDeptSemesterWiseGPA(user_dept)[1]),
-        # "PLOCompare":PloCompare(user_id)
+        "PLOComparison":PloCompare(user_id)
         }
         
     return render(request,"Student/sHome.html", context)

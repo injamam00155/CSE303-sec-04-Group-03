@@ -9,3 +9,5 @@ mydb=mysql.connector.connect(
         database= 'spms'  
     )
 
+print(queries.getStudentWisePLO(1616161)[0])
+

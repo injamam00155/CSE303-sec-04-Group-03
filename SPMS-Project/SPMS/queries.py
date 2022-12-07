@@ -107,7 +107,7 @@ def getDept(user_id):
             WHERE {}_id={}'''.format(str,str,user_id))
     department=cursor.fetchall()
     cursor.close()
-    return department
+    return department[0][0]
 
 def setCurrUser(user_id):
     try:
