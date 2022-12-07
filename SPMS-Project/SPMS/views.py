@@ -33,7 +33,6 @@ def home(request):
     user_id=queries.getCurrUser()[0][0]
     user_dept=queries.getDept(user_id)
     context={
-        "department":user_dept,
         "page":"dashboard",
         "id":user_id,
         "group":queries.getCurrUser()[0][1],
@@ -74,17 +73,15 @@ def CoPloAnal(request):
     # queries.getStudentCourseWiseCO(queries.getCurrUser()[0][0],"CSE101")
     context={
             "page":"coplo",
-            "department":queries.getDept(queries.getCurrUser()[0][0]),
-            "id":queries.getCurrUser()[0][0],
-            "group":queries.getCurrUser()[0][1],
-            "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "id":queries.getCurrUser()[0][0],
+        "group":queries.getCurrUser()[0][1],
+        "name":queries.getName(str(queries.getCurrUser()[0][0])),
             }
     return render(request,"Student/co-plo-analysis.html",context)
 
 def coursePloAnal(request):
     context={
             "page":"course",
-            "department":queries.getDept(queries.getCurrUser()[0][0]),
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
@@ -94,27 +91,16 @@ def coursePloAnal(request):
 def PloAchievement(request):
     context={
         "page":"plo",
-        "department":queries.getDept(queries.getCurrUser()[0][0]),
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
         }
     return render(request,"Student\PloAchievement.html",context)
 
-def CourseOutline(request):
-    context={
-            "page":"outline",
-            "department":queries.getDept(queries.getCurrUser()[0][0]),
-            "id":queries.getCurrUser()[0][0],
-            "group":queries.getCurrUser()[0][1],
-            "name":queries.getName(str(queries.getCurrUser()[0][0])),
-            }
-    return render(request,"Student\CourseOutline.html",context)
 
 def StuPloAnal(request):
     context={
         "page":"stuplo-anal",
-        "department":queries.getDept(queries.getCurrUser()[0][0]),
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
@@ -124,7 +110,6 @@ def StuPloAnal(request):
 def StuPloTbl(request):
     context={
         {"page":"stuplo-tbl",
-        "department":queries.getDept(queries.getCurrUser()[0][0]),
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
@@ -134,8 +119,7 @@ def StuPloTbl(request):
 
 def CourseReport(request):
     context={
-        "page":"coursereport",
-        "department":queries.getDept(queries.getCurrUser()[0][0]),                                                
+        "page":"coursereport",                                                
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
@@ -144,17 +128,12 @@ def CourseReport(request):
 
 
 def QuestionBank(request):
-    try:
-        course_id=request.GET.get('courseid')
-        section_num=request.GET.get('section')
-        assessment=request.GET.get('assessment')
-        semester=request.GET.get('semester')
-    except:
-        pass
-    print(course_id,section_num,assessment,semester)
-    # question=queries.fetchQuestions(course_id,section_num,assessment,semester)
+    course_id=request.GET.get('courseid')
+    section_id=request.GET.get('section')
+    assessment=request.GET.get('assessment')
+    semester=request.GET.get('semester')
+    # question=queries.fetchQuestions(course_id,section_id,assessment,semester)
     context={
-        "department":queries.getDept(queries.getCurrUser()[0][0]),
         # "question":question,
         "page":"ques",
         "id":queries.getCurrUser()[0][0],
@@ -165,7 +144,6 @@ def QuestionBank(request):
     
 def QuestionBankEntry(request):
     context={
-        "department":queries.getDept(queries.getCurrUser()[0][0]),
             "page":"quesentry",
             "id":queries.getCurrUser()[0][0],
             "group":queries.getCurrUser()[0][1],
@@ -177,7 +155,6 @@ def QuestionBankEntry(request):
 def COentry(request):
     context={
             "page":"dashboard",
-            "department":queries.getDept(queries.getCurrUser()[0][0]),
             "id":queries.getCurrUser(),
             "group":queries.getCurrUser(),
             "name":queries.getName(str(queries.getCurrUser()[0][0])),
@@ -187,7 +164,6 @@ def COentry(request):
 def ProgramW(request):
     context={
             "page":"ProgramW",
-            "department":queries.getDept(queries.getCurrUser()[0][0]),
             "id":queries.getCurrUser()[0],
             "group":queries.getCurrUser()[1],
             "name":queries.getName(str(queries.getCurrUser()[0])),
@@ -197,14 +173,11 @@ def ProgramW(request):
 def departmentWise(request):
     context={
             "page":"departmentWise",
-            "department":queries.getDept(queries.getCurrUser()[0][0]),
             "id":queries.getCurrUser()[0],
             "group":queries.getCurrUser()[1],
             "name":queries.getName(str(queries.getCurrUser()[0])),
             }
     return render(request,"Faculty\departmentWise.html",context)
-
-
 
 ## Creating Graphs
 

@@ -22,7 +22,7 @@ def fetchQuestions(course_id,section_id,assessment,semester):
     and semester="{}";'''.format(section_id,course_id,assessment,semester))
     rows=cursor.fetchall()
     cursor.close()
-    QuestionBank=[[] for i in range(len(rows[0]))]
+    QuestionBank=[[]for i in range(len(rows[0]))]
     
     for i in range(len(rows)):
         QuestionBank[0].append(rows[i][0])
@@ -127,13 +127,11 @@ def setCurrUser(user_id):
 
 
 def deleteCurrUser():
-    try:
-        if len(getCurruser_id())>0:
-            cursor = mydb.cursor()
-            cursor.execute('''TRUNCATE TABLE spms.spms_currsess_t''')
-            cursor.close()
-    except:
-        "anything"
+    if getCurruser_id():
+        cursor = mydb.cursor()
+        cursor.execute('''TRUNCATE TABLE spms.spms_currsess_t''')
+        rows=cursor.fetchall()
+        cursor.close()
     return
 
 

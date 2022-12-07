@@ -10,3 +10,4 @@ mydb=mysql.connector.connect(
     )
 
 print(queries.getStudentWisePLO(1616161)[0])
+
