@@ -46,7 +46,7 @@ def home(request):
         "PLOAchievement":PloAchieve(user_id),
         "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(user_id)[1],queries.getStudentWiseCLO(user_id)[0]),
         "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(user_id)[1],queries.getStudentWisePLO(user_id)[0]),
-        "GPAAnalysis":TwoTraceLineChart(queries.getStudentSemesterWiseGPA(user_id)[0],queries.getStudentSemesterWiseGPA(user_id)[1],queries.getDeptSemesterWiseGPA(user_dept)[1]),
+        # "GPAAnalysis":TwoTraceLineChart(queries.getStudentSemesterWiseGPA(user_id)[0],queries.getStudentSemesterWiseGPA(user_id)[1],queries.getDeptSemesterWiseGPA(user_dept)[1]),
         # "PLOCompare":PloCompare(user_id)
         }
         
@@ -79,9 +79,9 @@ def CoPloAnal(request):
     # queries.getStudentCourseWiseCO(queries.getCurrUser()[0][0],"CSE101")
     context={
             "page":"coplo",
-        "id":queries.getCurrUser()[0][0],
-        "group":queries.getCurrUser()[0][1],
-        "name":queries.getName(str(queries.getCurrUser()[0][0])),
+            "id":queries.getCurrUser()[0][0],
+            "group":queries.getCurrUser()[0][1],
+            "name":queries.getName(str(queries.getCurrUser()[0][0])),
             }
     return render(request,"Student/co-plo-analysis.html",context)
 
@@ -103,6 +103,14 @@ def PloAchievement(request):
         }
     return render(request,"Student\PloAchievement.html",context)
 
+def CourseOutline(request):
+    context={
+            "page":"outline",
+            "id":queries.getCurrUser()[0][0],
+            "group":queries.getCurrUser()[0][1],
+            "name":queries.getName(str(queries.getCurrUser()[0][0])),
+            }
+    return render(request,"Student\CourseOutline.html",context)
 
 def StuPloAnal(request):
     context={
@@ -138,9 +146,9 @@ def QuestionBank(request):
     section_id=request.GET.get('section')
     assessment=request.GET.get('assessment')
     semester=request.GET.get('semester')
-    # question=queries.fetchQuestions(course_id,section_id,assessment,semester)
+    question=queries.fetchQuestions(course_id,section_id,assessment,semester)
     context={
-        # "question":question,
+        "question":question,
         "page":"ques",
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
@@ -184,6 +192,8 @@ def departmentWise(request):
             "name":queries.getName(str(queries.getCurrUser()[0])),
             }
     return render(request,"Faculty\departmentWise.html",context)
+
+
 
 ## Creating Graphs
 
