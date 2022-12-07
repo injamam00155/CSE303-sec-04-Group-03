@@ -89,14 +89,6 @@ def PloAchievement(request):
         }
     return render(request,"Student\PloAchievement.html",context)
 
-def QuestionBank(request):
-    context={
-        "page":"ques",
-        "id":queries.getCurrUser()[0][0],
-        "group":queries.getCurrUser()[0][1],
-        "name":queries.getName(str(queries.getCurrUser()[0][0])),
-        }
-    return render(request,"Student\QuestionBank.html",context)
 
 def StuPloAnal(request):
     context={
@@ -126,15 +118,15 @@ def CourseReport(request):
         }
     return render(request,"Faculty\CourseReport.html",context)
 
+
 def QuestionBank(request):
-    question=0
     course_id=request.GET.get('courseid')
     section_id=request.GET.get('section')
     assessment=request.GET.get('assessment')
     semester=request.GET.get('semester')
-    question=queries.fetchQuestions(course_id,section_id,assessment,semester)
+    # question=queries.fetchQuestions(course_id,section_id,assessment,semester)
     context={
-        "question":question,
+        # "question":question,
         "page":"ques",
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
