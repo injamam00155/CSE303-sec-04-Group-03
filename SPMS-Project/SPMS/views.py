@@ -134,6 +134,7 @@ def QuestionBank(request):
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
         }
     return render(request,"Student\QuestionBank.html",context)
+    
 def QuestionBankEntry(request):
     context={
             "page":"quesentry",
@@ -179,7 +180,8 @@ def OneTraceSpider(rl,tl):
         theta = tl,
         fill='toself'
     ))
-    return plot(fig, output_type='div',include_plotlyjs=True)
+    fig=fig.to_html()
+    return fig
 
 def TwoTraceSpider(t,r1,r2):
     fig=go.figure()
