@@ -1033,10 +1033,10 @@ def getStudentWisePLO(student_id):
     return PLO
 
 
-def getCourseWiseStudentPLO(student_id, cat):
+def getCourseWiseStudentPLO(student_id):
     cursor = mydb.cursor()
-    cursor.execute(''' 
-               SELECT p.plo_num as plo_num,co.course_id,sum(e.obtained_marks),sum(a.total_marks), derived.Total
+    cursor.execute('''
+        SELECT p.plo_num as plo_num,co.course_id,100*sum(e.obtained_marks)/sum(a.total_marks)
                FROM spms_registration_t r,
                    spms_question_t a, 
                    spms_evaluation_t e,
@@ -1053,7 +1053,7 @@ def getCourseWiseStudentPLO(student_id, cat):
                             and e.question_id = a.question_id
                             and a.clo_id=co.clo_id 
                             and co.plo_id = p.plo_id 
-                            and r.student_id = '{}'
+                            and r.student_id = 1616161
                         GROUP BY  r.student_id,p.plo_id) derived
                WHERE r.student_id = derived.student_id
                     and e.registration_id = r.registration_id
@@ -1061,8 +1061,7 @@ def getCourseWiseStudentPLO(student_id, cat):
                     and a.clo_id=co.clo_id 
                     and co.plo_id = p.plo_id
                     and p.plo_num = derived.plo_num
-               GROUP BY  p.plo_id,co.course_id
-               '''.format(student_id))
+               GROUP BY  p.plo_id,co.course_id'''.format(student_id))
     row = cursor.fetchall()
     cursor.close()
     table = []
@@ -1075,24 +1074,16 @@ def getCourseWiseStudentPLO(student_id, cat):
     plo = ["PLO1", "PLO2", "PLO3", "PLO4", "PLO5", "PLO6", "PLO7", "PLO8", "PLO9", "PLO10", "PLO11", "PLO12"]
 
     for i in courses:
-        temptable = []
-        if cat == 'report':
-            temptable = [i]
+        temptable = [i]
 
         for j in plo:
             found = False
             for k in row:
                 if j == k[0] and i == k[1]:
-                    if cat == 'report':
-                        temptable.append(np.round(100 * k[2] / k[3], 2))
-                    elif cat == 'chart':
-                        temptable.append(np.round(100 * k[2] / k[4], 2))
+                    temptable.append(np.round(k[2], 2))
                     found = True
             if not found:
-                if cat == 'report':
-                    temptable.append('N/A')
-                elif cat == 'chart':
-                    temptable.append(0)
+                temptable.append('N/A')
         table.append(temptable)
     return plo, courses, table
 

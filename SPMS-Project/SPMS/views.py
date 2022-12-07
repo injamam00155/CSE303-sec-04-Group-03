@@ -94,6 +94,7 @@ def PloAchievement(request):
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "PloAchieveTable":PLOAchieveTable(queries.getCurrUser()[0][0])
         }
     return render(request,"Student\PloAchievement.html",context)
 
@@ -219,3 +220,25 @@ def TwoTraceLineChart(a,b,c):
     fig=go.Figure(data=graph)
     return plot(fig, output_type='div',include_plotlyjs=True)
 
+def PLOAchieveTable(user_id):
+        head=[[]for i in range(13)]
+        value=[[[]for i in range (12)]for i in range(13)]
+        row=queries.getCourseWiseStudentPLO(user_id)
+        head.append("course")
+        for i in range(len(row[0])):
+            head.append("Course")
+        for i in range(len(row[0])):
+            if(i==0):
+                value[0]=row[1][i]
+            else:
+                head.append(row[0][i])
+                for j in range(len(row[0])):
+                    if(j==0):
+                        value[0][j]=row[1][j]
+                    else:
+                        value[i][j]=row[2][j]
+
+        fig = go.Figure(data=[go.Table(header=dict(values=head),
+                    cells=dict(values=value))
+                        ])
+        return plot(fig, output_type='div',include_plotlyjs=True)
