@@ -31,7 +31,9 @@ def home(request):
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
         "PloAchievement":PloAchieve(student_id),
         "COAchievement":OneTraceSpider(queries.getStudentWiseCLO(student_id)[1],queries.getStudentWiseCLO(student_id)[0]),
-        "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(student_id)[1],queries.getStudentWisePLO(student_id)[0])
+        "PLOAchievePercent":OneTraceSpider(queries.getStudentWisePLO(student_id)[1],queries.getStudentWisePLO(student_id)[0]),
+        "GPAAnalysis":TwoTraceLineChart(queries.)
+        "PLOAnalysis":TwoTraceSpider(queries.getStudentWisePLO(student_id)[0],queries.getStudentWisePLO(student_id)[1],queries.getDeptWisePLO(queries.getDept(student_id))[1])
         }
         
     return render(request,"Student/sHome.html", context)
@@ -184,15 +186,27 @@ def TwoTraceSpider(t,r1,r2):
     fig.add_trace(data=go.Scatterpolar(
         r = r1,
         theta = t,
-        fill='toself'
+        fill='toself',
         name="You"
     ))
     fig.add_trace(data=go.Scatterpolar(
         r = r2,
         theta = t,
-        fill='toself'
+        fill='toself',
         name="Department Average"
     ))
     return plot(fig, output_type='div',include_plotlyjs=True)
 
+def TwoTraceLineChart(a,b,c):
+    trace0 = go.Scatter(
+        x=a,
+        y1=b
+    )
+    trace1 = go.Scatter(
+        x=a,
+        y2=c
+    )
+    data=[trace0,trace1]
+    fig=go.figure(data=data)
+    return plot(fig, output_type='div',include_plotlyjs=True)
 

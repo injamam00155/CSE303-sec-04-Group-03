@@ -68,6 +68,19 @@ def getName(user_id):
             return name
             #output fname+lname(null for now)
 
+def getDept(user_id):
+    if getGroup(user_id)=="student":
+        str="student"
+    elif getGroup(user_id)=="faculty":
+        str="faculty"
+    cursor = mydb.cursor()
+    cursor.execute('''        
+            SELECT department_id   
+            FROM spms_{}_t
+            WHERE {}_id={}'''.format(user_id))
+    department=cursor.fetchall()
+    cursor.close()
+    return department
 
 def setCurrUser(user_id):
     try:
@@ -1059,7 +1072,7 @@ def getSchoolWisePLO(school):
              GROUP BY derived.plo_num
                    '''.format(school))
     row = cursor.fetchall()
-    Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+    # Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
 
     cursor.close()
     return row
@@ -1079,7 +1092,7 @@ def getDeptWisePLO(dept):
                     spms_clo_t c,
                     spms_plo_t p
                 WHERE r.student_id = st.student_id
-                    and st.department_id = d.departmentID
+                    and st.department_id = d.department_id
                     and e.registration_id = r.registration_id
                     and a.question_id = e.question_id
                     and a.clo_id = c.clo_id
@@ -2241,14 +2254,24 @@ def getSchoolReport(school):
 
     return finalrow
 
-# def getUserDept():
-#     user_id=
-#     if(getGroup(user_id)=="faculty"):
-#         table="spms_faculty_t"
-#     elif(getGroup(user_id)=="student"):
-#         table="spms_student_t"
-#     cursor=mydb.cursor()
-#     cursor.execute('''
-#     SELECT department
-#     FROM '''
-#     )
+def getQuestion(semester,course_id,section_num,assessment_name):
+    cursor=mydb.cursor()
+    cursor.execute('''
+            SELECT st.section_id
+            FROM spms_student_t st,
+            WHERE st.semester='{}'
+            and st.course_id='{}'
+            and st.section_num='{}'
+            )'''.format(semester,course_id,section_num))
+    cursor.close()
+    sectionid=cursor.fetchall()
+    cursor.execute('''
+            SELECT st.question_id
+            FROM spms_question_t st,
+            WHERE st.section_id='{}'
+            and st.question_id= '{}'
+            )'''.format(sectionid,assessment_name))
+    cursor.close()
+    question=cursor.fetchall()
+    return question
+
