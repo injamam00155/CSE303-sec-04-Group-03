@@ -1127,7 +1127,7 @@ def getSchoolWisePLO(school):
              GROUP BY derived.plo_num
                    '''.format(school))
     row = cursor.fetchall()
-    Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+    ##Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'spms.p.plo_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
 
 #     cursor.close()
 #     return row

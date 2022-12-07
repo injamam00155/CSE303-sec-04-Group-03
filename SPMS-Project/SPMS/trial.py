@@ -25,4 +25,4 @@ def fetchQuestions(course_id,section_num,assessment,semester):
         QuestionBank[3].append(rows[i][3])
     return QuestionBank
 
-    print(fetchQuestions("CSE101",1,"Mid","Spring 2020"))
+print(fetchQuestions("CSE101",1,"Mid","Spring 2020"))
