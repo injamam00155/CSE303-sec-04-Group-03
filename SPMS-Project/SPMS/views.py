@@ -5,6 +5,8 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.offline import plot
+import plotly.figure_factory as ff
+
 
 
 
@@ -127,19 +129,44 @@ def CourseReport(request):
         }
     return render(request,"Faculty\CourseReport.html",context)
 
-
-def QuestionBank(request):
+def QTable(request):
+    question=[]
+    fig=[]
     course_id=request.GET.get('courseid')
     section_id=request.GET.get('section')
     assessment=request.GET.get('assessment')
     semester=request.GET.get('semester')
-    # question=queries.fetchQuestions(course_id,section_id,assessment,semester)
+    try:
+        question=queries.fetchQuestions(course_id,section_id,assessment,semester)
+        df=[["Q Num","Question","Marks","Weight","CO Num"]]
+        for i in range(len(question)):
+            df.append(question[i])
+        fig=ff.create_table(df)
+        return plot(fig, output_type='div',include_plotlyjs=True)    
+    except:
+        pass
+
+def QuestionBank(request):
+    # course_id=""
+    # section_id=""
+    # assessment=""
+    # semester=""
+    # course_id=request.GET.get('courseid')
+    # section_id=request.GET.get('section')
+    # assessment=request.GET.get('assessment')
+    # semester=request.GET.get('semester')
+    # print(course_id,section_id,assessment,semester)
+    # try:
+    #     question=queries.fetchQuestions(course_id,section_id,assessment,semester)
+    # except:
+    #     pass
     context={
-        # "question":question,
         "page":"ques",
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "department":queries.getDept(queries.getCurrUser()[0][0]),
+        "QuestionTable":QTable(request)
         }
     return render(request,"Student\QuestionBank.html",context)
     
@@ -221,24 +248,9 @@ def TwoTraceLineChart(a,b,c):
     return plot(fig, output_type='div',include_plotlyjs=True)
 
 def PLOAchieveTable(user_id):
-        head=[[]for i in range(13)]
-        value=[[[]for i in range (12)]for i in range(13)]
         row=queries.getCourseWiseStudentPLO(user_id)
-        head.append("course")
-        for i in range(len(row[0])):
-            head.append("Course")
-        for i in range(len(row[0])):
-            if(i==0):
-                value[0]=row[1][i]
-            else:
-                head.append(row[0][i])
-                for j in range(len(row[0])):
-                    if(j==0):
-                        value[0][j]=row[1][j]
-                    else:
-                        value[i][j]=row[2][j]
-
-        fig = go.Figure(data=[go.Table(header=dict(values=head),
-                    cells=dict(values=value))
-                        ])
+        df=[["Courses","PLO1","PLO2","PLO3","PLO4","PLO5","PLO6","PLO7","PLO8","PLO9","PLO10","PLO11","PLO12"]]
+        for i in range(len(row)):
+            df.append(row[2][i])
+        fig=ff.create_table(df)
         return plot(fig, output_type='div',include_plotlyjs=True)

@@ -31,6 +31,6 @@ urlpatterns = [
     path('StuPloTbl',views.StuPloTbl,name="StuPloTbl"),
     path('CourseReport',views.CourseReport,name="CourseReport"),
     path('coentry',views.COentry,name="coentry"),
-    path('pdf',views.pdf,name="pdf_convert"),
+    # path('pdf',views.pdf,name="pdf_convert"),
 
 ]

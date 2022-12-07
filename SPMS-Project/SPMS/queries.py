@@ -13,23 +13,24 @@ mydb=mysql.connector.connect(
 def fetchQuestions(course_id,section_id,assessment,semester):
     cursor = mydb.cursor()
     cursor.execute('''
-    SELECT question_id,total_marks, weight, clo_id
-    FROM spms.spms_section_t as s,spms.spms_question_t as q
+    SELECT question_num,question,total_marks, weight, clo_num
+    FROM spms.spms_section_t as s,spms.spms_question_t as q,spms.spms_clo_t as c
     WHERE s.section_id=q.section_id
-    AND   s.section_num = {}
+    AND q.clo_id=c.clo_id
+    AND s.section_num = {}
     AND s.course_id='{}'
     and assessment_name='{}'
     and semester="{}";'''.format(section_id,course_id,assessment,semester))
     rows=cursor.fetchall()
     cursor.close()
-    QuestionBank=[[]for i in range(len(rows[0]))]
+    # QuestionBank=[[]for i in range(len(rows[0]))]
     
-    for i in range(len(rows)):
-        QuestionBank[0].append(rows[i][0])
-        QuestionBank[1].append(rows[i][1])
-        QuestionBank[2].append(rows[i][2])
-        QuestionBank[3].append(rows[i][3])
-    return QuestionBank
+    # for i in range(len(rows)):
+    #     QuestionBank[0].append(rows[i][0])
+    #     QuestionBank[1].append(rows[i][1])
+    #     QuestionBank[2].append(rows[i][2])
+    #     QuestionBank[3].append(rows[i][3])
+    return rows
     
 
 
@@ -1036,7 +1037,7 @@ def getStudentWisePLO(student_id):
 def getCourseWiseStudentPLO(student_id):
     cursor = mydb.cursor()
     cursor.execute('''
-        SELECT p.plo_num as plo_num,co.course_id,100*sum(e.obtained_marks)/sum(a.total_marks)
+        SELECT p.plo_num as plo_num,co.course_id,cast(100*sum(e.obtained_marks)/sum(a.total_marks) as decimal(10,2))
                FROM spms_registration_t r,
                    spms_question_t a, 
                    spms_evaluation_t e,
@@ -1053,7 +1054,7 @@ def getCourseWiseStudentPLO(student_id):
                             and e.question_id = a.question_id
                             and a.clo_id=co.clo_id 
                             and co.plo_id = p.plo_id 
-                            and r.student_id = 1616161
+                            and r.student_id = '{}'
                         GROUP BY  r.student_id,p.plo_id) derived
                WHERE r.student_id = derived.student_id
                     and e.registration_id = r.registration_id
@@ -1080,75 +1081,75 @@ def getCourseWiseStudentPLO(student_id):
             found = False
             for k in row:
                 if j == k[0] and i == k[1]:
-                    temptable.append(np.round(k[2], 2))
+                    temptable.append(k[2])
                     found = True
             if not found:
                 temptable.append('N/A')
         table.append(temptable)
     return plo, courses, table
 
-# def getCOWiseStudentPLO(student_id, cat):
-#     cursor = mydb.cursor()
-#     cursor.execute(''' 
-#                SELECT p.plo_num as plo_num,co.coNum, sum(e.obtained_marks),sum(a.total_marks),derived.Total 
-#                FROM spms_registration_t r,
-#                    spms_question_t a, 
-#                    spms_evaluation_t e,
-#                    spms_clo_t co, 
-#                    spms_plo_t p,
-#                    (
-#                         SELECT p.plo_num as plo_num,sum(a.total_marks) as Total, r.student_id as student_id
-#                         FROM spms_registration_t r,
-#                             spms_question_t a, 
-#                             spms_evaluation_t e,
-#                             spms_clo_t co, 
-#                             spms_plo_t p
-#                         WHERE r.registration_id = e.registration_id 
-#                             and e.question_id = a.question_id
-#                             and a.clo_id=co.clo_id 
-#                             and co.plo_id = p.plo_id 
-#                             and r.student_id = '{}'
-#                         GROUP BY  r.student_id,p.plo_id) derived
-#                WHERE r.student_id = derived.student_id
-#                     and e.registration_id = r.registration_id
-#                     and e.question_id = a.question_id
-#                     and a.clo_id=co.clo_id 
-#                     and co.plo_id = p.plo_id
-#                     and p.plo_num = derived.plo_num
-#                GROUP BY  p.plo_id,co.coNum
-#                '''.format(student_id))
-#     row = cursor.fetchall()
-#     cursor.close()
-#     table = []
-#     cos = []
+def getCOWiseStudentPLO(student_id, cat):
+    cursor = mydb.cursor()
+    cursor.execute(''' 
+               SELECT p.plo_num as plo_num,co.coNum, sum(e.obtained_marks),sum(a.total_marks),derived.Total 
+               FROM spms_registration_t r,
+                   spms_question_t a, 
+                   spms_evaluation_t e,
+                   spms_clo_t co, 
+                   spms_plo_t p,
+                   (
+                        SELECT p.plo_num as plo_num,sum(a.total_marks) as Total, r.student_id as student_id
+                        FROM spms_registration_t r,
+                            spms_question_t a, 
+                            spms_evaluation_t e,
+                            spms_clo_t co, 
+                            spms_plo_t p
+                        WHERE r.registration_id = e.registration_id 
+                            and e.question_id = a.question_id
+                            and a.clo_id=co.clo_id 
+                            and co.plo_id = p.plo_id 
+                            and r.student_id = '{}'
+                        GROUP BY  r.student_id,p.plo_id) derived
+               WHERE r.student_id = derived.student_id
+                    and e.registration_id = r.registration_id
+                    and e.question_id = a.question_id
+                    and a.clo_id=co.clo_id 
+                    and co.plo_id = p.plo_id
+                    and p.plo_num = derived.plo_num
+               GROUP BY  p.plo_id,co.coNum
+               '''.format(student_id))
+    row = cursor.fetchall()
+    cursor.close()
+    table = []
+    cos = []
 
-#     for entry in row:
-#         if entry[1] not in cos:
-#             cos.append(entry[1])
-#     cos.sort()
-#     plo = ["PLO1", "PLO2", "PLO3", "PLO4", "PLO5", "PLO6", "PLO7", "PLO8", "PLO9", "PLO10", "PLO11", "PLO12"]
+    for entry in row:
+        if entry[1] not in cos:
+            cos.append(entry[1])
+    cos.sort()
+    plo = ["PLO1", "PLO2", "PLO3", "PLO4", "PLO5", "PLO6", "PLO7", "PLO8", "PLO9", "PLO10", "PLO11", "PLO12"]
 
-#     for i in cos:
-#         temptable = []
-#         if cat == 'report':
-#             temptable = [i]
+    for i in cos:
+        temptable = []
+        if cat == 'report':
+            temptable = [i]
 
-#         for j in plo:
-#             found = False
-#             for k in row:
-#                 if j == k[0] and i == k[1]:
-#                     if cat == 'report':
-#                         temptable.append(np.round(100 * k[2] / k[3], 2))
-#                     elif cat == 'chart':
-#                         temptable.append(np.round(100 * k[2] / k[4], 2))
-#                     found = True
-#             if not found:
-#                 if cat == 'report':
-#                     temptable.append('N/A')
-#                 elif cat == 'chart':
-#                     temptable.append(0)
-#         table.append(temptable)
-#     return plo, cos, table
+        for j in plo:
+            found = False
+            for k in row:
+                if j == k[0] and i == k[1]:
+                    if cat == 'report':
+                        temptable.append(np.round(100 * k[2] / k[3], 2))
+                    elif cat == 'chart':
+                        temptable.append(np.round(100 * k[2] / k[4], 2))
+                    found = True
+            if not found:
+                if cat == 'report':
+                    temptable.append('N/A')
+                elif cat == 'chart':
+                    temptable.append(0)
+        table.append(temptable)
+    return plo, cos, table
 
 
 def getSchoolWisePLO(school):
