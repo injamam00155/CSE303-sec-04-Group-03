@@ -27,12 +27,14 @@
   
   <div>
   
-  {% if facultyname%}  
-    <div style="width:300; display: block" id="CourseOutline">
-      {%include "Student\outline_info.html"%}
-    </div>
+  {% if facultyname %}  
+    <div> No Course Outlines to Show</div>
+  {%else%}
+  <div style="width:300; display: block" id="CourseOutline">
+    {%include "Student\outline_info.html"%}
+  </div>
   {%endif%}
-    <script>
+  <script>
       function showDiv()
       {
           document.getElementById("CourseOutline").style.display="block"

@@ -143,7 +143,6 @@ def CourseOutline(request):
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
         "department":queries.getDept(queries.getCurrUser()[0][0]),
-        "hide":'yes',
         # "facultyname":queries.getCourseOutline(course_id,semester,section_num)[0]+' '+queries.getCourseOutline(course_id,semester,section_num)[1],
         # "facultyemail":queries.getCourseOutline(course_id,semester,section_num)[2],
         # "course_description":queries.getCourseOutline(course_id,semester,section_num)[3],

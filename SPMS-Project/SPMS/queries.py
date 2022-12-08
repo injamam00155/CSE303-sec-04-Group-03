@@ -23,13 +23,13 @@ def fetchQuestions(course_id,section_id,assessment,semester):
     and semester="{}";'''.format(section_id,course_id,assessment,semester))
     rows=cursor.fetchall()
     cursor.close()
-    # QuestionBank=[[]for i in range(len(rows[0]))]
+    QuestionBank=[[]for i in range(len(rows[0]))]
     
-    # for i in range(len(rows)):
-    #     QuestionBank[0].append(rows[i][0])
-    #     QuestionBank[1].append(rows[i][1])
-    #     QuestionBank[2].append(rows[i][2])
-    #     QuestionBank[3].append(rows[i][3])
+    for i in range(len(rows)):
+        QuestionBank[0].append(rows[i][0])
+        QuestionBank[1].append(rows[i][1])
+        QuestionBank[2].append(rows[i][2])
+        QuestionBank[3].append(rows[i][3])
     return rows
     
 
