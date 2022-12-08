@@ -82,6 +82,7 @@ def coursePloAnal(request):
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
+        "courseploanal":coursewiseplo(queries.getCurrUser()[0][0])
             }
     return render(request,"Student\course-plo-analysis.html",context)
 
@@ -273,7 +274,7 @@ def coursewiseplo(user_id):
     df=pd.DataFrame(data=row[2],
                     index=row[1],
                     columns=row[0])
-    fig = px.bar(df)
+    fig = px.histogram(df)
     return plot(fig, output_type='div',include_plotlyjs=True)
 
 def PloCompare(user_id):

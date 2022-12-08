@@ -8,12 +8,10 @@ mydb=mysql.connector.connect(
         password= 'inja',  
         database= 'spms'  
     )
-
-
 def getCOWiseStudentPLO(student_id):
     cursor = mydb.cursor()
     cursor.execute(''' 
-               SELECT p.plo_num as plo_num,co.clo_num, cast(100*sum(e.obtained_marks)/sum(a.total_marks) as decimal(10,2)) 
+               SELECT p.plo_num as plo_num,co.clo_num, cast(100*sum(e.obtained_marks)/sum(a.total_marks) as decimal(10,2))
                FROM spms_registration_t r,
                    spms_question_t a, 
                    spms_evaluation_t e,
@@ -53,6 +51,8 @@ def getCOWiseStudentPLO(student_id):
 
     for i in cos:
         temptable = []
+        temptable = [i]
+
         for j in plo:
             found = False
             for k in row:
@@ -60,12 +60,6 @@ def getCOWiseStudentPLO(student_id):
                     temptable.append(k[2])
                     found = True
             if not found:
-                temptable.append(0)
+                temptable.append('N/A')
         table.append(temptable)
     return plo, cos, table
-
-
-print(getCOWiseStudentPLO(1612985)[0])
-print(getCOWiseStudentPLO(1612985)[1])
-print(getCOWiseStudentPLO(1612985)[2][0])
-print(getCOWiseStudentPLO(1612985)[2][1])
