@@ -98,22 +98,21 @@ def getName(user_id):
 
 def getCourseOutline(course_id,semester,section_num):
     cursor = mydb.cursor()
-    cursor.execute('''
-    SELECT course_description, assessment_and_marks_distribution,
-     grade_conversion_scheme, requied_textbook, cource_policy, university_regulation_and_code_of_conduct
-
-    FROM spms_course_outline_t  
-    WHERE section_id=(
-        Select section_id
-        FROM spms_section_t
-        WHERE 
-        course_id='{}'
-        AND semester ='{}'
-        AND section_num='{}'   
-        );'''.format(course_id,semester,section_num))
-    rows=cursor.fetchall()
+    cursor.execute(''' 
+               SELECT f.first_name,f.last_name,f.email, course_description, requied_textbook, cource_policy
+                FROM spms.spms_section_t as s,
+                spms.spms_course_outline_t as c,
+                spms.spms_faculty_t as f
+                WHERE c.section_id=s.section_id
+                and f.faculty_id=s.faculty_id
+                and s.section_num='{}'
+                and s.semester='{}'
+                and s.course_id='{}'
+               '''.format(section_num,semester,course_id))
+    row = cursor.fetchall()
     cursor.close()
-    return rows[0]
+    return row[0]
+
 
 def getDept(user_id):
     if getGroup(user_id)=="student":

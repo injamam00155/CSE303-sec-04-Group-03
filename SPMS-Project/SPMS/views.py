@@ -102,21 +102,33 @@ def CourseOutlineData(request):
     section_num=request.GET.get('sec_num')
     semester=request.GET.get('semr')
     try:
-        outline=queries.getCourseOutline(course_id,semester,section_num)
-        return outline
+        thisDictionary={
+        "facultyname":queries.getCourseOutline(course_id,semester,section_num)[0]+' '+queries.getCourseOutline(course_id,semester,section_num)[1],
+        "facultyemail":queries.getCourseOutline(course_id,semester,section_num)[2],
+        "requied_textbook":queries.getCourseOutline(course_id,semester,section_num)[3],
+        "course_policy":queries.CourseOutlineData(course_id,semester,section_num)[4]
+        }
+        
+        return thisDictionary
     except:
         pass
+
+# def getOutline(request):
+#     course_id=request.GET.get('course_')
+#     try:
+#         queries.getCourseOutline(course_id,semester,section_num)
+#     except:
+    
 
 def CourseOutline(request):
         context={
         "page":"cout",
-        "check":1,
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
         "department":queries.getDept(queries.getCurrUser()[0][0]),
-        "outline":CourseOutlineData(request),
         }
+        context.update(CourseOutlineData(request))
         return render (request,"Student\CourseOutline.html",context)
 
 def StuPloAnal(request):

@@ -957,7 +957,7 @@
 
 {%block outlineInfo%}
 
-<center><div style="width:1000px">
+<center><div >
     <page size="A4">
         <p class="s1" style="padding-top: 3pt;padding-left: 133pt;text-indent: 0pt;text-align: left;">Independent
             University, Bangladesh</p>
@@ -970,7 +970,7 @@
         <p style="text-indent: 0pt;text-align: left;"><br /></p>
         <h2 style="padding-top: 2pt;padding-left: 41pt;text-indent: 0pt;text-align: left;">Instructor’s details:</h2>
         <p style="text-indent: 0pt;text-align: left;"><br /></p>
-        Here Goes Instructor Details
+        {{facultyname}}
         
         <h2 style="padding-top: 2pt;padding-left: 41pt;text-indent: 0pt;line-height: 15pt;text-align: justify;">Course
             Description</h2>
@@ -2835,8 +2835,14 @@
                 </td>
             </tr>
         </table>
-
+        
 
 </page>
 </div></center>
+<script>
+    function showDiv()
+    {
+        getElementById("CourseOutline").style.display="block"
+    }
+</script>
 {%endblock outlineInfo%}

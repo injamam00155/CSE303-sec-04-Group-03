@@ -21,18 +21,20 @@
         </div>
 
         <p><br></p>
-    <center><button type="submit" class="btn btn-primary col-4" >View Course Outline</button></center>
+    <center><button type="submit" class="btn btn-primary col-4"  onClick="showDiv()" >View Course Outline</button></center>
   </form>
   <br><br><br><br>
   
   <div>
   
-    <div>
-
+    <div style="width:300; display: block" id="CourseOutline">
+      {%include "Student\outline_info.html"%}
     </div>
-
-{%include "Student\outline_info.html"%}
-
-    
+    <script>
+      function showDiv()
+      {
+          document.getElementById("CourseOutline").style.display="block"
+      }
+  </script>
 {%endblock%}
 
