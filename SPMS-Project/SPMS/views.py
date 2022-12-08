@@ -6,6 +6,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.offline import plot
 import plotly.figure_factory as ff
+from io import BytesIO
+# from xhtml2pdf import pisa
 
 
 
@@ -98,15 +100,17 @@ def PloAchievement(request):
     return render(request,"Student\PloAchievement.html",context)
 
 def CourseOutlineData(request):
-    course_id=request.GET.get('cid')
-    section_num=request.GET.get('sec_num')
-    semester=request.GET.get('semr')
+    course_id=request.GET.get('courseid')
+    section_num=request.GET.get('section')
+    semester=request.GET.get('semester')
     try:
         thisDictionary={
         "facultyname":queries.getCourseOutline(course_id,semester,section_num)[0]+' '+queries.getCourseOutline(course_id,semester,section_num)[1],
         "facultyemail":queries.getCourseOutline(course_id,semester,section_num)[2],
-        "requied_textbook":queries.getCourseOutline(course_id,semester,section_num)[3],
-        "course_policy":queries.CourseOutlineData(course_id,semester,section_num)[4]
+        "course_description":queries.getCourseOutline(course_id,semester,section_num)[3],
+        "required_textbook":queries.getCourseOutline(course_id,semester,section_num)[4],
+        "course_policy":queries.getCourseOutline(course_id,semester,section_num)[5],
+        
         }
         
         return thisDictionary
@@ -120,15 +124,34 @@ def CourseOutlineData(request):
 #     except:
     
 
+# def toPDF(template,context):
+#     template=get_template(template_source)
+#     html=template.render(context)
+#     result=BytesIO()
+#     pdf=pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")),result)
+#     if not pdf.err():
+#         return HttpResponse(result.getvalue(),context_type="application/pdf")
+#     return None
+
 def CourseOutline(request):
+        course_id=request.GET.get('courseid')
+        section_num=request.GET.get('section')
+        semester=request.GET.get('semester')
         context={
         "page":"cout",
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
         "department":queries.getDept(queries.getCurrUser()[0][0]),
+        "hide":'yes',
+        # "facultyname":queries.getCourseOutline(course_id,semester,section_num)[0]+' '+queries.getCourseOutline(course_id,semester,section_num)[1],
+        # "facultyemail":queries.getCourseOutline(course_id,semester,section_num)[2],
+        # "course_description":queries.getCourseOutline(course_id,semester,section_num)[3],
+        # "required_textbook":queries.getCourseOutline(course_id,semester,section_num)[4],
+        # "course_policy":queries.getCourseOutline(course_id,semester,section_num)[5],
         }
-        context.update(CourseOutlineData(request))
+        context2=CourseOutlineData(request)
+        # context.update(context2)
         return render (request,"Student\CourseOutline.html",context)
 
 def StuPloAnal(request):
