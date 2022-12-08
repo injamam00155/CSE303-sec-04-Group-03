@@ -22,15 +22,6 @@ def PloAchieve(user_id):
         labels={'x':'PLO ID','y':'Percentage Achieved'})
     return plot(fig, output_type='div',include_plotlyjs=True)
 
-def PloCompare(user_id):
-    df=pd.DataFrame({
-        'PLONumber':queries.getStudentWisePLO(user_id)[0],
-        'YourPLO':queries.getStudentWisePLO(user_id)[1],
-        'DeptAverage':queries.getDeptWisePLO(queries.getDept(user_id))[1]
-    })
-    fig = px.histogram(df,x="PLONumber",y=["YourPLO","DeptAverage"],barmode='group')
-    return plot(fig, output_type='div',include_plotlyjs=True)
-
 def home(request):  
     user_id=queries.getCurrUser()[0][0]
     user_dept=queries.getDept(user_id)
@@ -91,7 +82,7 @@ def coursePloAnal(request):
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
-        "department":queries.getDept(queries.getCurrUser()[0][0]),
+        "courseploanal":coursewiseplo(queries.getCurrUser()[0][0])
             }
     return render(request,"Student\course-plo-analysis.html",context)
 
@@ -269,8 +260,31 @@ def TwoTraceLineChart(a,b,c):
     return plot(fig, output_type='div',include_plotlyjs=True)
 
 def cowiseplo(user_id):
-    row = queries.getCOWiseStudentPLO(user_id)
-    fig = px.histogram(row).update_xaxes(categoryorder='total descending')
+    df=pd.DataFrame({
+        'PLONumber':queries.getCOWiseStudentPLO(user_id)[0],
+        'CLO1':queries.getCOWiseStudentPLO(user_id)[2][0],
+        'CLO2':queries.getCOWiseStudentPLO(user_id)[2][1],
+        'CLO3':queries.getCOWiseStudentPLO(user_id)[2][2],
+        'CLO4':queries.getCOWiseStudentPLO(user_id)[2][3]
+    })
+    fig = px.histogram(df,x="PLONumber",y=["CLO1","CLO2","CLO3","CLO4"])
+    return plot(fig, output_type='div',include_plotlyjs=True)
+
+def coursewiseplo(user_id):
+    row=queries.getCourseWiseStudentPLOAnal(user_id)
+    df=pd.DataFrame(data=row[2],
+                    index=row[1],
+                    columns=row[0])
+    fig = px.histogram(df)
+    return plot(fig, output_type='div',include_plotlyjs=True)
+
+def PloCompare(user_id):
+    df=pd.DataFrame({
+        'PLONumber':queries.getStudentWisePLO(user_id)[0],
+        'YourPLO':queries.getStudentWisePLO(user_id)[1],
+        'DeptAverage':queries.getDeptWisePLO(queries.getDept(user_id))[1]
+    })
+    fig = px.histogram(df,x="PLONumber",y=["YourPLO","DeptAverage"],barmode='group')
     return plot(fig, output_type='div',include_plotlyjs=True)
 
 def PLOAchieveTable(user_id):
