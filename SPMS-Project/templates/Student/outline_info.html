@@ -1,0 +1,2842 @@
+
+{%block additional%}
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        text-indent: 0;
+    }
+
+    .s1 {
+        color: black;
+        font-family: "Times New Roman", serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+    }
+
+    .s2 {
+        color: black;
+        font-family: "Times New Roman", serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 13.5pt;
+    }
+
+    .h1 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 13pt;
+    }
+
+    .s3 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 12pt;
+    }
+
+    h4 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    .h2,
+    h2 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 12pt;
+    }
+
+    .s4 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 12pt;
+    }
+
+    .a,
+    a {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 12pt;
+    }
+
+    .p,
+    p {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 11pt;
+        margin: 0pt;
+    }
+
+    .s5 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 11pt;
+    }
+
+    .s6 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 11pt;
+    }
+
+    .s7 {
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    .s8 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    h3 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 11pt;
+    }
+
+    .s9 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    .s10 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    .s11 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 11pt;
+    }
+
+    .s12 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 12pt;
+    }
+
+    .s13 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 12pt;
+    }
+
+    .s14 {
+        color: #808080;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l1 {
+        padding-left: 0pt;
+        counter-reset: c1 1;
+    }
+
+    #l1>li>*:first-child:before {
+        counter-increment: c1;
+        content: counter(c1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 11pt;
+    }
+
+    #l1>li:first-child>*:first-child:before {
+        counter-increment: c1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l2 {
+        padding-left: 0pt;
+    }
+
+    #l2>li>*:first-child:before {
+        content: "● ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 11pt;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l3 {
+        padding-left: 0pt;
+        counter-reset: e1 1;
+    }
+
+    #l3>li>*:first-child:before {
+        counter-increment: e1;
+        content: counter(e1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l3>li:first-child>*:first-child:before {
+        counter-increment: e1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l4 {
+        padding-left: 0pt;
+        counter-reset: f1 1;
+    }
+
+    #l4>li>*:first-child:before {
+        counter-increment: f1;
+        content: counter(f1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 11pt;
+    }
+
+    #l4>li:first-child>*:first-child:before {
+        counter-increment: f1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l5 {
+        padding-left: 0pt;
+    }
+
+    #l5>li>*:first-child:before {
+        content: "● ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 11pt;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l6 {
+        padding-left: 0pt;
+        counter-reset: h1 1;
+    }
+
+    #l6>li>*:first-child:before {
+        counter-increment: h1;
+        content: counter(h1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l6>li:first-child>*:first-child:before {
+        counter-increment: h1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l7 {
+        padding-left: 0pt;
+        counter-reset: i1 3;
+    }
+
+    #l7>li>*:first-child:before {
+        counter-increment: i1;
+        content: counter(i1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l7>li:first-child>*:first-child:before {
+        counter-increment: i1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l8 {
+        padding-left: 0pt;
+        counter-reset: j1 1;
+    }
+
+    #l8>li>*:first-child:before {
+        counter-increment: j1;
+        content: counter(j1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l8>li:first-child>*:first-child:before {
+        counter-increment: j1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l9 {
+        padding-left: 0pt;
+        counter-reset: k1 1;
+    }
+
+    #l9>li>*:first-child:before {
+        counter-increment: k1;
+        content: counter(k1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l9>li:first-child>*:first-child:before {
+        counter-increment: k1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l10 {
+        padding-left: 0pt;
+        counter-reset: l1 1;
+    }
+
+    #l10>li>*:first-child:before {
+        counter-increment: l1;
+        content: counter(l1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l10>li:first-child>*:first-child:before {
+        counter-increment: l1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l11 {
+        padding-left: 0pt;
+        counter-reset: m1 1;
+    }
+
+    #l11>li>*:first-child:before {
+        counter-increment: m1;
+        content: counter(m1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l11>li:first-child>*:first-child:before {
+        counter-increment: m1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l12 {
+        padding-left: 0pt;
+        counter-reset: n1 1;
+    }
+
+    #l12>li>*:first-child:before {
+        counter-increment: n1;
+        content: counter(n1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l12>li:first-child>*:first-child:before {
+        counter-increment: n1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l13 {
+        padding-left: 0pt;
+        counter-reset: o1 1;
+    }
+
+    #l13>li>*:first-child:before {
+        counter-increment: o1;
+        content: counter(o1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l13>li:first-child>*:first-child:before {
+        counter-increment: o1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l14 {
+        padding-left: 0pt;
+        counter-reset: p1 5;
+    }
+
+    #l14>li>*:first-child:before {
+        counter-increment: p1;
+        content: counter(p1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l14>li:first-child>*:first-child:before {
+        counter-increment: p1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l15 {
+        padding-left: 0pt;
+        counter-reset: q1 1;
+    }
+
+    #l15>li>*:first-child:before {
+        counter-increment: q1;
+        content: counter(q1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l15>li:first-child>*:first-child:before {
+        counter-increment: q1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l16 {
+        padding-left: 0pt;
+        counter-reset: r1 1;
+    }
+
+    #l16>li>*:first-child:before {
+        counter-increment: r1;
+        content: counter(r1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l16>li:first-child>*:first-child:before {
+        counter-increment: r1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l17 {
+        padding-left: 0pt;
+        counter-reset: s1 1;
+    }
+
+    #l17>li>*:first-child:before {
+        counter-increment: s1;
+        content: counter(s1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l17>li:first-child>*:first-child:before {
+        counter-increment: s1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l18 {
+        padding-left: 0pt;
+        counter-reset: t1 1;
+    }
+
+    #l18>li>*:first-child:before {
+        counter-increment: t1;
+        content: counter(t1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l18>li:first-child>*:first-child:before {
+        counter-increment: t1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l19 {
+        padding-left: 0pt;
+        counter-reset: u1 1;
+    }
+
+    #l19>li>*:first-child:before {
+        counter-increment: u1;
+        content: counter(u1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l19>li:first-child>*:first-child:before {
+        counter-increment: u1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l20 {
+        padding-left: 0pt;
+        counter-reset: v1 1;
+    }
+
+    #l20>li>*:first-child:before {
+        counter-increment: v1;
+        content: counter(v1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l20>li:first-child>*:first-child:before {
+        counter-increment: v1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l21 {
+        padding-left: 0pt;
+        counter-reset: w1 1;
+    }
+
+    #l21>li>*:first-child:before {
+        counter-increment: w1;
+        content: counter(w1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l21>li:first-child>*:first-child:before {
+        counter-increment: w1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l22 {
+        padding-left: 0pt;
+        counter-reset: x1 1;
+    }
+
+    #l22>li>*:first-child:before {
+        counter-increment: x1;
+        content: counter(x1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l22>li:first-child>*:first-child:before {
+        counter-increment: x1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l23 {
+        padding-left: 0pt;
+        counter-reset: y1 1;
+    }
+
+    #l23>li>*:first-child:before {
+        counter-increment: y1;
+        content: counter(y1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l23>li:first-child>*:first-child:before {
+        counter-increment: y1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l24 {
+        padding-left: 0pt;
+        counter-reset: z1 1;
+    }
+
+    #l24>li>*:first-child:before {
+        counter-increment: z1;
+        content: counter(z1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l24>li:first-child>*:first-child:before {
+        counter-increment: z1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l25 {
+        padding-left: 0pt;
+        counter-reset: c1 1;
+    }
+
+    #l25>li>*:first-child:before {
+        counter-increment: c1;
+        content: counter(c1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l25>li:first-child>*:first-child:before {
+        counter-increment: c1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l26 {
+        padding-left: 0pt;
+        counter-reset: d1 1;
+    }
+
+    #l26>li>*:first-child:before {
+        counter-increment: d1;
+        content: counter(d1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l26>li:first-child>*:first-child:before {
+        counter-increment: d1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l27 {
+        padding-left: 0pt;
+        counter-reset: e1 1;
+    }
+
+    #l27>li>*:first-child:before {
+        counter-increment: e1;
+        content: counter(e1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l27>li:first-child>*:first-child:before {
+        counter-increment: e1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l28 {
+        padding-left: 0pt;
+        counter-reset: f1 1;
+    }
+
+    #l28>li>*:first-child:before {
+        counter-increment: f1;
+        content: counter(f1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l28>li:first-child>*:first-child:before {
+        counter-increment: f1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l29 {
+        padding-left: 0pt;
+        counter-reset: g1 1;
+    }
+
+    #l29>li>*:first-child:before {
+        counter-increment: g1;
+        content: counter(g1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l29>li:first-child>*:first-child:before {
+        counter-increment: g1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l30 {
+        padding-left: 0pt;
+        counter-reset: h1 2;
+    }
+
+    #l30>li>*:first-child:before {
+        counter-increment: h1;
+        content: counter(h1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l30>li:first-child>*:first-child:before {
+        counter-increment: h1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l31 {
+        padding-left: 0pt;
+        counter-reset: i1 1;
+    }
+
+    #l31>li>*:first-child:before {
+        counter-increment: i1;
+        content: counter(i1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l31>li:first-child>*:first-child:before {
+        counter-increment: i1 0;
+    }
+
+    li {
+        display: block;
+    }
+
+    #l32 {
+        padding-left: 0pt;
+        counter-reset: j1 1;
+    }
+
+    #l32>li>*:first-child:before {
+        counter-increment: j1;
+        content: counter(j1, decimal)". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+    }
+
+    #l32>li:first-child>*:first-child:before {
+        counter-increment: j1 0;
+    }
+
+    table,
+    tbody {
+        vertical-align: top;
+        overflow: visible;
+    }
+</style>
+{%endblock additional%}
+
+{%block outlineInfo%}
+
+<center><div style="width:1000px">
+    <page size="A4">
+        <p class="s1" style="padding-top: 3pt;padding-left: 133pt;text-indent: 0pt;text-align: left;">Independent
+            University, Bangladesh</p>
+        <p class="s2" style="padding-top: 1pt;padding-left: 133pt;text-indent: 0pt;line-height: 107%;text-align: left;">
+            Department of Computer Science &amp; Engineering <span class="h1">Course Outline: </span><span
+                class="s3">CSE303
+                Database Management Summer 2022</span></p>
+        <h4 style="padding-left: 133pt;text-indent: 0pt;line-height: 11pt;text-align: left;">MWs at 9:40 (section-4)
+            BC5014-S for class, 11:15 - 12:45 for consultation</h4>
+        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+        <h2 style="padding-top: 2pt;padding-left: 41pt;text-indent: 0pt;text-align: left;">Instructor’s details:</h2>
+        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+        Here Goes Instructor Details
+        
+        <h2 style="padding-top: 2pt;padding-left: 41pt;text-indent: 0pt;line-height: 15pt;text-align: justify;">Course
+            Description</h2>
+        Here Goes Course Details
+        <h2 style="padding-top: 6pt;padding-left: 41pt;text-indent: 0pt;line-height: 15pt;text-align: justify;">Course
+            Objectives:</h2>
+        Here Goes COurse Objectives
+        <h2 style="padding-bottom: 1pt;padding-left: 41pt;text-indent: 0pt;text-align: justify;">Course Outcome(CO):
+        </h2>
+        Here Goes Program learning outcomes
+        <h2 style="padding-left: 41pt;text-indent: 0pt;line-height: 15pt;text-align: left;">Assessment and Marks
+            Distribution:</h2>
+       Here goes Assement and mark distribution
+        <h2 style="padding-top: 2pt;padding-left: 14pt;text-indent: 0pt;text-align: left;">Grade Conversion Scheme:</h2>
+        <p class="s4" style="padding-bottom: 1pt;padding-left: 14pt;text-indent: 0pt;text-align: left;">The following
+            chart
+            will be followed for grading. This has been customized from the guideline provided by the School of <span
+                class="s11">Engineering and Computer Science</span>.</p>
+        <table style="border-collapse:collapse;margin-left:5.75pt" cellspacing="0">
+            <tr style="height:16pt">
+                <td
+                    style="width:47pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12" style="padding-top: 1pt;text-indent: 0pt;line-height: 13pt;text-align: center;">A</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        A-</p>
+                </td>
+                <td
+                    style="width:44pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        B+</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12" style="padding-top: 1pt;text-indent: 0pt;line-height: 13pt;text-align: center;">B</p>
+                </td>
+                <td
+                    style="width:44pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        B-</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        C+</p>
+                </td>
+                <td
+                    style="width:44pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12" style="padding-top: 1pt;text-indent: 0pt;line-height: 13pt;text-align: center;">C</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        C-</p>
+                </td>
+                <td
+                    style="width:44pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        D+</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12" style="padding-top: 1pt;text-indent: 0pt;line-height: 13pt;text-align: center;">D</p>
+                </td>
+                <td
+                    style="width:48pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12" style="padding-top: 1pt;text-indent: 0pt;line-height: 13pt;text-align: center;">F</p>
+                </td>
+            </tr>
+            <tr style="height:17pt">
+                <td
+                    style="width:47pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 5pt;padding-right: 4pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        90-100</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        85-89</p>
+                </td>
+                <td
+                    style="width:44pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        80-84</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        75-79</p>
+                </td>
+                <td
+                    style="width:44pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        70-74</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        65-69</p>
+                </td>
+                <td
+                    style="width:44pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        60-64</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        55-59</p>
+                </td>
+                <td
+                    style="width:44pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        50-54</p>
+                </td>
+                <td
+                    style="width:43pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        45-49</p>
+                </td>
+                <td
+                    style="width:48pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s13"
+                        style="padding-top: 1pt;padding-left: 12pt;padding-right: 11pt;text-indent: 0pt;line-height: 14pt;text-align: center;">
+                        0-44</p>
+                </td>
+            </tr>
+        </table>
+        <h2 style="padding-top: 9pt;padding-left: 14pt;text-indent: 0pt;line-height: 15pt;text-align: left;">Required
+            Text:
+        </h2>
+        Here Goes Text Required
+        <h2 style="padding-left: 14pt;text-indent: 0pt;line-height: 10pt;text-align: justify;">Course Policy:</h2>
+        Here Goes Course Policy
+        
+        <h2 style="padding-top: 3pt;padding-left: 14pt;text-indent: 0pt;line-height: 15pt;text-align: left;">University
+            Regulation and Code of Conduct:</h2>
+        <p style="padding-left: 14pt;text-indent: 0pt;text-align: left;">Please see the Green Book for further
+            information
+            about academic regulation and policies, including withdrawal and grading, appeals and penalties for
+            plagiarism
+            and academic misconduct.</p>
+        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+        <p style="text-indent: 0pt;text-align: right;">3 of 6</p>
+        <h2 style="padding-top: 1pt;padding-left: 223pt;text-indent: 0pt;text-align: center;">Class &amp; Exam Schedule,
+            Topics and Readings:</h2>
+        <p style="text-indent: 0pt;text-align: left;"><br /></p>
+        <table style="border-collapse:collapse;margin-left:6.75pt" cellspacing="0">
+            <tr style="height:14pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:6pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s12"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        Sessions</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:6pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 49pt;padding-right: 48pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        Topics</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:6pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 103pt;padding-right: 102pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        Learning Outcome</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:6pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12" style="padding-left: 6pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                        Readings
+                    </p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:6pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        Course Outcome</p>
+                </td>
+            </tr>
+            <tr style="height:85pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:6pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        – 1</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:6pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 27pt;text-indent: 0pt;text-align: left;">
+                        Introduction: concept of database, DBMS</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:6pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l6">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 12pt;text-align: left;">
+                                Students will be able to know each other</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn about the course policy</p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                be
+                                able to plan for the exams</p>
+                        </li>
+                        <li data-list-text="4.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn the basic concept of Database.</p>
+                        </li>
+                        <li data-list-text="5.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn about the reason for using databases.</p>
+                        </li>
+                        <li data-list-text="6.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will learn about different categories of applications that use databases.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:6pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:6pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s14"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO1</p>
+                </td>
+            </tr>
+            <tr style="height:72pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        – 2</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 27pt;text-indent: 0pt;text-align: left;">
+                        Introduction: Database development process, Database architecture; Database languages and
+                        Interfaces
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 11pt;text-align: left;">1.
+                        Students will learn about the life cycle of a systems development</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;text-align: left;">project.</p>
+                    <ol id="l7">
+                        <li data-list-text="3.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 38pt;text-indent: 0pt;text-align: left;">
+                                Students will learn about the roles of individuals who design, implement, use, and
+                                administer Databases.</p>
+                        </li>
+                        <li data-list-text="4.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 52pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will learn about the differences among external, conceptual, and internal
+                                schema.
+                            </p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 11pt;text-align: center;">
+                        CO1</p>
+                </td>
+            </tr>
+            <tr style="height:35pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">Lab
+                        – 1
+                    </p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 7pt;text-indent: 0pt;text-align: left;">
+                        Introduction to Report writing and Designing tools</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l8">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Students will be introduced to report writing tools.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will be introduced to designing tools to draw different types of diagrams used
+                                in
+                                this course.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 11pt;text-align: center;">
+                        CO1</p>
+                </td>
+            </tr>
+            <tr style="height:36pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        – 3</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;text-align: left;">Analysis: Rich Picture
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l9">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Introduction to a real-time problem.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Introduction to understand a real-time issue and draw that using Rich Picture.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s6"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        CO1</p>
+                </td>
+            </tr>
+            <tr style="height:23pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 4</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 11pt;text-align: left;">
+                        Analysis:
+                        Six Elements</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
+                        analysis
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l10">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Understand the concept of Six elements Analysis.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 10pt;text-align: left;">
+                                Perform six elements analysis to map the existing system.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s6"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        CO1</p>
+                </td>
+            </tr>
+            <tr style="height:24pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Lab – 2</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Using
+                        the
+                        designing tools</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">create
+                        Rich Picture</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">1.
+                        Students will be able to create diagrams using the tools and model</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">them
+                        using
+                        the techniques taught in the theory.</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s6" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO2
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:49pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 5</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 20pt;text-indent: 0pt;text-align: left;">
+                        Analysis: Process Diagram using BPMN 2.0</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l11">
+                        <li data-list-text="1.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Identification
+                                of
+                                details of the processes involved in the system.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Introduction
+                                to
+                                the business process diagram</p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Introduction
+                                to
+                                BPMN 2.0.</p>
+                        </li>
+                        <li data-list-text="4.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Perform process drawing using BPMN 2.0</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s6" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO1
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:36pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        – 6</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 19pt;text-indent: 0pt;text-align: left;">
+                        Analysis: Process Diagram and Improvement Process</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l12">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 12pt;text-align: left;">
+                                Students will be introduced to advanced features of BPMN 2.0.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 23pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will be introduced to BPR and KPI to find the issues and perform analysis</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO1</p>
+                </td>
+            </tr>
+            <tr style="height:84pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">Lab
+                        – 3
+                    </p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 7pt;text-indent: 0pt;text-align: left;">Using
+                        the
+                        designing tools create BPMN</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l13">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Students will learn how the Process diagram works.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 20pt;text-indent: 0pt;text-align: left;">
+                                Students will learn where the data comes from and where it goes and where it will be
+                                stored.
+                            </p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 22pt;text-indent: 0pt;text-align: left;">
+                                Students will learn how to deal with the data in the model of the system.</p>
+                        </li>
+                        <li data-list-text="4.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 13pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will learn about <span style=" color: #252525;">one of the three essential
+                                    perspectives of the structured-systems analysis and design method</span></p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 11pt;text-align: center;">
+                        CO2</p>
+                </td>
+            </tr>
+        </table>
+        <table style="border-collapse:collapse;margin-left:6.75pt" cellspacing="0">
+            <tr style="height:14pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s12"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Sessions</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 49pt;padding-right: 48pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Topics</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 103pt;padding-right: 102pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Learning Outcome</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12" style="padding-left: 6pt;text-indent: 0pt;line-height: 13pt;text-align: left;">
+                        Readings
+                    </p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Course Outcome</p>
+                </td>
+            </tr>
+            <tr style="height:48pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l14">
+                        <li data-list-text="5.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 19pt;text-indent: 0pt;text-align: left;">
+                                Students will learn how the <span style=" color: #252525;">process diagrams can be used
+                                    in
+                                    both Analysis and Design phases.</span></p>
+                        </li>
+                        <li data-list-text="6.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 27pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will be able to create ERD using the tools taught in the theory.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+            </tr>
+            <tr style="height:48pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        – 7</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 15pt;text-indent: 0pt;text-align: left;">
+                        Entity
+                        relationship diagram Model</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l15">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 12pt;text-align: left;">
+                                Students will learn about entities, relationships, and attributes.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                be
+                                able to learn about the degree of relationship.</p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 18pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will be able to model E-R diagrams considering different types of attributes,
+                                entities, relationship, and cardinality constraints.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO1</p>
+                </td>
+            </tr>
+            <tr style="height:48pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        – 8</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 15pt;text-indent: 0pt;text-align: left;">
+                        Entity
+                        relationship diagram Model</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l16">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Students will be able to differentiate different relationship types.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 24pt;text-indent: 0pt;text-align: left;">
+                                Students will be able to identify the reason for different types of attributes.</p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Students will be able to realize the need for relationship constraints.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 11pt;text-align: center;">
+                        CO1</p>
+                </td>
+            </tr>
+            <tr style="height:36pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">Lab
+                        – 4
+                    </p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 7pt;text-indent: 0pt;text-align: left;">
+                        Using the designing tools create EERD</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l17">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 12pt;text-align: left;">
+                                Students will be able to create EERD using the tools.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 14pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will be able to model business cases using the techniques taught in the theory.
+                            </p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO2</p>
+                </td>
+            </tr>
+            <tr style="height:23pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 9</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 5pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">Design:
+                        Enhanced ERD model</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l18">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 16pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Students will learn about subtype supertype relations.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 10pt;text-align: left;">
+                                Students will learn completeness and disjoint type relations.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 11pt;text-align: center;">
+                        CO2</p>
+                </td>
+            </tr>
+            <tr style="height:37pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        10</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;text-align: left;">Design: ERD to Relations
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l19">
+                        <li data-list-text="1.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn to convert the entity to relations.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn to map attributes in the relations.</p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Students will be able to design the relationship in terms of relations.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO2
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:85pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        – 11</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;text-align: left;">Design: Normalization 01
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l20">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 12pt;text-align: left;">
+                                Students will be able to list five properties of relations.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 7pt;text-indent: 0pt;text-align: left;">
+                                Students will be able to state two essential properties of a candidate key.</p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 13pt;text-indent: 0pt;text-align: left;">
+                                Students will be introduced with the concept of normalization: first normal form, second
+                                normal form, and third normal form.</p>
+                        </li>
+                        <li data-list-text="4.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 10pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will learn briefly about four problems that may arise when merging relations.
+                            </p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO2</p>
+                </td>
+            </tr>
+            <tr style="height:23pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Lab – 5</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 11pt;text-align: left;">
+                        Introduction to database</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">using
+                        GUI
+                        interface</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 11pt;text-align: left;">1.
+                        Students will be able to create and use databases using any GUI</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">based
+                        database.</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 11pt;text-align: center;">
+                        CO3</p>
+                </td>
+            </tr>
+            <tr style="height:110pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        – 12</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 7pt;text-indent: 0pt;text-align: left;">
+                        Design: Normalization02, Data dictionary</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l21">
+                        <li data-list-text="1.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                be
+                                able to realize the need for normalization.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                be
+                                able to perform normalization on any case study.</p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn about Boyce-Codd normal form.</p>
+                        </li>
+                        <li data-list-text="4.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 44pt;text-indent: 0pt;text-align: left;">
+                                Students will learn the physical database design process, its objectives, and its
+                                deliverables.</p>
+                        </li>
+                        <li data-list-text="5.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 4pt;text-indent: 0pt;text-align: left;">
+                                Students will learn about storage formats for attributes from a logical data model.</p>
+                        </li>
+                        <li data-list-text="6.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 11pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will learn how to select an appropriate file organization by balancing various
+                                important design factors.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO2
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table style="border-collapse:collapse;margin-left:6.75pt" cellspacing="0">
+            <tr style="height:14pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s12"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Sessions</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 49pt;padding-right: 48pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Topics</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 103pt;padding-right: 102pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Learning Outcome</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12" style="padding-left: 6pt;text-indent: 0pt;line-height: 13pt;text-align: left;">
+                        Readings
+                    </p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Course Outcome</p>
+                </td>
+            </tr>
+            <tr style="height:36pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 27pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                        7. Students will be able to translate a relational data model into efficient database
+                        structures,
+                        including knowing when and how to de-normalize the logical data model.</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+            </tr>
+            <tr style="height:23pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Lab – 06</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                        Introduction to database</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">using
+                        GUI
+                        interface.</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">1.
+                        Students will be able to manipulate data in the MS Access and</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">MySQL.
+                    </p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO3</p>
+                </td>
+            </tr>
+            <tr style="height:12pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 10pt;text-align: center;">
+                        Session 13</p>
+                </td>
+                <td style="width:492pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt"
+                    colspan="3">
+                    <p class="s10"
+                        style="padding-left: 222pt;padding-right: 221pt;text-indent: 0pt;line-height: 10pt;text-align: center;">
+                        Midterm</p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+            </tr>
+            <tr style="height:49pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 14</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;text-align: left;">Relational Algebra</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l22">
+                        <li data-list-text="1.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn about the formal notations.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 30pt;text-indent: 0pt;text-align: left;">
+                                Students will learn how to add constraints to the set union, set intersections. Set
+                                difference and Cartesian products.</p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 10pt;text-align: left;">
+                                Students will learn how to implement and use them in the database.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO2
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:36pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">Lab
+                        –
+                        07</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 7pt;text-indent: 0pt;text-align: left;">
+                        Create Database and manipulate data with SQL.</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l23">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 27pt;text-indent: 0pt;text-align: left;">
+                                Students will learn how to define the database and specify data types, structures and
+                                constraints on the data.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 10pt;text-align: left;">
+                                Students will learn how to manipulate those data in the database.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO4
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:49pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 15</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-top: 6pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">SQL:
+                        DDL,
+                        DML, DCL</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l24">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 40pt;text-indent: 0pt;text-align: left;">
+                                Students will learn to interpret the history and role of SQL in database development.
+                            </p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 37pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will know how to define and use the data types and constraints in the database
+                                using DML.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO4
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:23pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 16</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 5pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">SQL:
+                        Retrieve information</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">1.
+                        Students will learn how to fetch the data from the database using</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">basic
+                        SQL
+                        commands.</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO4</p>
+                </td>
+            </tr>
+            <tr style="height:24pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Lab – 08</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 6pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">Writing
+                        Query in SQL</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 27pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                        1. Students will be able to write single-table queries using SQL commands.</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO4
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:23pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 17</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 5pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">SQL:
+                        Retrieve information</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">1.
+                        Students will learn how to retrieve and manipulate that information</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">from
+                        the
+                        database using SQL.</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO4</p>
+                </td>
+            </tr>
+            <tr style="height:25pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 18</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 6pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">SQL:
+                        Retrieve information</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">1.
+                        Students will learn how to retrieve and manipulate that information from the database using SQL.
+                    </p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO4
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:24pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Lab – 9</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 5pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">Writing
+                        advance query in SQL</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">1.
+                        Students will be using different types of advanced SQL query to solve</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 11pt;text-align: left;">
+                        different
+                        types of problems.</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO4</p>
+                </td>
+            </tr>
+            <tr style="height:24pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 19</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 6pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">Advance
+                        SQL
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l25">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 12pt;text-align: left;">
+                                Students will learn how to use union, join etc. using SQL.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 10pt;text-align: left;">
+                                Students will be able to establish referential integrity using SQL.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO4</p>
+                </td>
+            </tr>
+            <tr style="height:24pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 20</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 6pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">Advance
+                        SQL
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l26">
+                        <li data-list-text="1.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn how to use union, join etc. using SQL.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 10pt;text-align: left;">
+                                Students will be able to establish referential integrity using SQL.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO4
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:24pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Lab – 10</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 6pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">Writing
+                        advance query in SQL</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l27">
+                        <li data-list-text="1.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                practice how to use union, join etc. using SQL.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 10pt;text-align: left;">
+                                Students will be able to establish referential integrity using SQL.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO4
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:24pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 21</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 6pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">Advance
+                        SQL
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l28">
+                        <li data-list-text="1.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn how to write subqueries using SQL query.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 10pt;text-align: left;">
+                                Students will learn how to establish referential integrity using SQL.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO4
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:25pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session – 22</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-top: 6pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">Advance
+                        SQL
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l29">
+                        <li data-list-text="1.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                practice how to write subqueries using SQL query.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Students will practice how to establish referential integrity using SQL.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO4
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:24pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-top: 5pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Lab – 11</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Input
+                        &amp; Output design</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 11pt;text-align: left;">
+                        principle
+                    </p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 12pt;text-align: left;">1.
+                        Students will learn how to define the appropriate format and media</p>
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 11pt;text-align: left;">for a
+                        computer Input.</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO3</p>
+                </td>
+            </tr>
+        </table>
+        <table style="border-collapse:collapse;margin-left:6.75pt" cellspacing="0">
+            <tr style="height:14pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s12"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Sessions</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 49pt;padding-right: 48pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Topics</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 103pt;padding-right: 102pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Learning Outcome</p>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12" style="padding-left: 6pt;text-indent: 0pt;line-height: 13pt;text-align: left;">
+                        Readings
+                    </p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s12"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 13pt;text-align: center;">
+                        Course Outcome</p>
+                </td>
+            </tr>
+            <tr style="height:122pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l30">
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 17pt;text-indent: 0pt;text-align: left;">
+                                Students will learn to identify and describe several automatic data collection
+                                technologies.
+                            </p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 18pt;text-indent: 0pt;text-align: left;">
+                                Students will learn how to develop their own input form based on their own systems.</p>
+                        </li>
+                        <li data-list-text="4.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 25pt;text-indent: 0pt;text-align: left;">
+                                Students will learn to distinguish between internal, external and turnaround outputs.
+                            </p>
+                        </li>
+                        <li data-list-text="5.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 6pt;text-indent: 0pt;text-align: left;">
+                                Students will learn about the difference between detailed, summary, and exception
+                                reports.
+                            </p>
+                        </li>
+                        <li data-list-text="6.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 28pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will be able to identify several output implementation methods.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+            </tr>
+            <tr style="height:133pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Session
+                        – 23</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 32pt;text-indent: 0pt;text-align: left;">
+                        Input
+                        form and Output reports Database architecture, Database administrations</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l31">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 12pt;text-align: left;">
+                                Students will be able to explain the three components of</p>
+                            <p class="s10" style="padding-left: 4pt;text-indent: 0pt;text-align: left;">client/server
+                                systems: data presentation services, processing services, and storage services.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 11pt;text-indent: 0pt;text-align: left;">
+                                Students will be able to distinguish between two-tier and three-tier architectures.</p>
+                        </li>
+                        <li data-list-text="3.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 5pt;text-indent: 0pt;text-align: left;">
+                                Students will be able to describe the key components of a web application and the
+                                information flow between the various components.</p>
+                        </li>
+                        <li data-list-text="4.">
+                            <p class="s10" style="padding-left: 14pt;text-indent: -9pt;text-align: left;">Students will
+                                learn why organizations need data administration for.</p>
+                        </li>
+                        <li data-list-text="5.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 10pt;text-indent: 0pt;text-align: left;">
+                                Students will be able to describe the three levels of data warehouse architecture from a
+                                database administrator point of view.</p>
+                        </li>
+                        <li data-list-text="6.">
+                            <p class="s10"
+                                style="padding-left: 14pt;text-indent: -9pt;line-height: 11pt;text-align: left;">
+                                Students will be able to develop the requirement for a data bank.</p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                        CO2</p>
+                </td>
+            </tr>
+            <tr style="height:13pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 11pt;text-align: center;">
+                        Session – 24</p>
+                </td>
+                <td style="width:492pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt"
+                    colspan="3">
+                    <p class="s10" style="padding-left: 4pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Review
+                    </p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+            </tr>
+            <tr style="height:49pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10"
+                        style="padding-top: 6pt;padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">
+                        Lab – 12</p>
+                </td>
+                <td
+                    style="width:132pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                    <p class="s10" style="padding-left: 4pt;padding-right: 33pt;text-indent: 0pt;text-align: left;">
+                        Interface with SQL and Front-End software.</p>
+                </td>
+                <td
+                    style="width:301pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <ol id="l32">
+                        <li data-list-text="1.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 13pt;text-indent: 0pt;text-align: left;">
+                                Students will be able to design and prototype computer inputs and outputs.</p>
+                        </li>
+                        <li data-list-text="2.">
+                            <p class="s10"
+                                style="padding-left: 4pt;padding-right: 27pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
+                                Students will be able to connect and display the data from their database into web
+                                forms.
+                            </p>
+                        </li>
+                    </ol>
+                </td>
+                <td
+                    style="width:59pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
+                    <p class="s10" style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;text-align: center;">CO2
+                    </p>
+                </td>
+            </tr>
+            <tr style="height:12pt">
+                <td
+                    style="width:62pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:5pt;border-right-style:solid;border-right-width:2pt;border-right-color:#4E81BD">
+                    <p class="s10"
+                        style="padding-left: 4pt;padding-right: 3pt;text-indent: 0pt;line-height: 10pt;text-align: center;">
+                        Session 25</p>
+                </td>
+                <td style="width:492pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-left-color:#4E81BD;border-bottom-style:solid;border-bottom-width:5pt;border-right-style:solid;border-right-width:2pt"
+                    colspan="3">
+                    <p class="s9"
+                        style="padding-left: 222pt;padding-right: 221pt;text-indent: 0pt;line-height: 10pt;text-align: center;">
+                        Final Exam</p>
+                </td>
+                <td
+                    style="width:94pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:5pt;border-right-style:solid;border-right-width:2pt">
+                    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+                </td>
+            </tr>
+        </table>
+
+
+</page>
+</div></center>
+{%endblock outlineInfo%}

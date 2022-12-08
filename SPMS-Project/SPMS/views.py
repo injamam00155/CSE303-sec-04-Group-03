@@ -119,6 +119,7 @@ def CourseOutlineData(request):
 def CourseOutline(request):
         context={
         "page":"cout",
+        "check":1,
         "id":queries.getCurrUser()[0][0],
         "group":queries.getCurrUser()[0][1],
         "name":queries.getName(str(queries.getCurrUser()[0][0])),
