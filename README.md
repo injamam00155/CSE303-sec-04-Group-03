@@ -21,7 +21,7 @@ Additional features that were implemented is the Question Bank (for storing all 
 * Django
 * Pandas
 * Numpy
-* ChartJS
+* Plotly
 * Wheel
 * MySQL
 
