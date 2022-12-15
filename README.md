@@ -5,6 +5,8 @@ A web based application written using Python (Django), Javascript, CSS and HTML.
 
 Additional features that were implemented is the Question Bank (for storing all past questions and assesments) and Course Outline Generator.
 
+![Screenshot (002)] (images/output1.png)
+
 ## Contributors
 
 1.	Faiza Omar Arpita @Arpitaaa2001
@@ -43,6 +45,8 @@ Additional features that were implemented is the Question Bank (for storing all 
     - Password: admin
 
 ## Screenshots
-
-
-
+![Screenshot (001)] (images/login.png)
+![Screenshot (003)] (images/output2.png)
+![Screenshot (004)] (images/output3.png)
+![Screenshot (005)] (images/output4.png)
+![Screenshot (006)] (images/output5.png)

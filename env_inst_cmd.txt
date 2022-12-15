@@ -1,0 +1,25 @@
+pip3 install virtualenv
+
+virtualenv env
+
+env\Scripts\activate
+
+pip3 install django3
+
+pip3 install numpy
+
+pip install chartjs
+
+pip3 install mysql-connector-python
+
+pip3 install mysql
+
+pip3 install panda
+
+pip3 install pandas
+
+pip3 install wheel
+
+pip install xhtml2pdf
+
+python manage.py runserver
