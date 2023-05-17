@@ -1,7 +1,7 @@
 # CSE303-Autumn'22-Section-04-Group-03
 
 # Application - Student Performace Monitoring System
-A web based application written using Python (Django), Javascript, CSS and HTML. The objective of this application is to monitor the performance of the students at university. This can be done by the faculty members, higher authorities (Department Head, Vice Chancallor and Dean) or the student themselves. This application will monitor the performance by tracking their evaluations, assessments, marks and grades and map all these to specific Course Learning Outcomes (CLO), which itself will be mapped to different Program Learning Outcomes (PLO).
+A web based application written for CSE303 (Database Management) using Python (Django), Javascript, CSS and HTML. For Database we used MySQL. The objective of this application is to monitor the performance of the students at university. This can be done by the faculty members, higher authorities (Department Head, Vice Chancallor and Dean) or the student themselves. This application will monitor the performance by tracking their evaluations, assessments, marks and grades and map all these to specific Course Learning Outcomes (CLO), which itself will be mapped to different Program Learning Outcomes (PLO).
 
 Additional features that were implemented is the Question Bank (for storing all past questions and assesments) and Course Outline Generator.
 
