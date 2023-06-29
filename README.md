@@ -35,7 +35,7 @@ Additional features that were implemented is the Question Bank (for storing all 
 3.	Change directory to the cloned directory.
     You may run the following command in the terminal:
 
-        CSE303-sec-04-Group-03\SPMS-Project
+        cd .\CSE303-sec-04-Group-03\SPMS-Project\
 
 4.	Create a virtual environment.
     You may run the following command in the terminal:
@@ -60,7 +60,7 @@ Additional features that were implemented is the Question Bank (for storing all 
         python manage.py runserver 
 
     If the above one did not work, try this one:
-    
+
         python3 manage.py runserver
 
 9.	Open a browser and go to the url: http://127.0.0.1:8000/
