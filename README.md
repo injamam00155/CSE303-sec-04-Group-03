@@ -16,22 +16,27 @@ Additional features that were implemented is the Question Bank (for storing all 
 5.	Showrov Mallick @Showrov007
 6.	Syed Niaz Mohtasim @syedniaz
 
-## Dependencies
+<!-- ## Dependencies
 * Python
 * Django
 * Pandas
 * Numpy
 * Plotly
 * Wheel
-* MySQL
+* MySQL -->
 
 ## How to Run
 1.	Clone the repository using git clone https://github.com/injamam00155/CSE303-sec-04-Group-03.git
 2.	Open the terminal (or command prompt), and cd into the cloned directory.
 3.	[Optional] Create a virtual environment.
-4.	Install all the prerequisites using pip install -r requirements.txt (you have to be in the project directory to do this)
-5.	Run the command: python manage.py runserver or python3 manage.py runserver
-6.	Open a browser and go to the url: http://127.0.0.1:8000/
+4.  Use the sql script and create a database with the reqquired data.
+5.  Run the following commands in the terminal:
+    pip install -r req.txt
+    pip install -r requirements.txt
+    These commands are to Install all the prerequisites
+6.	Run the command: 
+    python manage.py runserver or python3 manage.py runserver
+7.	Open a browser and go to the url: http://127.0.0.1:8000/
 
 ## Login Credentials
 * Student:
