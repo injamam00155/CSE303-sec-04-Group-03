@@ -37,7 +37,8 @@ Additional features that were implemented is the Question Bank (for storing all 
 
         cd .\CSE303-sec-04-Group-03\ 
 
-4.	Create a virtual environment. Use you may use command:
+4.	Create a virtual environment.
+    You may run the following command in the terminal:
 
         python -m venv env
 
