@@ -31,7 +31,7 @@ Additional features that were implemented is the Question Bank (for storing all 
         git clone https://github.com/injamam00155/CSE303-sec-04-Group-03.git
 
 2.	Open the terminal (or command prompt), and cd into the cloned directory.
-3.	[Optional] Create a virtual environment. Use you may use command:
+3.	Create a virtual environment. Use you may use command:
 
         python -m venv env
 
