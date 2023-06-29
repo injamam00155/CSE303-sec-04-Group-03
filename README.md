@@ -32,8 +32,10 @@ Additional features that were implemented is the Question Bank (for storing all 
 4.  Use the sql script and create a database with the required data.
 5.  [Activate the virtual environment and then] 
     Run the following commands in the terminal:
+
         pip install -r req.txt
         pip install -r requirements.txt
+        
     These commands are to Install all the prerequisites
 6.	Run the command: 
     python manage.py runserver or python3 manage.py runserver
