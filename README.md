@@ -26,33 +26,39 @@ Additional features that were implemented is the Question Bank (for storing all 
 * MySQL -->
 
 ## How to Run
-1.	Clone the repository using:
+1.  Open the Terminal
+2.	Clone the repository. 
+    You may run the following command in the terminal:
         
         git clone https://github.com/injamam00155/CSE303-sec-04-Group-03.git
 
-2.	Open the terminal (or command prompt), and cd into the cloned directory.
-3.	Create a virtual environment. Use you may use command:
+3.	Open the terminal (or command prompt), and cd into the cloned directory.
+    You may run the following command in the terminal:
+
+        cd .\CSE303-sec-04-Group-03\ 
+
+4.	Create a virtual environment. Use you may use command:
 
         python -m venv env
 
-4.  Use the sql script and create a database with the required data.
-5.  Activate the virtual environment:
+5.  Use the sql script and create a database with the required data.
+6.  Activate the virtual environment:
 
         .\env\Scripts\activate
 
-6.  These commands are to Install all the prerequisites.
+7.  These commands are to Install all the prerequisites.
     You may run the following commands in the terminal:
 
         pip install -r req.txt
         pip install -r requirements.txt
 
     
-6.	Run the command(either one of them should work. If the first one does not work, try the second one): 
+8.	Run the command(either one of them should work. If the first one does not work, try the second one): 
     
         python manage.py runserver 
         python3 manage.py runserver
 
-7.	Open a browser and go to the url: http://127.0.0.1:8000/
+9.	Open a browser and go to the url: http://127.0.0.1:8000/
 
 ## Login Credentials
 * Student:
