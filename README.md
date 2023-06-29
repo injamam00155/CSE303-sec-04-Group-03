@@ -47,10 +47,9 @@ Additional features that were implemented is the Question Bank (for storing all 
         pip install -r requirements.txt
 
     
-6.	Run the command: 
+6.	Run the command(either one of them should work. If the first one does not work, try the second one): 
     
         python manage.py runserver 
-OR 
         python3 manage.py runserver
 
 7.	Open a browser and go to the url: http://127.0.0.1:8000/
