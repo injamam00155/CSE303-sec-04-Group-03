@@ -29,10 +29,11 @@ Additional features that were implemented is the Question Bank (for storing all 
 1.	Clone the repository using git clone https://github.com/injamam00155/CSE303-sec-04-Group-03.git
 2.	Open the terminal (or command prompt), and cd into the cloned directory.
 3.	[Optional] Create a virtual environment.
-4.  Use the sql script and create a database with the reqquired data.
-5.  Run the following commands in the terminal:
-    pip install -r req.txt
-    pip install -r requirements.txt
+4.  Use the sql script and create a database with the required data.
+5.  [Activate the virtual environment and then] 
+    Run the following commands in the terminal:
+        pip install -r req.txt
+        pip install -r requirements.txt
     These commands are to Install all the prerequisites
 6.	Run the command: 
     python manage.py runserver or python3 manage.py runserver
