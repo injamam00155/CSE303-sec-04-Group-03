@@ -49,7 +49,9 @@ Additional features that were implemented is the Question Bank (for storing all 
     
 6.	Run the command: 
     
-        python manage.py runserver or python3 manage.py runserver
+        python manage.py runserver 
+    OR 
+        python3 manage.py runserver
 
 7.	Open a browser and go to the url: http://127.0.0.1:8000/
 
