@@ -32,7 +32,7 @@ Additional features that were implemented is the Question Bank (for storing all 
         
         git clone https://github.com/injamam00155/CSE303-sec-04-Group-03.git
 
-3.	Open the terminal (or command prompt), and cd into the cloned directory.
+3.	Change directory to the cloned directory.
     You may run the following command in the terminal:
 
         cd .\CSE303-sec-04-Group-03\ 
