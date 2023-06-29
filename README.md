@@ -35,7 +35,7 @@ Additional features that were implemented is the Question Bank (for storing all 
 3.	Change directory to the cloned directory.
     You may run the following command in the terminal:
 
-        cd .\CSE303-sec-04-Group-03\ 
+        CSE303-sec-04-Group-03\SPMS-Project
 
 4.	Create a virtual environment.
     You may run the following command in the terminal:
@@ -54,9 +54,13 @@ Additional features that were implemented is the Question Bank (for storing all 
         pip install -r requirements.txt
 
     
-8.	Run the command(either one of them should work. If the first one does not work, try the second one): 
-    
+8.	Run the Django deployment Server.
+    You may run the following commands in the terminal:
+        
         python manage.py runserver 
+
+    If the above one did not work, try this one:
+    
         python3 manage.py runserver
 
 9.	Open a browser and go to the url: http://127.0.0.1:8000/
